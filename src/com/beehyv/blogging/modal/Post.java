@@ -1,5 +1,5 @@
-/**
- * 
+/**creats a Post Object
+ * Provides getter and setter method to get different values of this object's field
  */
 package com.beehyv.blogging.modal;
 
@@ -15,6 +15,7 @@ public class Post {
 	private  String createdAt;
 	private  String userName;
 	private  long userId;
+	private long categoryID;
 	/**
 	 * @return the title
 	 */
@@ -74,5 +75,18 @@ public class Post {
 	 */
 	public void setUserId(long userId) {
 		this.userId = userId;
+	}
+	/**
+	 * @return the categoryID
+	 */
+	private long getCategoryID() {
+		return categoryID;
+	}
+	/**
+	 * @param categoryID the categoryID to set
+	 */
+	private void setCategoryID(long categoryID) {
+		this.categoryID = categoryID;
 	}	
+	
 }
