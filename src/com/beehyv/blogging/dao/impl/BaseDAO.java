@@ -1,4 +1,4 @@
-/**
+/** this programs helps in getting a connection to database 
  * 
  */
 package com.beehyv.blogging.dao.impl;
@@ -9,10 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * @author sanjay
- *
- */
 public class BaseDAO {
 
 	// database URL 
@@ -23,8 +19,6 @@ public class BaseDAO {
 			Connection connection = null; // manages connection
 			Statement statement = null; // query statement
 			ResultSet resultSet = null; // manages results
-			String Post_title;
-			String created_at;
 			// connect to database books and query database
 			try {
 				connection = DriverManager.getConnection(DATABASE_URL, "root", "beehyv123" );
