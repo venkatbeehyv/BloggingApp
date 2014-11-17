@@ -1,3 +1,4 @@
+// creats a Employee objects, provides getters and setters for it's field
 package com.beehyv.blogging.modal;
 
 public class Employee {
@@ -8,8 +9,8 @@ public class Employee {
 	private  String mobile_no;
 	private  String created_at;
 	private  String updated_at;
-	private  String last_logged_in;
-	private  long role_id;
+	private  String lastLoggedIn;
+	private  long roleID;
 	/**
 	 * @return the email
 	 */
@@ -95,28 +96,28 @@ public class Employee {
 		this.updated_at = updated_at;
 	}
 	/**
-	 * @return the last_logged_in
+	 * @return the lastLoggedIn
 	 */
-	private String getLast_logged_in() {
-		return last_logged_in;
+	private String getlastLoggedIn() {
+		return lastLoggedIn;
 	}
 	/**
-	 * @param last_logged_in the last_logged_in to set
+	 * @param lastLoggedIn the lastLoggedIn to set
 	 */
-	private void setLast_logged_in(String last_logged_in) {
-		this.last_logged_in = last_logged_in;
+	private void setlastLoggedIn(String lastLoggedIn) {
+		this.lastLoggedIn = lastLoggedIn;
 	}
 	/**
 	 * @return the role_id
 	 */
-	private long getRole_id() {
-		return role_id;
+	private long getRoleID() {
+		return roleID;
 	}
 	/**
 	 * @param role_id the role_id to set
 	 */
-	private void setRole_id(long role_id) {
-		this.role_id = role_id;
+	private void setRoleID(long roleID) {
+		this.roleID = roleID;
 	}
 	
 }
