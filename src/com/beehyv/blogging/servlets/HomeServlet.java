@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import com.beehyv.blogging.service.PostService;
  * @author Venkat
  *
  */
+@WebServlet("/recent")
 public class HomeServlet extends HttpServlet {
 	
 	PostService postService = new PostService();
@@ -28,7 +30,9 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside HomeServlet::");
 		Map<String,String[]> parameters = req.getParameterMap();
-		String actionName = parameters.get("actionName")[0];
+		//String actionName = parameters.get("actionName")[0];
+		//System.out.println(req.getParameter("actionName"));
+		String actionName = "recentPosts";
 		if("recentPosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getRecentPosts();
 			req.setAttribute("recentPosts", posts);

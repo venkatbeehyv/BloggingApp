@@ -35,7 +35,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement.executeQuery("SELECT Post_title, created_at from Post Order by created_at DESC limit 3" );
+			resultSet = statement.executeQuery("SELECT Post_title, created_at from Post Order by created_at DESC limit :limit" );
 			
 			// process query results
 				while ( resultSet.next() )
