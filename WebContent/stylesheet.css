@@ -22,7 +22,7 @@ div div{
     border: 1px solid black;
 }
 h4{
-	padding: 0px 5px 72px 19px;
+	padding: 1px 5px 72px 19px;
 }
 
 .contents{
@@ -54,5 +54,5 @@ h4{
 	margin-top: 80px;
 }
 h1 {
-    margin-top: 5px;
+    margin-top: 4px;
 }
