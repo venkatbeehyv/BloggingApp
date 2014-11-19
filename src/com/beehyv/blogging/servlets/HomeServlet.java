@@ -4,6 +4,7 @@
 package com.beehyv.blogging.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -29,18 +30,18 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside HomeServlet::");
-		Map<String,String[]> parameters = req.getParameterMap();
-		//String actionName = parameters.get("actionName")[0];
-		//System.out.println(req.getParameter("actionName"));
+		
+		System.out.println(req.getParameter("actionName"));
+		
 		String actionName = "recentPosts";
 		if("recentPosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getRecentPosts();
-			req.setAttribute("recentPosts", posts);
+			PrintWriter writer = resp.getWriter();
+			writer.println(posts);
 		}
 		
-		RequestDispatcher dispatcher =  req.getRequestDispatcher("/Home.jsp");
-		req.setAttribute("name", "Hi This is venkat");
-		dispatcher.forward(req, resp);
+		
+		
 	}
 	
 	@Override

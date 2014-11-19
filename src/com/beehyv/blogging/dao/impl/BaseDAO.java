@@ -16,13 +16,19 @@ public class BaseDAO {
 		// launch the application
 		public Connection getConnection()
 		{ 
+			
+			
 			Connection connection = null; // manages connection
 			Statement statement = null; // query statement
 			ResultSet resultSet = null; // manages results
 			// connect to database books and query database
 			try {
+				Class.forName("com.mysql.jdbc.Driver");
 				connection = DriverManager.getConnection(DATABASE_URL, "root", "beehyv123" );
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

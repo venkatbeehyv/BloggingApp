@@ -89,4 +89,10 @@ public class Post {
 		this.categoryID = categoryID;
 	}	
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return title +"," + categoryID;
+	}
+	
 }
