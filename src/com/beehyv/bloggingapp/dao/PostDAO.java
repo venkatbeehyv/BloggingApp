@@ -7,5 +7,7 @@ import com.beehyv.blogging.modal.Post;
 public interface PostDAO {
 
 	public List<Post> getRecentPosts();
-	public List<Post> getPosts();
+	public Post getPost(long post_id);
+	public List<Post> getPostsbytag(long tag_id);
+
 }

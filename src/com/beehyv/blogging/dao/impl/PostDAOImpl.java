@@ -67,7 +67,58 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 	} // end getReacentPosts method
 
 	@Override
-	public List<Post> getPosts() {
+	public Post getPost(long post_id) {
+		// TODO Auto-generated method stub
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Post post = new Post();;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.createStatement();
+			
+			// query database
+			resultSet = statement.executeQuery("SELECT Post_title, created_at,content from Post Where post_id='post_id' " );
+			
+			// process query results
+				while ( resultSet.next() )
+				{
+					//Post post = new Post();
+					post.setTitle(resultSet.getString(1));
+					post.setCreatedAt(resultSet.getString(2));
+					post.setContent(resultSet.getString(3));
+					//posts.add(post);
+					System.out.printf("%s : %s\n %s\n" , post.getTitle(), post.getCreatedAt(),post.getContent());
+					//System.out.println();
+				} // end while 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		return post;
+	} // end getReacentPosts method
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see com.beehyv.bloggingapp.dao.PostDAO#getPosts()
+	 */	
+
+	@Override
+	public List<Post> getPostsbytag(long tag_id) {
 		// TODO Auto-generated method stub
 		Connection connection = getConnection();
 		// create Statement for querying database
@@ -79,16 +130,17 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement.executeQuery("SELECT Post_title, created_at from Post Order by created_at DESC limit 3" );
+			resultSet = statement.executeQuery("SELECT  created_at,Post_title,Contents from Post Where Post_id IN (SELECT Post_id from Tag_Post Where Tag_id = 'tag_id') Order by created_at DESC limit  5" );
 			
 			// process query results
 				while ( resultSet.next() )
 				{
 					Post post = new Post();
-					post.setTitle(resultSet.getString(1));
-					post.setCreatedAt(resultSet.getString(2));
+					post.setTitle(resultSet.getString(2));
+					post.setCreatedAt(resultSet.getString(1));
+					post.setContent(resultSet.getString(3));
 					posts.add(post);
-					System.out.printf("%s : %s\n" , post.getTitle(), post.getCreatedAt());
+					System.out.printf("%s : %s\n %s\n" , post.getTitle(), post.getCreatedAt(),post.getContent());
 					//System.out.println();
 				} // end while 
 		} catch (SQLException e) {
@@ -108,17 +160,11 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 			} // end catch
 		} // end finally
 		return posts;
-	} // end getReacentPosts method
-	
-	
-	/* (non-Javadoc)
-	 * @see com.beehyv.bloggingapp.dao.PostDAO#getPosts()
-	 */
-	
+		
+	}
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
 		System.out.println(postDAO.getRecentPosts());
 		
 	}
-
 }

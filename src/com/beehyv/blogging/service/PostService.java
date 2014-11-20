@@ -15,8 +15,13 @@ public class PostService {
 		return postDAO.getRecentPosts();
 	}
 	
-	public List<Post> getPosts(){
-		return postDAO.getPosts();
+	public Post getPost(long post_id){
+		return postDAO.getPost(post_id);
 		
 	}
+	
+	public List<Post> getPostsbytag(long tag_id){
+		return postDAO.getPostsbytag(tag_id);
+		
+	} 
 }

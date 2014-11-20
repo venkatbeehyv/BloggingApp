@@ -42,13 +42,14 @@ public class HomeServlet extends HttpServlet {
 			Post post = postService.getPost();
 			PrintWriter writer = resp.getWriter();
 			writer.println(post);
-		} */
+		} 
 		else if("tag".equalsIgnoreCase(actionName)){
-			List<Post> posts = postService.getPosts();
+			//Tag tag = new Tag();
+			List<Post> posts = postService.getPostsbytag(tag);
 			PrintWriter writer = resp.getWriter();
 			writer.println(posts); 
 		} 
-		
+		*/
 	}
 	
 	@Override
