@@ -22,7 +22,7 @@ import com.beehyv.blogging.service.PostService;
  * @author Venkat
  *
  */
-@WebServlet("/recent")
+//@WebServlet("/recent")
 public class HomeServlet extends HttpServlet {
 	
 	PostService postService = new PostService();
@@ -32,15 +32,22 @@ public class HomeServlet extends HttpServlet {
 		System.out.println("Inside HomeServlet::");
 		
 		System.out.println(req.getParameter("actionName"));
-		
 		String actionName = "recentPosts";
 		if("recentPosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getRecentPosts();
 			PrintWriter writer = resp.getWriter();
 			writer.println(posts);
 		}
-		
-		
+		/*else if("post".equalsIgnoreCase(actionName)){
+			Post post = postService.getPost();
+			PrintWriter writer = resp.getWriter();
+			writer.println(post);
+		} */
+		else if("tag".equalsIgnoreCase(actionName)){
+			List<Post> posts = postService.getPosts();
+			PrintWriter writer = resp.getWriter();
+			writer.println(posts); 
+		} 
 		
 	}
 	
@@ -51,4 +58,5 @@ public class HomeServlet extends HttpServlet {
 		req.setAttribute("name", "Hi This is venkat");
 		dispatcher.forward(req, resp);
 	}
+
 }
