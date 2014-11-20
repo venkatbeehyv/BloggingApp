@@ -6,7 +6,7 @@ $(Document).ready(function()
 	$('a').click(function(e){
 		   e.preventDefault();
 		  $.ajax({
-		       url: "http://localhost:8082/BlogginApp/recent?actionName=recentPosts",
+		       url: "http://localhost:8080/BlogginApp/recent?actionName=recentPosts",
 		       type: "POST",//type of posting the data
 		       data: hi,
 		       success: function (data) {
