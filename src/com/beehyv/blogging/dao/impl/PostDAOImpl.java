@@ -35,7 +35,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement.executeQuery("SELECT Post_title, created_at from Post Order by created_at DESC limit 3" );
+			resultSet = statement.executeQuery("SELECT title, created_at from Post Order by created_at DESC limit 3" );
 			
 			// process query results
 				while ( resultSet.next() )
@@ -67,7 +67,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 	} // end getReacentPosts method
 
 	@Override
-	public Post getPost(long post_id) {
+	public Post getPost() {
 		// TODO Auto-generated method stub
 		Connection connection = getConnection();
 		// create Statement for querying database
@@ -79,7 +79,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement.executeQuery("SELECT Post_title, created_at,content from Post Where post_id='post_id' " );
+			resultSet = statement.executeQuery("SELECT title, created_at,content from Post Where post_id='2' " );
 			
 			// process query results
 				while ( resultSet.next() )
@@ -130,7 +130,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement.executeQuery("SELECT  created_at,Post_title,Contents from Post Where Post_id IN (SELECT Post_id from Tag_Post Where Tag_id = 'tag_id') Order by created_at DESC limit  5" );
+			resultSet = statement.executeQuery("SELECT  created_at,title,Content from Post Where Post_id IN (SELECT Post_id from Tag_Post Where Tag_id = 'tag_id') Order by created_at DESC limit  5" );
 			
 			// process query results
 				while ( resultSet.next() )
@@ -164,7 +164,8 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 	}
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
-		System.out.println(postDAO.getRecentPosts());
+		//System.out.println(postDAO.getRecentPosts());
+		postDAO.getPost();
 		
 	}
 }

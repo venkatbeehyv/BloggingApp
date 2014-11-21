@@ -15,8 +15,8 @@ public class PostService {
 		return postDAO.getRecentPosts();
 	}
 	
-	public Post getPost(long post_id){
-		return postDAO.getPost(post_id);
+	public Post getPost(){
+		return postDAO.getPost();
 		
 	}
 	
