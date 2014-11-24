@@ -7,37 +7,42 @@ public class Category {
 	/**
 	 * @return the idCategory
 	 */
-	private long getIdCategory() {
+	public long getIdCategory() {
 		return idCategory;
 	}
 	/**
 	 * @param idCategory the idCategory to set
 	 */
-	private void setIdCategory(long idCategory) {
+	public void setIdCategory(long idCategory) {
 		this.idCategory = idCategory;
 	}
 	/**
 	 * @return the idParentCategory
 	 */
-	private long getIdParentCategory() {
+	public long getIdParentCategory() {
 		return idParentCategory;
 	}
 	/**
 	 * @param idParentCategory the idParentCategory to set
 	 */
-	private void setIdParentCategory(long idParentCategory) {
+	public void setIdParentCategory(long idParentCategory) {
 		this.idParentCategory = idParentCategory;
 	}
 	/**
 	 * @return the categoryName
 	 */
-	private String getCategoryName() {
+	public String getCategoryName() {
 		return categoryName;
 	}
 	/**
 	 * @param categoryName the categoryName to set
 	 */
-	private void setCategoryName(String categoryName) {
+	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return idCategory +"," + categoryName;
 	}
 }

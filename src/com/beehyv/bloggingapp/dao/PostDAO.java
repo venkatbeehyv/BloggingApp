@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.beehyv.blogging.modal.Post;
 
+/**
+ * 
+ * @author sanjay
+ *
+ */
 public interface PostDAO {
 
 	public List<Post> getRecentPosts();

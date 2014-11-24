@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.beehyv.blogging.modal.Category;
-import com.beehyv.blogging.modal.Post;
 import com.beehyv.bloggingapp.dao.CategoryDAO;
-import com.beehyv.bloggingapp.dao.PostDAO;
-import com.mysql.jdbc.ResultSetMetaData;
 
 public class CategoryDAOImpl extends BaseDAO implements CategoryDAO 
 {
 	@Override 
-	public List<Category> getChildTree( long category_id) {
+	public List<Category> getChildren( long category_id) {
 		// TODO Auto-generated method stub
 		Connection connection = getConnection();
 		// create Statement for querying database
@@ -28,20 +25,17 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement.executeQuery("SELECT title, created_at from Post Order by created_at DESC limit 3" );
+			resultSet = statement.executeQuery("SELECT  t2.category_id as id, t2.category_name as name FROM  category AS t1 LEFT JOIN category AS t2 ON t2.parent_id = t1.category_id WHERE t1.category_name = 'Databases';" );
 			
-			java.sql.ResultSetMetaData resultData = resultSet.getMetaData();
-
-			int columnsNumber = resultData.getColumnCount();
 			
 			// process query results
-			Category category = new Category();	
 			while ( resultSet.next() )
 				{
-					for(int i=1; i<columnsNumber; i++){
-						resultSet.getString(i);
-					}
-					//System.out.println();
+					Category category = new Category();
+					category.setIdCategory(resultSet.getLong(1));
+					category.setCategoryName(resultSet.getString(2));
+					categories.add(category);
+					System.out.println(category);
 				} // end while 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -67,11 +61,11 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
-		categoryDAO.getChildTree(2);
-		
+		categoryDAO.getChildren(10);
 	}
 
 }
