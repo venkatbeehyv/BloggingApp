@@ -12,6 +12,7 @@ import com.beehyv.blogging.modal.Category;
 public interface CategoryDAO {
 
 	public List<Category> getChildren(long category_id);
+	public Long getRootParent(long category_id);
 	public List<Category> getParentTree(long category_id);
 	
 
