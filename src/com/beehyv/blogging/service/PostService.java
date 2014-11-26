@@ -15,8 +15,12 @@ public class PostService {
 		return postDAO.getRecentPosts();
 	}
 	
-	public Post getPost(){
-		return postDAO.getPost();
+	public List<Post> getHomePosts(){
+		return postDAO.getHomePosts();
+	}
+	
+	public Post getPost(long post_id){
+		return postDAO.getPost(post_id);
 		
 	}
 	

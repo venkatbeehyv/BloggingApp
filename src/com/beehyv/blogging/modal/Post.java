@@ -9,7 +9,6 @@ package com.beehyv.blogging.modal;
  *
  */
 public class Post {
-	
 	private  String title;
 	private  String content;
 	private  String createdAt;
@@ -17,6 +16,14 @@ public class Post {
 	private  long userId;
 	private long categoryID;
 	private long root_id;
+	private String root_category;
+	
+	public String getRoot_category() {
+		return root_category;
+	}
+	public void setRoot_category(String root_category) {
+		this.root_category = root_category;
+	}
 	public long getRoot_id() {
 		return root_id;
 	}
@@ -86,13 +93,13 @@ public class Post {
 	/**
 	 * @return the categoryID
 	 */
-	private long getCategoryID() {
+	public long getCategoryID() {
 		return categoryID;
 	}
 	/**
 	 * @param categoryID the categoryID to set
 	 */
-	private void setCategoryID(long categoryID) {
+	public void setCategoryID(long categoryID) {
 		this.categoryID = categoryID;
 	}	
 	
