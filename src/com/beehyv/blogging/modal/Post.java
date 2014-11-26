@@ -16,6 +16,13 @@ public class Post {
 	private  String userName;
 	private  long userId;
 	private long categoryID;
+	private long root_id;
+	public long getRoot_id() {
+		return root_id;
+	}
+	public void setRoot_id(long root_id) {
+		this.root_id = root_id;
+	}
 	/**
 	 * @return the title
 	 */

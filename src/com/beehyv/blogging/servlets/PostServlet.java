@@ -18,11 +18,9 @@ import com.google.gson.Gson;
  * @author Venkat
  *
  */
-//@WebServlet("/recent")
-public class HomeServlet extends HttpServlet {
+public class PostServlet extends HttpServlet {
 	
 	PostService postService = new PostService();
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside HomeServlet::");
@@ -33,12 +31,11 @@ public class HomeServlet extends HttpServlet {
 		if("recentPosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getRecentPosts();
 			req.setAttribute("posts", posts);
-			//Gson gson = new Gson();
-			//String postsJSONString = gson.toJson(posts);
-			//String postsJSONString = JSON.std.asString(posts);
-			//PrintWriter writer = resp.getWriter();
-			//System.out.println(postsJSONString);
-			//writer.println(postsJSONString);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
 		}
 		/*else if("post".equalsIgnoreCase(actionName)){
 			Post post = postService.getPost();
