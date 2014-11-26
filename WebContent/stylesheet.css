@@ -21,6 +21,14 @@ div div{
     margin-top: 30px;
     border: 1px solid black;
 }
+#categories{
+	background-color: #a4a4a4;
+    float: left;
+    height: 40px;
+    width: 142px;
+    margin-top: 30px;
+    border: 1px solid black;
+}
 h4{
 	padding: 1px 5px 72px 19px;
 }
