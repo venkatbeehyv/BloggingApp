@@ -23,7 +23,7 @@ public class PostServlet extends HttpServlet {
 	PostService postService = new PostService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		System.out.println("Inside HomeServlet::");
+		System.out.println("Inside PostServlet::");
 		
 		String actionName = req.getParameter("actionName");
 		System.out.println("actionNAme: " + actionName);
@@ -37,23 +37,15 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
-		/*else if("post".equalsIgnoreCase(actionName)){
-			Post post = postService.getPost();
+		else if("homePosts".equalsIgnoreCase(actionName)){
+			List<Post> posts = postService.getHomePosts();
+			req.setAttribute("posts", posts);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
 			PrintWriter writer = resp.getWriter();
-			writer.println(post);
-		} 
-		else if("tag".equalsIgnoreCase(actionName)){
-			//Tag tag = new Tag();
-			List<Post> posts = postService.getPostsbytag(tag);
-			PrintWriter writer = resp.getWriter();
-			writer.println(posts); 
-		} 
-		else if("child".equalsIgnoreCase(actionName)){
-			//Tag tag = new Tag();
-			List<Post> posts = postService.getPostsbytag(tag);
-			PrintWriter writer = resp.getWriter();
-			writer.println(posts); 
-		*/
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
+		}
 	}
 	
 	@Override
