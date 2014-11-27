@@ -46,6 +46,15 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
+		else if("testcase".equalsIgnoreCase(actionName)){
+			List<Post> posts = postService.getHomePosts();
+			req.setAttribute("posts", posts);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
+		}
 	}
 	
 	@Override
