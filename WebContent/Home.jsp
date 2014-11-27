@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home page</title>
    <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
-    <link type="text/css" href="${pageContext.request.contextPath}/js/lib/apycom.com-16-indian-red/menu.css" rel="stylesheet" />
+    <link type="text/css" href="${pageContext.request.contextPath}/js/lib/apycom.com-16-gray/menu.css" rel="stylesheet" />
   
      <link href="http://apycom.com/ssc-data/themes/default/styles/styles.css" type="text/css" rel="stylesheet" />
       <link href="http://apycom.com/ssc-data/themes/default/styles/menu.css" type="text/css" rel="stylesheet" />
@@ -37,6 +37,13 @@
 	    
 </head>
 <body>
+
+<div class="main_top">
+		<div class="pic"><img alt="Beehyv" src="http://www.beehyv.com/images/logo.jpg"/>
+		</div>
+		<div id="id"><a href="#" style="color:red;">Login</a> | <a href="#" style="color:red;">Register</a>
+		</div>
+	</div>
 <div id="menu">
     <ul class="lavaLamp">
         <li><a href="#" class="parent"><span>Home</span></a>
@@ -66,37 +73,20 @@
                 <li><a href="#"><span>Sub Item 3</span></a></li>
             </ul></div>
         </li>
-        <li><a href="#" class="parent"><span>Product Info</span></a>
+        <li><a href="#" class="parent"><span>Technologies</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>Sub Item 1.1</span></a></li>
-                    <li><a href="#"><span>Sub Item 1.2</span></a></li>
-                    <li><a href="#"><span>Sub Item 1.3</span></a></li>
-                    <li><a href="#"><span>Sub Item 1.4</span></a></li>
-                    <li><a href="#"><span>Sub Item 1.5</span></a></li>
-                    <li><a href="#"><span>Sub Item 1.6</span></a></li>
-                    <li><a href="#"><span>Sub Item 1.7</span></a></li>
+                    <li><a href="#"><span>Java</span></a></li>
+                    <li><a href="#"><span>C</span></a></li>
+                    <li><a href="#"><span>C++</span></a></li>
                 </ul>
-                <ul class="two">
-                    <li><a href="#"><span>Sub Item 2.1</span></a></li>
-                    <li><a href="#"><span>Sub Item 2.2</span></a></li>
-                    <li><a href="#"><span>Sub Item 2.3</span></a></li>
-                    <li><a href="#"><span>Sub Item 2.4</span></a></li>
-                    <li><a href="#"><span>Sub Item 2.5</span></a></li>
-                    <li><a href="#"><span>Sub Item 2.6</span></a></li>
-                </ul>
+                
             </div>
         </li>
         <li><a href="#"><span>Help</span></a></li>
         <li class="last"><a href="#"><span>Contacts</span></a></li>
     </ul>
 </div>
-<div class="main_top">
-		<div class="pic"><img alt="Beehyv" src="http://www.beehyv.com/images/logo.jpg"/>
-		</div>
-		<div id="id"><a href="#" style="color:red;">Login</a> | <a href="#" style="color:red;">Register</a>
-		</div>
-	</div>
 	<div id="categories"><h4>Home</h4> </div>
 	<div class="categories"><h4>Technologies</h4>
 		<div class="tech"> Java </div>
