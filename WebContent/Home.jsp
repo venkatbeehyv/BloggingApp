@@ -46,32 +46,8 @@
 	</div>
 <div id="menu">
     <ul class="lavaLamp">
-        <li><a href="#" class="parent"><span>Home</span></a>
-            <div><ul>
-                <li><a href="#" class="parent"><span>Sub Item 1</span></a>
-                    <div><ul>
-                        <li><a href="#" class="parent"><span>Sub Item 1.1</span></a>
-                            <div><ul>
-                                <li><a href="#"><span>Sub Item 1.1.1</span></a></li>
-                                <li><a href="#"><span>Sub Item 1.1.2</span></a></li>
-                            </ul></div>
-                        </li>
-                        <li><a href="#"><span>Sub Item 1.2</span></a></li>
-                        <li><a href="#"><span>Sub Item 1.3</span></a></li>
-                        <li><a href="#"><span>Sub Item 1.4</span></a></li>
-                        <li><a href="#"><span>Sub Item 1.5</span></a></li>
-                        <li><a href="#"><span>Sub Item 1.6</span></a></li>
-                        <li><a href="#" class="parent"><span>Sub Item 1.7</span></a>
-                            <div><ul>
-                                <li><a href="#"><span>Sub Item 1.7.1</span></a></li>
-                                <li><a href="#"><span>Sub Item 1.7.2</span></a></li>
-                            </ul></div>
-                        </li>
-                    </ul></div>
-                </li>
-                <li><a href="#"><span>Sub Item 2</span></a></li>
-                <li><a href="#"><span>Sub Item 3</span></a></li>
-            </ul></div>
+        <li><a href="#"><span>Home</span></a>
+            
         </li>
         <li><a href="#" class="parent"><span>Technologies</span></a>
             <div class="columns two">
@@ -83,41 +59,49 @@
                 
             </div>
         </li>
-        <li><a href="#"><span>Help</span></a></li>
-        <li class="last"><a href="#"><span>Contacts</span></a></li>
+         <li><a href="#" class="parent"><span>Frameworks</span></a>
+            <div class="columns two">
+                <ul class="one">
+                    <li><a href="#"><span>Spring</span></a></li>
+                    <li><a href="#"><span>Django</span></a></li>
+                    <li><a href="#"><span>Struts</span></a></li>
+                </ul>
+                
+            </div>
+        </li>
+        <li><a href="#" class="parent"><span>Databases</span></a>
+            <div class="columns two">
+                <ul class="one">
+                    <li><a href="#"><span>MySql</span></a></li>
+                    <li><a href="#"><span>CouchDB</span></a></li>
+                    <li><a href="#"><span>Big Data</span></a></li>
+                </ul>
+                
+            </div>
+        </li>
+        <li><a href="#" class="parent"><span>Web Services</span></a>
+            <div class="columns two">
+                <ul class="one">
+                    <li><a href="#"><span>JSON-RPC</span></a></li>
+                    <li><a href="#"><span>JSON-WSP</span></a></li>
+                    <li><a href="#"><span>Web Template</span></a></li>
+                </ul>
+                
+            </div>
+        </li>
+        <li><a href="#" class="parent"><span>UI</span></a>
+            <div class="columns two">
+                <ul class="one">
+                    <li><a href="#"><span>Javascript</span></a></li>
+                    <li><a href="#"><span>CSS</span></a></li>
+                </ul>
+                
+            </div>
+        </li>
+        <li><a href="#"><span>Others</span></a></li>
+        
     </ul>
 </div>
-	<div id="categories"><h4>Home</h4> </div>
-	<div class="categories"><h4>Technologies</h4>
-		<div class="tech"> Java </div>
-		<div class="tech"> C </div>
-		<div class="tech"> C++</div>
-	 </div>
-	 
-	<div class="categories"><h4>Frameworks</h4> 
-		<div class = "frame"> Spring</div>
-		<div class = "frame"> Django</div>
-		<div class = "frame"> Struts</div>
-	</div>
-	
-	<div class="categories"><h4>Databases</h4> 
-		<div class="db"> MySql</div>
-		<div class="db"> CouchDB</div>
-		<div class="db"> Big Data</div>
-	</div>
-	
-	<div class="categories"><h4>Web Services</h4>
-		<div class="webs"> JSON-RPC </div>
-		<div class="webs"> JSON-WSP</div>
-		<div class="webs"> Web Template</div>
-	</div>
-	
-	<div class="categories"><h4>UI</h4>
-		<div class="ui"> Javascript </div>
-		<div class="ui"> CSS </div>
-	</div>
-	
-	<div class="categories"><h4>Others</h4> </div>
 	
 	<form class="search"><input type="search" placeholder="Search">
 	</form>
