@@ -15,8 +15,7 @@
        <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.js" language="javascript"></script>
         <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.color.js" language="javascript"></script>
         <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.easing.js" language="javascript"></script>
-        <script src="http://apycom.com/ssc-data/themes/default/scripts/menu.js" language="javascript"></script>
-        <script src="http://apycom.com/ssc-data/themes/default/scripts/main.js" language="javascript"></script>
+        
         
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/menu.js'></script>

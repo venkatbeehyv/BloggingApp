@@ -18,7 +18,7 @@ import com.google.gson.Gson;
  * @author Venkat
  *
  */
-//@WebServlet("/recent")
+
 public class HomeServlet extends HttpServlet {
 	
 	PostService postService = new PostService();

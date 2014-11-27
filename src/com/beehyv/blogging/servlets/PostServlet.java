@@ -18,6 +18,7 @@ import com.google.gson.Gson;
  * @author Venkat
  *
  */
+
 public class PostServlet extends HttpServlet {
 	
 	PostService postService = new PostService();
@@ -37,24 +38,15 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
-		else if("homePosts".equalsIgnoreCase(actionName)){
-			List<Post> posts = postService.getHomePosts();
-			req.setAttribute("posts", posts);
-			Gson gson = new Gson();
-			String postsJSONString = gson.toJson(posts);
-			PrintWriter writer = resp.getWriter();
-			System.out.println(postsJSONString);
-			writer.println(postsJSONString);
-		}
-		else if("testcase".equalsIgnoreCase(actionName)){
-			List<Post> posts = postService.getHomePosts();
-			req.setAttribute("posts", posts);
-			Gson gson = new Gson();
-			String postsJSONString = gson.toJson(posts);
-			PrintWriter writer = resp.getWriter();
-			System.out.println(postsJSONString);
-			writer.println(postsJSONString);
-		}
+//		else if("homePosts".equalsIgnoreCase(actionName)){
+//			List<Post> posts = postService.getHomePosts();
+//			req.setAttribute("posts", posts);
+//			Gson gson = new Gson();
+//			String postsJSONString = gson.toJson(posts);
+//			PrintWriter writer = resp.getWriter();
+//			System.out.println(postsJSONString);
+//			writer.println(postsJSONString);
+//		}
 	}
 	
 	@Override
