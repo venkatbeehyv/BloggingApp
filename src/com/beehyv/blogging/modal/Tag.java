@@ -7,37 +7,43 @@ public class Tag {
 	/**
 	 * @return the tag
 	 */
-	private String getTag() {
+	public String getTag() {
 		return tag;
 	}
 	/**
 	 * @param tag the tag to set
 	 */
-	private void setTag(String tag) {
+	public void setTag(String tag) {
 		this.tag = tag;
 	}
 	/**
 	 * @return the idTag
 	 */
-	private long getIdTag() {
+	public long getIdTag() {
 		return idTag;
 	}
 	/**
 	 * @param idTag the idTag to set
 	 */
-	private void setIdTag(long idTag) {
+	public void setIdTag(long idTag) {
 		this.idTag = idTag;
 	}
 	/**
 	 * @return the idPost
 	 */
-	private long getIdPost() {
+	public long getIdPost() {
 		return idPost;
 	}
 	/**
 	 * @param idPost the idPost to set
 	 */
-	private void setIdPost(long idPost) {
+	public void setIdPost(long idPost) {
 		this.idPost = idPost;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return idTag +": " + tag ;
 	}
 }
