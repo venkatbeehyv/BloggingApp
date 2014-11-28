@@ -9,9 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.HTML.Tag;
 
 import com.beehyv.blogging.modal.Post;
 import com.beehyv.blogging.service.PostService;
+import com.beehyv.blogging.service.TagService;
 import com.google.gson.Gson;
 
 /**
@@ -22,6 +24,7 @@ import com.google.gson.Gson;
 public class PostServlet extends HttpServlet {
 	
 	PostService postService = new PostService();
+	TagService tagService = new TagService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside PostServlet::");
@@ -43,6 +46,15 @@ public class PostServlet extends HttpServlet {
 			req.setAttribute("posts", posts);
 			Gson gson = new Gson();
 			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
+		}
+		else if("homeTags".equalsIgnoreCase(actionName)){
+			List<com.beehyv.blogging.modal.Tag> tags = tagService.getHomeTags();
+			req.setAttribute("tags", tags);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(tags);
 			PrintWriter writer = resp.getWriter();
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
