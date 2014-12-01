@@ -58,6 +58,16 @@ public class PostServlet extends HttpServlet {
 			System.out.println(tagsJSONString);
 			writer.println(tagsJSONString);
 		}
+		else if("postsbyTag".equalsIgnoreCase(actionName)){
+			String tagId = req.getParameter("tagId");
+			List<Post> posts = postService.getPostsbytag(Long.valueOf(tagId));
+			req.setAttribute("posts", posts);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
+		}
 	}
 	
 	@Override
