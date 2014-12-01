@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.beehyv.blogging.dao.TagDAO;
 import com.beehyv.blogging.modal.Tag;
-import com.beehyv.bloggingapp.dao.TagDAO;
 
 public class TagDAOImpl extends BaseDAO implements TagDAO {
 	

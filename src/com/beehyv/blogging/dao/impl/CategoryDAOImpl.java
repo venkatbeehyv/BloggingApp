@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.beehyv.blogging.dao.CategoryDAO;
 import com.beehyv.blogging.modal.Category;
-import com.beehyv.bloggingapp.dao.CategoryDAO;
 
 public class CategoryDAOImpl extends BaseDAO implements CategoryDAO 
 {

@@ -12,10 +12,10 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+import com.beehyv.blogging.dao.CommentDAO;
+import com.beehyv.blogging.dao.PostDAO;
 import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
-import com.beehyv.bloggingapp.dao.CommentDAO;
-import com.beehyv.bloggingapp.dao.PostDAO;
 
 /**
  * this class contains getRecentPosts, getPost, getPostsbytag

@@ -2,9 +2,9 @@ package com.beehyv.blogging.service;
 
 import java.util.List;
 
+import com.beehyv.blogging.dao.CategoryDAO;
 import com.beehyv.blogging.dao.impl.CategoryDAOImpl;
 import com.beehyv.blogging.modal.Category;
-import com.beehyv.bloggingapp.dao.CategoryDAO;
 
 /**
  * 

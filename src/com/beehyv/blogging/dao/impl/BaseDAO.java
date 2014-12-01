@@ -24,7 +24,7 @@ public class BaseDAO {
 			// connect to database books and query database
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				connection = DriverManager.getConnection(DATABASE_URL, "root", "beehyv123" );
+				connection = DriverManager.getConnection(DATABASE_URL, "root", "" );
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

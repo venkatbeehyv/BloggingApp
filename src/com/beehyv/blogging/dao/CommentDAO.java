@@ -1,4 +1,4 @@
-package com.beehyv.bloggingapp.dao;
+package com.beehyv.blogging.dao;
 
 import java.util.List;
 

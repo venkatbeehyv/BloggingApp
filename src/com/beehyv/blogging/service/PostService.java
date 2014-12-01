@@ -2,11 +2,11 @@ package com.beehyv.blogging.service;
 
 import java.util.List;
 
+import com.beehyv.blogging.dao.CommentDAO;
+import com.beehyv.blogging.dao.PostDAO;
 import com.beehyv.blogging.dao.impl.PostDAOImpl;
 import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
-import com.beehyv.bloggingapp.dao.CommentDAO;
-import com.beehyv.bloggingapp.dao.PostDAO;
 
 public class PostService {
 
