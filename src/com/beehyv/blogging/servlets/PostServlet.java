@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.HTML.Tag;
 
 import com.beehyv.blogging.modal.Post;
 import com.beehyv.blogging.service.PostService;
@@ -31,7 +30,7 @@ public class PostServlet extends HttpServlet {
 		
 		String actionName = req.getParameter("actionName");
 		System.out.println("actionNAme: " + actionName);
-//		String actionName = "recentPosts";
+	//	String actionName = "recentPosts";
 		if("recentPosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getRecentPosts();
 			req.setAttribute("posts", posts);
@@ -54,10 +53,10 @@ public class PostServlet extends HttpServlet {
 			List<com.beehyv.blogging.modal.Tag> tags = tagService.getHomeTags();
 			req.setAttribute("tags", tags);
 			Gson gson = new Gson();
-			String postsJSONString = gson.toJson(tags);
+			String tagsJSONString = gson.toJson(tags);
 			PrintWriter writer = resp.getWriter();
-			System.out.println(postsJSONString);
-			writer.println(postsJSONString);
+			System.out.println(tagsJSONString);
+			writer.println(tagsJSONString);
 		}
 	}
 	
