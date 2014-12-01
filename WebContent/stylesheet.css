@@ -36,16 +36,19 @@ h4{
 .contents{
 	height: 500px;
     width: 700px;
-    background-color:#A9A9F5;
+    background-color:#5858FA;
     margin-top: 26px;
+    padding:10px 10px 10px 10px
 }
 .recent{
 	height: 250px;
     width: 300px;
-    background-color:#F5BCA9;
+    background-color:#FA5882;
     margin-top: -466px;
     float:right;
     margin-right:50px;
+    padding: 10px 0px 0px 10px;
+    
 }
 .tags{
 	height: 183px;
