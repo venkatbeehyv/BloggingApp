@@ -12,14 +12,16 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
+import com.beehyv.bloggingapp.dao.CommentDAO;
 import com.beehyv.bloggingapp.dao.PostDAO;
 
 /**
  * this class contains getRecentPosts, getPost, getPostsbytag
  * and getHomePosts method
  */
-public class PostDAOImpl extends BaseDAO implements PostDAO  {
+public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
 
 	/* this method will provide recent posts added
 	 * in the Database
@@ -233,11 +235,64 @@ public class PostDAOImpl extends BaseDAO implements PostDAO  {
 		return posts;
 	} // end of getHomePosts method 
 
+	/**
+	 * returns list of comments by passing post_id as a parameter
+	 */
+	@Override
+	public List<Comment> getComments(long post_id) {
+		List<Comment> comments = new ArrayList<Comment>();
+		
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			statement = connection.createStatement();
+
+			// query database
+			resultSet = statement.executeQuery("select t1.comment_id, t1.comment, t2.name , t1.created_at from Blog.Comment as t1 "
+					+" inner join Blog.Employee as t2 on t1.employee_id = t2.employee_id "
+					+" where t1.post_id = " + post_id );
+
+			// process query results
+			while ( resultSet.next() )
+			{
+				Comment comment = new Comment();
+				comment.setComment_id(resultSet.getLong(1));
+				comment.setComment(resultSet.getString(2));
+				comment.setName(resultSet.getString(3));
+				comment.setCreated_at(resultSet.getString(4));
+				comments.add(comment);
+				//System.out.println();
+			} // end while 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		return comments;
+	}
+	
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
+		CommentDAO commentDAO = new PostDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
 		//postDAO.getPost(1);
 		//postDAO.getPostsbytag(2);
 		postDAO.getHomePosts();
+		commentDAO.getComments(1);
 	}
+
 } // end of PostDAOImpl.java 

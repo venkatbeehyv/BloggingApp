@@ -3,13 +3,15 @@ package com.beehyv.blogging.service;
 import java.util.List;
 
 import com.beehyv.blogging.dao.impl.PostDAOImpl;
+import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
+import com.beehyv.bloggingapp.dao.CommentDAO;
 import com.beehyv.bloggingapp.dao.PostDAO;
 
 public class PostService {
 
 	private PostDAO postDAO = new PostDAOImpl();
-	
+	private CommentDAO commentDAO = new PostDAOImpl();
 	
 	public List<Post> getRecentPosts(){
 		return postDAO.getRecentPosts();
@@ -28,4 +30,8 @@ public class PostService {
 		return postDAO.getPostsbytag(tag_id);
 		
 	} 
+	
+	public List<Comment> getComments(long post_id){
+		return commentDAO.getComments(post_id);
+	}
 }

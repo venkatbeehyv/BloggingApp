@@ -120,7 +120,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
-		categoryDAO.getChildren(6);
+		categoryDAO.getChildren(1);
 	}
 
 }

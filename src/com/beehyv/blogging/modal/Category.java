@@ -43,6 +43,6 @@ public class Category {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return idCategory +"," + categoryName;
+		return idCategory +": " + categoryName;
 	}
 }
