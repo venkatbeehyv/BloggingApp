@@ -104,10 +104,10 @@
 	
 	<form class="search"><input type="search" placeholder="Search">
 	</form>
-	<div class="contents">posts
+	<div class="contents">
 	</div>
 	
-	<div class = "recent"> <h1>Recent Posts</h1>
+	<div class = "recent"> <h1>Recent Posts<br><br></h1>
 		
 		
 	</div>
