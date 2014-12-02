@@ -31,6 +31,7 @@ public class PostServlet extends HttpServlet {
 		String actionName = req.getParameter("actionName");
 		System.out.println("actionNAme: " + actionName);
 	//	String actionName = "recentPosts";
+		//returns 3 recent posts
 		if("recentPosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getRecentPosts();
 			req.setAttribute("posts", posts);
@@ -40,6 +41,7 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
+		//returns posts displayed in main blog
 		else if("homePosts".equalsIgnoreCase(actionName)){
 			List<Post> posts = postService.getHomePosts();
 			req.setAttribute("posts", posts);
@@ -49,6 +51,7 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
+		// returns tags displayed in homepage
 		else if("homeTags".equalsIgnoreCase(actionName)){
 			List<com.beehyv.blogging.modal.Tag> tags = tagService.getHomeTags();
 			req.setAttribute("tags", tags);
@@ -58,6 +61,7 @@ public class PostServlet extends HttpServlet {
 			System.out.println(tagsJSONString);
 			writer.println(tagsJSONString);
 		}
+		// returns posts linked to that particular tag
 		else if("postsbyTag".equalsIgnoreCase(actionName)){
 			String tagId = req.getParameter("tagId");
 			List<Post> posts = postService.getPostsbytag(Long.valueOf(tagId));
@@ -68,14 +72,59 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
+//		// returns recent posts in that particular Category
+//		else if("postsByCategory".equalsIgnoreCase(actionName)){
+//			String categoryId = req.getParameter("categoryId");
+//			List<Post> posts = postService.getPostsbyCategory(Long.valueOf(categoryId));
+//			req.setAttribute("posts", posts);
+//			Gson gson = new Gson();
+//			String postsJSONString = gson.toJson(posts);
+//			PrintWriter writer = resp.getWriter();
+//			System.out.println(postsJSONString);
+//			writer.println(postsJSONString);
+//		}
+//		// returns all the posts posted by loggedin user
+//		else if("myPosts".equalsIgnoreCase(actionName)){
+//			String employeeId = req.getParameter("employeeId");
+//			List<Post> posts = postService.getMyPosts(Long.valueOf(employeeId));
+//			req.setAttribute("posts", posts);
+//			Gson gson = new Gson();
+//			String postsJSONString = gson.toJson(posts);
+//			PrintWriter writer = resp.getWriter();
+//			System.out.println(postsJSONString);
+//			writer.println(postsJSONString);
+//		}
+		// returns whole post when clicked on it
+		else if("post".equalsIgnoreCase(actionName)){
+			String postId = req.getParameter("postId");
+			Post post = postService.getPost(Long.valueOf(postId));
+			req.setAttribute("post", post);
+			Gson gson = new Gson();
+			String postJSONString = gson.toJson(post);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postJSONString);
+			writer.println(postJSONString);
+		}
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		System.out.println("Inside HomeServlet::");
+		System.out.println("Inside PostServlet::");
 		RequestDispatcher dispatcher =  req.getRequestDispatcher("/Home.jsp");
 		req.setAttribute("name", "Hi This is venkat");
 		dispatcher.forward(req, resp);
+		
+//		if("addPost".equalsIgnoreCase(actionName)){
+//			PrintWriter writer = resp.getWriter();
+//			Gson gson = new Gson();
+//			Post post = req.getParameter("post");
+//		    String jsonAsString = gson.toJson(post, post);
+//		    		//Stringify(post);
+//			
+//			System.out.println(jsonAsString);
+//			writer.println(jsonAsString);
+//			//postService.addPost(post);
+//		}
 	}
 
 }
