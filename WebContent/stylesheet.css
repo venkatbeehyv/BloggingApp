@@ -7,6 +7,13 @@
 div div{
 	display: inline-block;
 }
+
+#reg{
+	float:right;
+	color:red;
+	margin-right: 30px;
+    margin-top: 30px;
+}
 #id{
 	float:right;
 	color:red;
@@ -34,17 +41,17 @@ h4{
 }
 
 .contents{
-	height: 500px;
+	height: 800px;
     width: 700px;
-    background-color:#5858FA;
+    background-color:#F5BCA9;
     margin-top: 26px;
     padding:10px 10px 10px 10px
 }
 .recent{
 	height: 250px;
     width: 300px;
-    background-color:#FA5882;
-    margin-top: -466px;
+    background-color:#BCA9F5;
+    margin-top: -737px;
     float:right;
     margin-right:50px;
     padding: 10px 0px 0px 10px;
@@ -53,8 +60,8 @@ h4{
 .tags{
 	height: 183px;
     width: 300px;
-    background-color:#81F7F3;
-    margin-top: -182px;
+    background-color:#F2F5A9;
+    margin-top: -409px;
     float:right;
     margin-right:50px;
 }
@@ -64,6 +71,16 @@ h4{
 	border-radius: 25px;
 	margin-top: 15px;
 }
-h1 {
+h2 {
     margin-top: 4px;
+}
+html{
+	background-color:#A9F5F2;
+	}
+}
+.truncate{
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

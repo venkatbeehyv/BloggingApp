@@ -29,10 +29,10 @@ function updateRecentPosts(){
 			
 			var $recntPostsContainer = $(".contents");
 			for(var i in postArray){
-				$recntPostsContainer.append('<div><a href="posts/post?root_id="'+postArray[i].root_id+' style="font-size:30px"><h1>'+postArray[i].root_category+'</h1></div><br>')
-				$recntPostsContainer.append('<div><a href="posts/post?post_id="'+postArray[i].post_id+'><h3>'+postArray[i].title+'</h3></div><br>')
-				$recntPostsContainer.append('<div>'+postArray[i].createdAt+'</div><div>'+postArray[i].userName+'</div>')
-				$recntPostsContainer.append('<div><p>'+postArray[i].content+'</p></div><br><br><br>')
+				$recntPostsContainer.append('<div><a href="posts/post?root_id="'+postArray[i].root_id+'><h2>'+postArray[i].root_category+'</h2></div><br>')
+				$recntPostsContainer.append('<div><a href="posts/post?post_id="'+postArray[i].post_id+'><h5>'+postArray[i].title+'</h5></div><br>')
+				$recntPostsContainer.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
+				$recntPostsContainer.append('<div><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
 			}
 			
 		},

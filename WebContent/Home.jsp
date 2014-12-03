@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"   
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" import="java.util.List,com.beehyv.blogging.modal.Post"  
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,7 +9,7 @@
    <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
     <link type="text/css" href="${pageContext.request.contextPath}/js/lib/apycom.com-16-gray/menu.css" rel="stylesheet" />
   
-     <link href="http://apycom.com/ssc-data/themes/default/styles/styles.css" type="text/css" rel="stylesheet" />
+    
       <link href="http://apycom.com/ssc-data/themes/default/styles/menu.css" type="text/css" rel="stylesheet" />
       
        <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.js" language="javascript"></script>
@@ -20,7 +20,21 @@
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/menu.js'></script>
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
-
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script>
+	$(document).ready(function(){
+		$( "#login" ).dialog({ autoOpen: false });
+		$( "#id" ).click(function() {
+		$( "#login" ).dialog( "open" );
+		});
+		$( "#register" ).dialog({ autoOpen: false });
+		$( "#reg" ).click(function() {
+		$( "#register" ).dialog( "open" );
+		});
+		});
+	</script>
     
 <!-- 	Creates a menu with an unordered list of menu-items. You can either use the CSS that comes with the plugin, or write your own styles 
  * to create a personalized effect
@@ -40,14 +54,32 @@
 <div class="main_top">
 		<div class="pic"><img alt="Beehyv" src="http://www.beehyv.com/images/logo.jpg"/>
 		</div>
-		<div id="id"><a href="#" style="color:red;">Login</a> | <a href="#" style="color:red;">Register</a>
+		<div id="id"><a href="#" style="color:red;">Login</a></div> <div id="reg"> <a href="#" style="color:red;">Register</a>
 		</div>
+	</div>
+	<div id="login" title="Login">
+	<form>
+	E-mail id: <input type="text" name="Email id"><br><br>
+	Password:  <input type="text" name="Password"><br><br>
+	<input type="submit" value="Submit">
+	</form>
+	</div>
+	<div id="register" title="Register">
+	<form>
+	Name <input type="text" name="Name"><br><br>
+	Password:  <input type="text" name="Pass"><br><br>
+	Confirm password: <input type="text" name="confirm Password"><br><br>
+	Email: <input type="text" name="email"><br><br>
+	Mobile: <input type="tel" name="phone"><br><br>
+	<input type="submit" value="Submit">
+	</form>
 	</div>
 <div id="menu">
     <ul class="lavaLamp">
         <li><a href="#"><span>Home</span></a>
             
         </li>
+        
         <li><a href="#" class="parent"><span>Technologies</span></a>
             <div class="columns two">
                 <ul class="one">
@@ -107,12 +139,12 @@
 	<div class="contents">
 	</div>
 	
-	<div class = "recent"> <h1>Recent Posts<br><br></h1>
+	<div class = "recent"> <h2>Recent Posts<br></h2>
 		
 		
 	</div>
 	
-	<div class = "tags"> <h1>Tags</h1> 
+	<div class = "tags"> <h2>Tags</h2> 
 	</div>
 </body>
 </html>
