@@ -19,6 +19,11 @@ function updateRecentPosts(){
 			
 		}
 	});
+	
+}
+
+function updateContents(){
+	
 	jQuery.ajax({
 		url: "posts?actionName=homePosts",
 		method: "GET",

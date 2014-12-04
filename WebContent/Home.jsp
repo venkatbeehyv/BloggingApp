@@ -81,7 +81,7 @@
             
         </li>
         
-        <li><a href="#" class="parent"><span>Technologies</span></a>
+        <li><a href="#" class="parent"><span style="width:86px">Technologies</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>Java</span></a></li>
@@ -91,7 +91,7 @@
                 
             </div>
         </li>
-         <li><a href="#" class="parent"><span>Frameworks</span></a>
+         <li><a href="#" class="parent"><span style="width:78px">Frameworks</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>Spring</span></a></li>
@@ -101,7 +101,7 @@
                 
             </div>
         </li>
-        <li><a href="#" class="parent"><span>Databases</span></a>
+        <li><a href="#" class="parent"><span style="width:67px">Databases</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>MySql</span></a></li>
@@ -111,7 +111,7 @@
                 
             </div>
         </li>
-        <li><a href="#" class="parent"><span>Web Services</span></a>
+        <li><a href="#" class="parent"><span style="width:89px">Web Services</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>JSON-RPC</span></a></li>
@@ -121,7 +121,7 @@
                 
             </div>
         </li>
-        <li><a href="#" class="parent"><span>UI</span></a>
+        <li><a href="#" class="parent"><span style="width:24px">UI</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>Javascript</span></a></li>
