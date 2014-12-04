@@ -128,7 +128,6 @@ public class PostServlet extends HttpServlet {
 			      jb.append(line);
 			  } catch (Exception e) { /*report an error*/ }
 			  
-			
 		    Post post = gson.fromJson(jb.toString(),Post.class);
 			postService.addPost(post);
 		}
