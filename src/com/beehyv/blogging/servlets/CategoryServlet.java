@@ -2,6 +2,7 @@ package com.beehyv.blogging.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.beehyv.blogging.modal.Category;
 import com.beehyv.blogging.service.CategoryService;
 import com.google.gson.Gson;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 /**
  * Servlet implementation class CategoryServlet
@@ -27,7 +27,7 @@ public class CategoryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Inside CategoryServlet::");
    		String actionName = request.getParameter("actionName");
-		/*System.out.println("actionNAme: " + actionName);
+		System.out.println("actionNAme: " + actionName);
 		// returns parent tree of given category
 		if("parentTree".equalsIgnoreCase(actionName)){
 			String postId = request.getParameter("postId");
@@ -49,7 +49,7 @@ public class CategoryServlet extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			System.out.println(menuJSONString);
 			writer.println(menuJSONString);
-		}*/
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

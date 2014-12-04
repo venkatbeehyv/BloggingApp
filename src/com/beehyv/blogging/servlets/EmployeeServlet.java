@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.beehyv.blogging.modal.Employee;
 import com.beehyv.blogging.modal.Post;
+import com.beehyv.blogging.service.EmployeeService;
 import com.beehyv.blogging.service.PostService;
 import com.google.gson.Gson;
 
@@ -21,12 +23,12 @@ import com.google.gson.Gson;
 public class EmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	//EmployeeService employeeService = new EmployeeService();
+	EmployeeService employeeService = new EmployeeService();
  
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*System.out.println("Inside EmployeeServlet::");
+		System.out.println("Inside EmployeeServlet::");
    		String actionName = request.getParameter("actionName");
 		System.out.println("actionNAme: " + actionName);
 		// returns my account details 
@@ -39,7 +41,7 @@ public class EmployeeServlet extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			System.out.println(userJSONString);
 			writer.println(userJSONString);
-		}*/
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

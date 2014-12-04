@@ -23,4 +23,9 @@ public class CategoryService {
 	public List<Category> getChildren( long category_id){
 		return categoryDAO.getChildren(category_id);
 	}
+
+	public List<Category> getEmployee(Long post_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

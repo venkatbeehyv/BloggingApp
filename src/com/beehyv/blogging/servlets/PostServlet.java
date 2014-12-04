@@ -1,7 +1,9 @@
 package com.beehyv.blogging.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -72,28 +74,28 @@ public class PostServlet extends HttpServlet {
 			System.out.println(postsJSONString);
 			writer.println(postsJSONString);
 		}
-//		// returns recent posts in that particular Category
-//		else if("postsByCategory".equalsIgnoreCase(actionName)){
-//			String categoryId = req.getParameter("categoryId");
-//			List<Post> posts = postService.getPostsbyCategory(Long.valueOf(categoryId));
-//			req.setAttribute("posts", posts);
-//			Gson gson = new Gson();
-//			String postsJSONString = gson.toJson(posts);
-//			PrintWriter writer = resp.getWriter();
-//			System.out.println(postsJSONString);
-//			writer.println(postsJSONString);
-//		}
-//		// returns all the posts posted by loggedin user
-//		else if("myPosts".equalsIgnoreCase(actionName)){
-//			String employeeId = req.getParameter("employeeId");
-//			List<Post> posts = postService.getMyPosts(Long.valueOf(employeeId));
-//			req.setAttribute("posts", posts);
-//			Gson gson = new Gson();
-//			String postsJSONString = gson.toJson(posts);
-//			PrintWriter writer = resp.getWriter();
-//			System.out.println(postsJSONString);
-//			writer.println(postsJSONString);
-//		}
+		// returns recent posts in that particular Category
+		else if("postsByCategory".equalsIgnoreCase(actionName)){
+			String categoryId = req.getParameter("categoryId");
+			List<Post> posts = postService.getPostsbyCategory(Long.valueOf(categoryId));
+			req.setAttribute("posts", posts);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
+		}
+		// returns all the posts posted by loggedin user
+		else if("myPosts".equalsIgnoreCase(actionName)){
+			String employeeId = req.getParameter("employeeId");
+			List<Post> posts = postService.getMyPosts(Long.valueOf(employeeId));
+			req.setAttribute("posts", posts);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
+		}
 		// returns whole post when clicked on it
 		else if("post".equalsIgnoreCase(actionName)){
 			String postId = req.getParameter("postId");
@@ -111,20 +113,25 @@ public class PostServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside PostServlet::");
 		RequestDispatcher dispatcher =  req.getRequestDispatcher("/Home.jsp");
+		String actionName = req.getParameter("actionName");
 		req.setAttribute("name", "Hi This is venkat");
 		dispatcher.forward(req, resp);
 		
-//		if("addPost".equalsIgnoreCase(actionName)){
-//			PrintWriter writer = resp.getWriter();
-//			Gson gson = new Gson();
-//			Post post = req.getParameter("post");
-//		    String jsonAsString = gson.toJson(post, post);
-//		    		//Stringify(post);
-//			
-//			System.out.println(jsonAsString);
-//			writer.println(jsonAsString);
-//			//postService.addPost(post);
-//		}
+		if("addPost".equalsIgnoreCase(actionName)){
+			PrintWriter writer = resp.getWriter();
+			Gson gson = new Gson();
+			StringBuffer jb = new StringBuffer();
+			  String line = null;
+			  try {
+			    BufferedReader reader = req.getReader();
+			    while ((line = reader.readLine()) != null)
+			      jb.append(line);
+			  } catch (Exception e) { /*report an error*/ }
+			  
+			
+		    Post post = gson.fromJson(jb.toString(),Post.class);
+			postService.addPost(post);
+		}
 	}
 
 }
