@@ -1,3 +1,7 @@
+body{
+	margin: 0 50px;
+	width: 1024px;	
+}
 .main_top {
 	border-radius: 5px;
 	border: 1px solid black;
@@ -41,35 +45,35 @@ h4{
 }
 
 .contents{
-	height: 800px;
-    width: 700px;
+	min-height: 800px;
+    width: 70%;
     background-color:#F5BCA9;
-    margin-top: 26px;
-    padding:10px 10px 10px 10px
+    margin-top: -27px;
+    padding:10px 10px 10px 10px;
+    float: left;
 }
 .recent{
 	height: 250px;
-    width: 300px;
+    width: 100%;
     background-color:#BCA9F5;
-    margin-top: -737px;
-    float:right;
     margin-right:50px;
     padding: 10px 0px 0px 10px;
     
 }
 .tags{
 	height: 183px;
-    width: 300px;
+    width: 100%;
     background-color:#F2F5A9;
-    margin-top: -409px;
-    float:right;
     margin-right:50px;
+    padding: 10px 0px 0px 10px;
+}
+.search-container{
+	text-align: right;
 }
 .search{
-	float:right;
 	margin-right:25px;
 	border-radius: 25px;
-	margin-top: 15px;
+	margin-top: 5px;
 }
 h2 {
     margin-top: 4px;
@@ -77,10 +81,30 @@ h2 {
 html{
 	background-color:#A9F5F2;
 	}
+.right-section{
+	float:right;
+	width:25%;
+}	
+.content-summary{
+	width: 100%;
 }
+
 .truncate{
-  width: 100px;
+  width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+a{
+	width: 100px;
+}
+#menu div.two {
+    width: 158px;
+    border-radius: 5px;
+}
+#menu div {
+	background: #848484;
+}
+.matter{
+	margin-top:20px;
 }

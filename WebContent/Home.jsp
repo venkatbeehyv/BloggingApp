@@ -6,23 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home page</title>
-   <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
+  
     <link type="text/css" href="${pageContext.request.contextPath}/js/lib/apycom.com-16-gray/menu.css" rel="stylesheet" />
   
     
       <link href="http://apycom.com/ssc-data/themes/default/styles/menu.css" type="text/css" rel="stylesheet" />
-      
-       <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.js" language="javascript"></script>
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.color.js" language="javascript"></script>
         <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.easing.js" language="javascript"></script>
         
         
-    <script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
+    
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/menu.js'></script>
     <script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
+    
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	 <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
 	<script>
 	$(document).ready(function(){
 		$( "#login" ).dialog({ autoOpen: false });
@@ -80,7 +81,7 @@
             
         </li>
         
-        <li><a href="#" class="parent"><span>Technologies</span></a>
+        <li><a href="#" class="parent"><span style="width:86px">Technologies</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>Java</span></a></li>
@@ -90,7 +91,7 @@
                 
             </div>
         </li>
-         <li><a href="#" class="parent"><span>Frameworks</span></a>
+         <li><a href="#" class="parent"><span style="width:78px">Frameworks</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>Spring</span></a></li>
@@ -100,7 +101,7 @@
                 
             </div>
         </li>
-        <li><a href="#" class="parent"><span>Databases</span></a>
+        <li><a href="#" class="parent"><span style="width:67px">Databases</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>MySql</span></a></li>
@@ -110,7 +111,7 @@
                 
             </div>
         </li>
-        <li><a href="#" class="parent"><span>Web Services</span></a>
+        <li><a href="#" class="parent"><span style="width:89px">Web Services</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>JSON-RPC</span></a></li>
@@ -120,7 +121,7 @@
                 
             </div>
         </li>
-        <li><a href="#" class="parent"><span>UI</span></a>
+        <li><a href="#" class="parent"><span style="width:24px">UI</span></a>
             <div class="columns two">
                 <ul class="one">
                     <li><a href="#"><span>Javascript</span></a></li>
@@ -133,18 +134,17 @@
         
     </ul>
 </div>
-	
-	<form class="search"><input type="search" placeholder="Search">
-	</form>
+	<div class="search-container">
+		<form class="search"><input type="search" placeholder="Search">
+		</form>
+	</div>
+	<div class="matter">
 	<div class="contents">
 	</div>
-	
-	<div class = "recent"> <h2>Recent Posts<br></h2>
-		
-		
+	<div class="right-section">
+		<div class = "recent"> <h2>Recent Posts<br></h2></div>
+		<div class = "tags"> <h2>Tags</h2> </div>
 	</div>
-	
-	<div class = "tags"> <h2>Tags</h2> 
 	</div>
 </body>
 </html>
