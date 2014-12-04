@@ -95,7 +95,7 @@ html{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-a{
+a{Home page
 	width: 100px;
 }
 #menu div.two {
@@ -107,4 +107,12 @@ a{
 }
 .matter{
 	margin-top:20px;
+}
+.Change-Page{
+	min-height: 800px;
+    width: 70%;
+    background-color:#F5BCA9;
+    margin-top: -27px;
+    padding:10px 10px 10px 10px;
+    float: left;
 }

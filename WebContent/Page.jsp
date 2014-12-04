@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home page</title>
+<title>Static Page</title>
   
     <link type="text/css" href="${pageContext.request.contextPath}/js/lib/apycom.com-16-gray/menu.css" rel="stylesheet" />
   
@@ -139,7 +139,7 @@
 		</form>
 	</div>
 	<div class="matter">
-	<div class="contents">
+	<div class="Change-Page">
 	</div>
 	<div class="right-section">
 		<div class = "recent"> <h2>Recent Posts<br></h2></div>
