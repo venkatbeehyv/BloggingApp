@@ -3,6 +3,10 @@
  */
 package com.beehyv.blogging.service;
 
+import com.beehyv.blogging.dao.EmployeeDAO;
+import com.beehyv.blogging.dao.PostDAO;
+import com.beehyv.blogging.dao.impl.EmployeeDAOImpl;
+import com.beehyv.blogging.dao.impl.PostDAOImpl;
 import com.beehyv.blogging.modal.Employee;
 
 /**
@@ -10,10 +14,14 @@ import com.beehyv.blogging.modal.Employee;
  *
  */
 public class EmployeeService {
+	private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
 	public Employee getEmployee(Long employee_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDAO.getEmployee(employee_id);
+	}
+	
+	public boolean loginAuthorization(String email, String password){
+		return employeeDAO.loginAuthorization( email, password);
 	}
 
 }

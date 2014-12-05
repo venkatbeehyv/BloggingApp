@@ -77,8 +77,6 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		List<Category> categories = new ArrayList<Category>();;
 		Statement statement = null;
 		ResultSet resultSet = null;
-		ResultSet resultSet_1 = null;
-		
 		try {
 			statement = connection.createStatement();
 			
@@ -120,7 +118,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
-		categoryDAO.getChildren(1);
+		categoryDAO.getChildren(5);
 	}
 
 }

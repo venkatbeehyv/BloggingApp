@@ -86,4 +86,11 @@ public class Comment {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name +": " + created_at +"\n" + comment + "\n";
+	}
+	
 }

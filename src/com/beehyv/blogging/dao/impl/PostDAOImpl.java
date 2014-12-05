@@ -12,7 +12,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import com.beehyv.blogging.dao.CommentDAO;
 import com.beehyv.blogging.dao.PostDAO;
 import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
@@ -21,7 +20,7 @@ import com.beehyv.blogging.modal.Post;
  * this class contains getRecentPosts, getPost, getPostsbytag
  * and getHomePosts method
  */
-public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
+public class PostDAOImpl extends BaseDAO implements PostDAO {
 
 	/* this method will provide recent posts added
 	 * in the Database
@@ -77,44 +76,67 @@ public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
  */
 	 @Override
 	 public Post getPost(long post_id) {
-	 // TODO Auto-generated method stub
-	 Connection connection = getConnection();
-	 // create Statement for querying database
-	 Post post = new Post();;
-	 Statement statement = null;
-	 ResultSet resultSet = null;
-	 try {
-	 statement = connection.createStatement();
-	 // query database
-	 resultSet = statement.executeQuery("SELECT title, created_at,content from Post Where post_id='"+post_id+"'");
-	 // process query results
-	 while ( resultSet.next() )
-	 {
-	 //Post post = new Post();
-	 post.setTitle(resultSet.getString(1));
-	 post.setCreatedAt(resultSet.getString(2));
-	 post.setContent(resultSet.getString(3));
-	 //posts.add(post);
-	 System.out.printf("%s : %s\n %s\n" , post.getTitle(), post.getCreatedAt(),post.getContent());
-	 //System.out.println();
-	 } // end while
-	 } catch (SQLException e) {
-	 // TODO Auto-generated catch block
-	 e.printStackTrace();
-	 }finally // ensure resultSet, statement and connection are closed
-	 {
-	 try
-	 {
-	 resultSet.close();
-	 statement.close();
-	 connection.close();
-	 } // end try
-	 catch ( Exception exception )
-	 {
-	 exception.printStackTrace();
-	 } // end catch
-	 } // end finally
-	 return post;
+		 Connection connection = getConnection();
+		 // create Statement for querying database
+		 Post post = new Post();
+		 List<Comment> comments = new ArrayList<Comment>();
+		 Statement statement = null;
+		 ResultSet resultSet = null;
+		 ResultSet resultSet_1 = null;
+		 try 
+		 {
+			 statement = connection.createStatement();
+			 
+			 // query database
+			 resultSet = statement.executeQuery("SELECT title, created_at,content from Post Where post_id='"+post_id+"'");
+			 // process query results
+			 while ( resultSet.next() )
+			 {
+				 post.setTitle(resultSet.getString(1));
+				 post.setCreatedAt(resultSet.getString(2));
+				 post.setContent(resultSet.getString(3));
+			 } // end while
+			 
+			 // query database to get Comments list related to a post
+			 resultSet_1 = statement.executeQuery("select t1.comment_id, t1.comment, t2.name , t1.created_at "
+			 			+ "from Blog.Comment as t1 inner join Blog.Employee as t2 on t1.employee_id = t2.employee_id "
+						+" where t1.post_id = " + post_id +" order by created_at asc" );
+
+			// process query results
+			while ( resultSet_1.next() )
+			{
+				Comment comment = new Comment();
+				comment.setComment_id(resultSet_1.getLong(1));
+				comment.setComment(resultSet_1.getString(2));
+				comment.setName(resultSet_1.getString(3));
+				comment.setCreated_at(resultSet_1.getString(4));
+				comments.add(comment);
+				//System.out.println();
+			} // end while 
+			 post.setComments(comments);
+		 } // end try block
+		 catch (SQLException e) 
+		 {
+			 e.printStackTrace();
+		 } // end catch
+		 
+		 finally // ensure resultSet, statement and connection are closed
+		 {
+			 try
+			 {
+				 resultSet.close();
+				 resultSet_1.close();
+				 statement.close();
+				 connection.close();
+				 
+			 } // end try
+			 catch ( Exception exception )
+			 {
+				 exception.printStackTrace();
+			 } // end catch
+		 } // end finally
+		 System.out.println(post);
+		 return post;
 	 } // end getPost method
 	 
 	/** this method gives all posts related to tag in which,
@@ -193,22 +215,23 @@ public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
 			Iterator<Long> itr = rootids.iterator();
 	        while(itr.hasNext()){
 	        	Long root_id = itr.next();
-	        	resultSet_1 = statement.executeQuery("SELECT  t2.category_name, Post.title, Post.created_at,"
+	        	resultSet_1 = statement.executeQuery("SELECT  Post.root_id, category.category_name, Post.title, Post.created_at, "
 	        			+"Employee.name, Post.content from Blog.Post "
-	        			+"inner join Blog.category as t1 on t1.category_id = Post.category_id "
-	        			+"inner join Blog.category as t2 on t2.category_id = Post.root_id "
+	        			+"inner join Blog.category on category.category_id = Post.root_id "
 	        			+"inner join Blog.Employee on Employee.employee_id = Post.created_by "
 	        			+"where Post.root_id = "+ root_id +" and Post.created_at = "
 	        			+ "(select created_at from Blog.Post where root_id = "+ root_id +" order by created_at Desc limit 1)" );
 	        
 	        	while(resultSet_1.next()){
 	        		Post post = new Post();
-	        		post.setRoot_category(resultSet_1.getString(1));
-	        		post.setTitle(resultSet_1.getString(2));
-	        		post.setCreatedAt(resultSet_1.getString(3));
-	        		post.setUserName(resultSet_1.getString(4));
-	        		post.setContent(resultSet_1.getString(5));
+	        		post.setRoot_id(resultSet_1.getLong(1));
+	        		post.setRoot_category(resultSet_1.getString(2));
+	        		post.setTitle(resultSet_1.getString(3));
+	        		post.setCreatedAt(resultSet_1.getString(4));
+	        		post.setUserName(resultSet_1.getString(5));
+	        		post.setContent(resultSet_1.getString(6));
 	        		posts.add(post);
+	        		System.out.println(post.getRoot_id());
 	        		System.out.println(post.getRoot_category().toUpperCase());
 	        		System.out.println(post.getTitle());
 	        		System.out.println(post.getCreatedAt() +": " + post.getUserName());
@@ -231,19 +254,19 @@ public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
 				exception.printStackTrace();
 			} // end catch
 		} // end finally
-		
 		return posts;
 	} // end of getHomePosts method 
 
 	/**
-	 * returns list of comments by passing post_id as a parameter
+	 * This method returns 4 recent posts for an employee
+	 * where employee_id is passed as a parameter
 	 */
 	@Override
-	public List<Comment> getComments(long post_id) {
-		List<Comment> comments = new ArrayList<Comment>();
+	public List<Post> getMyPosts(Long employee_id) {
+		List<Post> posts = new ArrayList<Post>();
 		
-		Connection connection = getConnection();
 		// create Statement for querying database
+		Connection connection = getConnection();
 		Statement statement = null;
 		ResultSet resultSet = null;
 
@@ -251,19 +274,22 @@ public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
 			statement = connection.createStatement();
 
 			// query database
-			resultSet = statement.executeQuery("select t1.comment_id, t1.comment, t2.name , t1.created_at from Blog.Comment as t1 "
-					+" inner join Blog.Employee as t2 on t1.employee_id = t2.employee_id "
-					+" where t1.post_id = " + post_id );
+			resultSet = statement.executeQuery("SELECT  Post.title, Post.created_at, Employee.name, Post.content "
+					+ "from Blog.Post inner join Blog.Employee on Employee.employee_id = Post.created_by "
+						+" where Post.created_by = "+employee_id+" order by created_at Desc limit 4" );
 
 			// process query results
 			while ( resultSet.next() )
 			{
-				Comment comment = new Comment();
-				comment.setComment_id(resultSet.getLong(1));
-				comment.setComment(resultSet.getString(2));
-				comment.setName(resultSet.getString(3));
-				comment.setCreated_at(resultSet.getString(4));
-				comments.add(comment);
+				Post post = new Post();
+				post.setTitle(resultSet.getString(1));
+				post.setCreatedAt(resultSet.getString(2));
+				post.setUserName(resultSet.getString(3));
+				post.setContent(resultSet.getString(4));
+				posts.add(post);
+				System.out.println(post.getTitle());
+        		System.out.println(post.getCreatedAt() +": " + post.getUserName());
+        		System.out.println(post.getContent() +"\n");
 				//System.out.println();
 			} // end while 
 		} catch (SQLException e) {
@@ -282,17 +308,22 @@ public class PostDAOImpl extends BaseDAO implements PostDAO, CommentDAO {
 				exception.printStackTrace();
 			} // end catch
 		} // end finally
-		return comments;
+		
+		return posts;
+	} // end getMyPosts method
+	
+	@Override
+	public List<Post> getPostsbyCategory(Long category_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
-		CommentDAO commentDAO = new PostDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
 		//postDAO.getPost(1);
 		//postDAO.getPostsbytag(2);
-		postDAO.getHomePosts();
-		commentDAO.getComments(1);
+		postDAO.getPost((long) 8);
+		//commentDAO.getComments(1);
 	}
-
 } // end of PostDAOImpl.java 
