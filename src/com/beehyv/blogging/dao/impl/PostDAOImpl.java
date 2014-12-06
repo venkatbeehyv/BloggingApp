@@ -314,8 +314,9 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	
 	@Override
 	public List<Post> getPostsbyCategory(Long category_id) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Post> posts = new ArrayList<Post>();
+		
+		return posts;
 	}
 	
 	@Override

@@ -23,5 +23,9 @@ public class EmployeeService {
 	public boolean loginAuthorization(String email, String password){
 		return employeeDAO.loginAuthorization( email, password);
 	}
+	
+	public void addEmployee(Employee employee){
+		employeeDAO.addEmployee(employee);
+	}
 
 }
