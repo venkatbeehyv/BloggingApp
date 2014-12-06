@@ -318,12 +318,58 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		return null;
 	}
 	
+	@Override
+	public void addPost(Post post) {
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Statement statement = null;
+		int a;
+
+		try {
+			statement = connection.createStatement();
+ 
+			String title = post.getTitle();
+			String content = post.getContent();
+			String createdAt = post.getCreatedAt();
+			Long userId = post.getUserId();
+			Long categoryID = post.getCategoryID();
+			// query database
+			a = statement.executeUpdate("insert into Blog.Post "
+					+ "(Post_title, Post_content, created_at, employee_id, category_id ) values "
+					+ "('"+title+"','"+ content +"','"+createdAt+"',"+userId+","+categoryID+")");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		
+	}
+	
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
-		//postDAO.getPost(1);
+		//postDAO.getPost(9);
 		//postDAO.getPostsbytag(2);
-		postDAO.getPost((long) 8);
+		Post p = new Post();
+		p.setTitle("intro to python");
+		p.setCreatedAt("2014-12-12");
+		p.setUserId(12);
+		p.setCategoryID(1);
+		//postDAO.addPost(p);
 		//commentDAO.getComments(1);
 	}
+
+	
 } // end of PostDAOImpl.java 

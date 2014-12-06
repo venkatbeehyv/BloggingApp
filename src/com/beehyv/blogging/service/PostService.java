@@ -49,6 +49,7 @@ public class PostService {
 	 * @param post
 	 */
 	public void addPost(Post post){
+		postDAO.addPost(post);
 		
 	}
 
