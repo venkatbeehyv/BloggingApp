@@ -12,6 +12,21 @@ public class Employee {
 	public  String updated_at;
 	public  String lastLoggedIn;
 	public  long roleID;
+	public long employee_id;
+	
+	
+	public String getLastLoggedIn() {
+		return lastLoggedIn;
+	}
+	public void setLastLoggedIn(String lastLoggedIn) {
+		this.lastLoggedIn = lastLoggedIn;
+	}
+	public long getEmployee_id() {
+		return employee_id;
+	}
+	public void setEmployee_id(long employee_id) {
+		this.employee_id = employee_id;
+	}
 	/**
 	 * @return the email
 	 */

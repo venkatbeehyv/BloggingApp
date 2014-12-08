@@ -148,12 +148,17 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 
 		try {
 			statement = connection.createStatement();
- 
-			String content = post.getContent();
-			Long post_id = post.getPost_id();
+			
+			Long employee_id = employee.getEmployee_id();
+			String name = employee.getName();
+			String designation = employee.getDesignation();
+			String mobile = employee.getMobile_no();
+			String updated_at = employee.getUpdated_at();
+			String last_logged_in = employee.getlastLoggedIn();
 			// query database
-			statement.executeUpdate("UPDATE Blog.Post SET content = '"+content
-					+ "' WHERE post_id = "+post_id);
+			statement.executeUpdate("update Blog.Employee set name ='"+name+"', designation = '"+designation+"', "
+					+"mobile = '"+mobile+"', updated_at = '"+updated_at+"', last_logged_in = '"+last_logged_in+"' "
+					+" where employee_id = "+employee_id);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
