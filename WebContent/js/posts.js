@@ -46,3 +46,22 @@ function updateContents(){
 	}
 	});
 }
+//function categoryClick(){
+//	
+//	jQuery.ajax({
+//		url: "posts?actionName=postsByCategory && categoryId=2",
+//		method: "GET",
+//		contentType: "",
+//		success:function(posts){
+//			var postArray = JSON.parse(posts)	
+//			
+//			var $recntPostsContainer = $(".Change-Page");
+//			$recntPostsContainer.append('<div><h2>'+root_category+'</h2></div><br>');	
+//			for(var i in postArray){
+//				$recntPostsContainer.append('<div><a href="posts/post?post_id="'+postArray[i].post_id+'><h5>'+postArray[i].title+'</h5></div><br>')
+//				$recntPostsContainer.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
+//				$recntPostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
+//			}
+//		}
+//	});
+//}
