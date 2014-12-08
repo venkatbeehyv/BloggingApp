@@ -31,7 +31,7 @@ public class CategoryServlet extends HttpServlet {
 		// returns parent tree of given category
 		if("parentTree".equalsIgnoreCase(actionName)){
 			String postId = request.getParameter("postId");
-			List<Category> tree = categoryService.getEmployee(Long.valueOf(postId));
+			List<Category> tree = categoryService.getParentTree(Long.valueOf(postId));
 			request.setAttribute("tree", tree);
 			Gson gson = new Gson();
 			String treeJSONString = gson.toJson(tree);

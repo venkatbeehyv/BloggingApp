@@ -3,6 +3,8 @@
  */
 package com.beehyv.blogging.modal;
 
+import java.util.List;
+
 
 /**
  * @author sanjay
@@ -17,7 +19,14 @@ public class Post {
 	private long categoryID;
 	private long root_id;
 	private String root_category;
+	private List<Comment> comments;
 	
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 	public String getRoot_category() {
 		return root_category;
 	}
@@ -105,8 +114,19 @@ public class Post {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return title +"," + categoryID;
+		String postString = root_category + "\n" + title + "\n" + userName +": " + createdAt 
+				+ "\n" + content + "\n\n";
+		if(comments.size() == 0 ){
+			return postString;
+		}
+		else 
+		{
+			String postStringwithComments =  postString; 
+			for(Comment comment: comments){
+				postStringwithComments = postStringwithComments.concat(comment.toString());
+			}
+			return postStringwithComments;
+		}
 	}
 	
 }

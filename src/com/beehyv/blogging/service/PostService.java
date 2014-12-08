@@ -2,16 +2,13 @@ package com.beehyv.blogging.service;
 
 import java.util.List;
 
-import com.beehyv.blogging.dao.CommentDAO;
 import com.beehyv.blogging.dao.PostDAO;
 import com.beehyv.blogging.dao.impl.PostDAOImpl;
-import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
 
 public class PostService {
 
 	private PostDAO postDAO = new PostDAOImpl();
-	private CommentDAO commentDAO = new PostDAOImpl();
 	
 	/**
 	 * Gets posts for 'Recent Posts' Section in the home page
@@ -48,29 +45,20 @@ public class PostService {
 	} 
 	/**
 	 * 
-	 * @param post_id
-	 * @return
-	 */
-	public List<Comment> getComments(long post_id){
-		return commentDAO.getComments(post_id);
-	}
-	/**
-	 * 
 	 * 
 	 * @param post
 	 */
 	public void addPost(Post post){
+		postDAO.addPost(post);
 		
 	}
 
 	public List<Post> getMyPosts(Long employee_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return postDAO.getMyPosts(employee_id);
 	}
 
 	public List<Post> getPostsbyCategory(Long category_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return postDAO.getPostsbyCategory(category_id);
 	}
 
 }
