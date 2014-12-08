@@ -18,5 +18,6 @@ public interface PostDAO {
 	public List<Post> getMyPosts(Long employee_id);
 	public List<Post> getPostsbyCategory(Long category_id);
 	public void addPost(Post post);
+	public void editPost(Post post);
 
 }

@@ -216,7 +216,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	        while(itr.hasNext()){
 	        	Long root_id = itr.next();
 	        	resultSet_1 = statement.executeQuery("SELECT  Post.root_id, category.category_name, Post.title, Post.created_at, "
-	        			+"Employee.name, Post.content from Blog.Post "
+	        			+"Employee.name, Post.content, Post.post_id, Post.category_id from Blog.Post "
 	        			+"inner join Blog.category on category.category_id = Post.root_id "
 	        			+"inner join Blog.Employee on Employee.employee_id = Post.created_by "
 	        			+"where Post.root_id = "+ root_id +" and Post.created_at = "
@@ -230,6 +230,8 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	        		post.setCreatedAt(resultSet_1.getString(4));
 	        		post.setUserName(resultSet_1.getString(5));
 	        		post.setContent(resultSet_1.getString(6));
+	        		post.setPost_id(resultSet_1.getLong(7));
+	        		post.setCategoryID(resultSet_1.getLong(8));
 	        		posts.add(post);
 	        		System.out.println(post.getRoot_id());
 	        		System.out.println(post.getRoot_category().toUpperCase());
@@ -316,6 +318,8 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	public List<Post> getPostsbyCategory(Long category_id) {
 		List<Post> posts = new ArrayList<Post>();
 		
+		
+		
 		return posts;
 	}
 	
@@ -336,7 +340,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			Long categoryID = post.getCategoryID();
 			// query database
 			a = statement.executeUpdate("insert into Blog.Post "
-					+ "(Post_title, Post_content, created_at, employee_id, category_id ) values "
+					+ "(title, content, created_at, employee_id, category_id ) values "
 					+ "('"+title+"','"+ content +"','"+createdAt+"',"+userId+","+categoryID+")");
 
 		} catch (SQLException e) {
@@ -346,7 +350,6 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		{
 			try
 			{
-				
 				statement.close();
 				connection.close();
 			} // end try
@@ -355,8 +358,42 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 				exception.printStackTrace();
 			} // end catch
 		} // end finally
-		
 	}
+	
+
+	@Override
+	public void editPost(Post post) {
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			String content = post.getContent();
+			Long post_id = post.getPost_id();
+			// query database
+			statement.executeUpdate("UPDATE Blog.Post SET content = '"+content
+					+ "' WHERE post_id = "+post_id);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+	}
+		
+	
 	
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
@@ -371,6 +408,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//postDAO.addPost(p);
 		//commentDAO.getComments(1);
 	}
+
 
 	
 } // end of PostDAOImpl.java 

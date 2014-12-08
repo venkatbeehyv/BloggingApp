@@ -18,8 +18,17 @@ public class Post {
 	private  long userId;
 	private long categoryID;
 	private long root_id;
+	private long post_id;
 	private String root_category;
 	private List<Comment> comments;
+	
+	
+	public long getPost_id() {
+		return post_id;
+	}
+	public void setPost_id(long post_id) {
+		this.post_id = post_id;
+	}
 	
 	public List<Comment> getComments() {
 		return comments;
@@ -127,6 +136,5 @@ public class Post {
 			}
 			return postStringwithComments;
 		}
-	}
-	
+	}	
 }

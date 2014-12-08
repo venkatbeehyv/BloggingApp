@@ -98,9 +98,84 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		} // end finally
 		return employee;
 	} // end getEmployee method
+
+	@Override
+	public void addEmployee(Employee employee) {
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			String email = employee.getEmail();
+			String name = employee.getName();
+			String password = employee.getPassword();
+			String mobile_no = employee.getMobile_no();
+			String createdAt = employee.getCreated_at();
+			String lastLoggedIn = employee.getlastLoggedIn();
+			// insert an employee into database
+			statement.executeUpdate("insert into Blog.Employee "
+					+ "(email, name, password, mobile, created_at, last_logged_in, role_id ) "
+					+ "values ('"+email+"', '"+name+"', '"+password+"', "+mobile_no+", '"+createdAt+"',"+lastLoggedIn+",2)");
+
+		} // end try block
+		
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+	} // end addEmployee method
+	
+	@Override
+	public void editEmployee(Employee employee) {
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			String content = post.getContent();
+			Long post_id = post.getPost_id();
+			// query database
+			statement.executeUpdate("UPDATE Blog.Post SET content = '"+content
+					+ "' WHERE post_id = "+post_id);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+	}
+	
 	public static void main(String[] args){
 		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//employeeDAO.getEmployee((long) 15);
 		employeeDAO.loginAuthorization("rgrg27", "beehyv123"); // still have to modify method
 	}
+
 }

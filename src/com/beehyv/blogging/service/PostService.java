@@ -60,5 +60,9 @@ public class PostService {
 	public List<Post> getPostsbyCategory(Long category_id) {
 		return postDAO.getPostsbyCategory(category_id);
 	}
+	
+	public void editPost(Post post){
+		postDAO.editPost(post);
+	}
 
 }

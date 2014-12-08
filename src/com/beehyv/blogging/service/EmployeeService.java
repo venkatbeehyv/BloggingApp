@@ -27,5 +27,9 @@ public class EmployeeService {
 	public void addEmployee(Employee employee){
 		employeeDAO.addEmployee(employee);
 	}
+	
+	public void editEmployee( Employee employee){
+		employeeDAO.editEmployee(employee);
+	}
 
 }
