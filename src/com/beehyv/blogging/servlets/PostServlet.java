@@ -114,22 +114,38 @@ public class PostServlet extends HttpServlet {
 		System.out.println("Inside PostServlet::");
 		RequestDispatcher dispatcher =  req.getRequestDispatcher("/Home.jsp");
 		String actionName = req.getParameter("actionName");
+		System.out.println("actionNAme: " + actionName);
+		
 		req.setAttribute("name", "Hi This is venkat");
 		dispatcher.forward(req, resp);
 		
+		//adds a post to the database
 		if("addPost".equalsIgnoreCase(actionName)){
-			PrintWriter writer = resp.getWriter();
 			Gson gson = new Gson();
 			StringBuffer jb = new StringBuffer();
-			  String line = null;
-			  try {
-			    BufferedReader reader = req.getReader();
-			    while ((line = reader.readLine()) != null)
-			      jb.append(line);
+			String line = null;
+			try {
+			  BufferedReader reader = req.getReader();
+			  while ((line = reader.readLine()) != null)
+			    jb.append(line);
 			  } catch (Exception e) { /*report an error*/ }
-			  
+			
 		    Post post = gson.fromJson(jb.toString(),Post.class);
 			postService.addPost(post);
+		}
+		
+		else if("editPost".equalsIgnoreCase(actionName)){
+			Gson gson = new Gson();
+			StringBuffer jb = new StringBuffer();
+			String line = null;
+			try {
+			  BufferedReader reader = req.getReader();
+			  while ((line = reader.readLine()) != null)
+			    jb.append(line);
+			  } catch (Exception e) { /*report an error*/ }
+			
+		    Post post = gson.fromJson(jb.toString(),Post.class);
+			postService.editPost(post);
 		}
 	}
 
