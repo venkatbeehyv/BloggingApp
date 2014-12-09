@@ -31,5 +31,9 @@ public class EmployeeService {
 	public void editEmployee( Employee employee){
 		employeeDAO.editEmployee(employee);
 	}
+	
+	public boolean changePassword(Long employee_id, String oldPassword, String newPassword){
+		employeeDAO.changePassword(employee_id, oldPassword,  newPassword);
+	}
 
 }

@@ -177,10 +177,45 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		} // end finally
 	}
 	
+	@Override
+	public void changePassword(Long employee_id, String oldPassword, String newPassword) {
+		Connection connection = getConnection();
+		// create Statement for querying database
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("select password from Blog.Employee where employee_id = "+ employee_id);
+			String enteredPassword = resultSet.getString(1);
+			if(oldPassword.equals(enteredPassword)){
+			
+			// query database
+			statement.executeUpdate("update Blog.Employee set password = " + newPassword);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		
+	}
+	
 	public static void main(String[] args){
 		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//employeeDAO.getEmployee((long) 15);
 		employeeDAO.loginAuthorization("rgrg27", "beehyv123"); // still have to modify method
 	}
+
+	
 
 }

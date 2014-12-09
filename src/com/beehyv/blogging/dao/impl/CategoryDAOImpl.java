@@ -28,8 +28,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			statement = connection.createStatement();
 			
 			// query database
-			resultSet = statement
-					.executeQuery("SELECT  t2.category_id as id, t2.category_name as name "
+			resultSet = statement.executeQuery("SELECT  t2.category_id as id, t2.category_name as name "
 							+ "FROM category AS t1 LEFT JOIN category AS t2 ON t2.parent_id = t1.category_id "
 							+ "WHERE t1.category_id = '" + category_id + "';");
 			
@@ -63,8 +62,52 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 
 	@Override
 	public List<Category> getParentTree(long category_id) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Category> categories = new ArrayList<Category>();
+		
+		// create Statement for querying database
+			Connection connection = getConnection();
+			Statement statement = null;
+			ResultSet resultSet = null;
+			Long parent;
+			
+			try {
+				statement = connection.createStatement();
+				
+				parent = category_id;
+				while(parent != 0){
+					resultSet = statement.executeQuery("select category_id, category_name, parent_id from Blog.category "
+						+ "where category_id = " + parent);
+					Category category = new Category();
+					while(resultSet.next()){
+					category.setIdCategory(resultSet.getLong(1));
+					category.setCategoryName(resultSet.getString(2));
+					category.setIdParentCategory(resultSet.getLong(3));
+					parent = resultSet.getLong(3);
+					categories.add(category);
+					System.out.println(category);
+					}
+					try{resultSet.close();}
+					catch(SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally // ensure resultSet, statement and connection are closed
+			{
+				try
+				{
+					statement.close();
+					connection.close();
+				} // end try
+				catch ( Exception exception )
+				{
+					exception.printStackTrace();
+				} // end catch
+			} // end finally
+		return categories;
 	}
 /**
  *  this method provides root parent of any category
@@ -118,7 +161,8 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
-		categoryDAO.getChildren(5);
+		categoryDAO.getParentTree(18);
+		//categoryDAO.getChildren(5);
 	}
 
 }

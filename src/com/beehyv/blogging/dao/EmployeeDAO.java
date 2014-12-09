@@ -11,5 +11,8 @@ public interface EmployeeDAO {
 	public void addEmployee(Employee employee);
 
 	public void editEmployee(Employee employee);
+
+	public void changePassword(Long employee_id, String oldPassword,
+			String newPassword);
 	
 }

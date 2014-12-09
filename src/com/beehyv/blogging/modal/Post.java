@@ -125,7 +125,7 @@ public class Post {
 	public String toString() {
 		String postString = root_category + "\n" + title + "\n" + userName +": " + createdAt 
 				+ "\n" + content + "\n\n";
-		if(comments.size() == 0 ){
+		if(comments == null ){
 			return postString;
 		}
 		else 
