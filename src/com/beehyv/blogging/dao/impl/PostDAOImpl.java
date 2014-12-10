@@ -397,7 +397,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			}
 			
 			resultSet_1 = statement.executeQuery("SELECT  Post.post_id,  Post.category_id, Post.title, "
-					+ "Post.created_at, Employee.name, Post.content, t2.category_name from Blog.Post "
+					+ "Post.created_at, Employee.name, Post.content, t2.category_name, t1.category_name from Blog.Post "
 					+ "inner join Blog.category t1 on t1.category_id = Post.root_id "
 					+ "inner join Blog.Employee on Employee.employee_id = Post.created_by "
 					+" inner join Blog.category t2 on Post.category_id = t2.category_id "
@@ -413,6 +413,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
         		post.setUserName(resultSet_1.getString(5));
         		post.setContent(resultSet_1.getString(6));
         		post.setCategory_name(resultSet_1.getString(7));
+        		post.setRoot_category(resultSet_1.getString(8));
         		posts.add(post);
 			}
 						
