@@ -397,9 +397,10 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			}
 			
 			resultSet_1 = statement.executeQuery("SELECT  Post.post_id,  Post.category_id, Post.title, "
-					+ "Post.created_at, Employee.name, Post.content from Blog.Post "
-					+ "inner join Blog.category on category.category_id = Post.root_id "
+					+ "Post.created_at, Employee.name, Post.content, t2.category_name from Blog.Post "
+					+ "inner join Blog.category t1 on t1.category_id = Post.root_id "
 					+ "inner join Blog.Employee on Employee.employee_id = Post.created_by "
+					+" inner join Blog.category t2 on Post.category_id = t2.category_id "
 					+ "where Post.category_id in ("+idsString+") order by Post.created_at desc limit 4");
 			
 			while(resultSet_1.next())
@@ -411,6 +412,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
         		post.setCreatedAt(resultSet_1.getString(4));
         		post.setUserName(resultSet_1.getString(5));
         		post.setContent(resultSet_1.getString(6));
+        		post.setCategory_name(resultSet_1.getString(7));
         		posts.add(post);
 			}
 						
@@ -525,13 +527,13 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	
 	
 	public static void main(String[] args){
-		//PostDAO postDAO = new PostDAOImpl();
+		PostDAO postDAO = new PostDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
 		//System.out.println(postDAO.getPost(8));
 		//System.out.println(postDAO.getPostsbytag(2));
 		//System.out.println(postDAO.getHomePosts());
 		//System.out.println(postDAO.getMyPosts((long) 10));
-		//System.out.println(postDAO.getPostsbyCategory((long) 3));
+		System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
 	}
 

@@ -21,8 +21,15 @@ public class Post {
 	private long post_id;
 	private String root_category;
 	private List<Comment> comments;
+	private String category_name;
 	
 	
+	public String getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
 	public long getPost_id() {
 		return post_id;
 	}
@@ -123,7 +130,7 @@ public class Post {
 	
 	@Override
 	public String toString() {
-		String postString = root_category + "\n" + title + "\n" + userName +": " + createdAt 
+		String postString = root_category +": "+ category_name+ "\n" + title + "\n" + userName +": " + createdAt 
 				+ "\n" + content + "\n\n";
 		if(comments == null ){
 			return postString;
