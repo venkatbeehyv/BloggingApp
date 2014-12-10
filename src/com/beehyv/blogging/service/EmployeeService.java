@@ -4,9 +4,7 @@
 package com.beehyv.blogging.service;
 
 import com.beehyv.blogging.dao.EmployeeDAO;
-import com.beehyv.blogging.dao.PostDAO;
 import com.beehyv.blogging.dao.impl.EmployeeDAOImpl;
-import com.beehyv.blogging.dao.impl.PostDAOImpl;
 import com.beehyv.blogging.modal.Employee;
 
 /**
@@ -20,7 +18,7 @@ public class EmployeeService {
 		return employeeDAO.getEmployee(employee_id);
 	}
 	
-	public boolean loginAuthorization(String email, String password){
+	public Long loginAuthorization(String email, String password){
 		return employeeDAO.loginAuthorization( email, password);
 	}
 	
@@ -33,7 +31,7 @@ public class EmployeeService {
 	}
 	
 	public boolean changePassword(Long employee_id, String oldPassword, String newPassword){
-		employeeDAO.changePassword(employee_id, oldPassword,  newPassword);
+		return employeeDAO.changePassword(employee_id, oldPassword,  newPassword);
 	}
 
 }

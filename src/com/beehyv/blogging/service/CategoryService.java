@@ -24,9 +24,12 @@ public class CategoryService {
 		return categoryDAO.getChildren(category_id);
 	}
 
-	public List<Category> getParentTree(Long post_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Category> getParentTree(Long category_id) {
+		return categoryDAO.getParentTree(category_id);
+	}
+	
+	public Category getRootParent(Long category_id){
+		return categoryDAO.getRootParent(category_id);
 	}
 
 

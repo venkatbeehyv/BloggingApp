@@ -17,12 +17,13 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 	 */
 	@Override 
 	public List<Category> getChildren( long category_id) {
-		// TODO Auto-generated method stub
 		Connection connection = getConnection();
+		
 		// create Statement for querying database
-		List<Category> categories = new ArrayList<Category>();;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		
+		List<Category> categories = new ArrayList<Category>();
 		
 		try {
 			statement = connection.createStatement();
@@ -34,17 +35,20 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			
 			// process query results
 			while ( resultSet.next() )
-				{
-					Category category = new Category();
-					category.setIdCategory(resultSet.getLong(1));
-					category.setCategoryName(resultSet.getString(2));
-					categories.add(category);
-					System.out.println(category);
-				} // end while 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			{
+				Category category = new Category();
+				category.setIdCategory(resultSet.getLong(1));
+				category.setCategoryName(resultSet.getString(2));
+				categories.add(category);
+			} // end while 
+		} // end try block
+		
+		catch (SQLException e)
+		{
 			e.printStackTrace();
-		}finally // ensure resultSet, statement and connection are closed
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
 		{
 			try
 			{
@@ -58,94 +62,65 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			} // end catch
 		} // end finally
 		return categories;
-	} // end getReacentPosts method
-
+	} // end getChildren method
+	
+	/** This method returns list of parent categories 
+	 * where category_id is passed as a parameter
+	 * first value of the list is category_id itself and 
+	 * last one is root category 
+	 */
 	@Override
 	public List<Category> getParentTree(long category_id) {
-		List<Category> categories = new ArrayList<Category>();
+	// create Statement for querying database
+		Connection connection = getConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
 		
-		// create Statement for querying database
-			Connection connection = getConnection();
-			Statement statement = null;
-			ResultSet resultSet = null;
-			Long parent;
+		List<Category> categories = new ArrayList<Category>();
+		Long parent;
+		
+		try 
+		{
+			statement = connection.createStatement();
 			
-			try {
-				statement = connection.createStatement();
+			parent = category_id;
+			
+			while(parent != 0)
+			{
+				resultSet = statement.executeQuery("select category_id, category_name, parent_id from Blog.category "
+					+ "where category_id = " + parent);
 				
-				parent = category_id;
-				while(parent != 0){
-					resultSet = statement.executeQuery("select category_id, category_name, parent_id from Blog.category "
-						+ "where category_id = " + parent);
-					Category category = new Category();
-					while(resultSet.next()){
+				Category category = new Category();
+				
+				while(resultSet.next())
+				{
 					category.setIdCategory(resultSet.getLong(1));
 					category.setCategoryName(resultSet.getString(2));
 					category.setIdParentCategory(resultSet.getLong(3));
 					parent = resultSet.getLong(3);
 					categories.add(category);
-					System.out.println(category);
-					}
-					try{resultSet.close();}
-					catch(SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally // ensure resultSet, statement and connection are closed
-			{
+				} // while ends
 				try
 				{
-					statement.close();
-					connection.close();
-				} // end try
-				catch ( Exception exception )
+					resultSet.close();
+				} // try block ends
+				
+				catch(SQLException e)
 				{
-					exception.printStackTrace();
-				} // end catch
-			} // end finally
-		return categories;
-	}
-/**
- *  this method provides root parent of any category
- *  root parents are one of {Technologies, Frameworks etc}
- */
-	@Override
-	public Long getRootParent(long category_id) {
-		Connection connection = getConnection();
-		// create Statement for querying database
-		List<Category> categories = new ArrayList<Category>();;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		try {
-			statement = connection.createStatement();
-			
-			// query database
-			resultSet = statement
-					.executeQuery("SELECT  t2.category_id as id, t2.category_name as name "
-							+ "FROM category AS t1 LEFT JOIN category AS t2 ON t2.parent_id = t1.category_id "
-							+ "WHERE t1.category_id = '" + category_id + "';");
-			
-			// process query results
-			while ( resultSet.next() )
-				{
-					Category category = new Category();
-					category.setIdCategory(resultSet.getLong(1));
-					category.setCategoryName(resultSet.getString(2));
-					categories.add(category);
-					System.out.println(category);
-				} // end while 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+					e.printStackTrace();
+				} // block catch ends
+			} // end of while
+		} // ends try block
+		
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
-		}finally // ensure resultSet, statement and connection are closed
+		} // ends catch block
+		
+		finally // ensure resultSet, statement and connection are closed
 		{
 			try
 			{
-				resultSet.close();
 				statement.close();
 				connection.close();
 			} // end try
@@ -154,15 +129,25 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 				exception.printStackTrace();
 			} // end catch
 		} // end finally
-		long a =0;
-		return a;
+		return categories;
+		} // end getParentTree method
+	
+/**
+ *  this method provides root parent of any category
+ *  root parents are one of {Technologies, Frameworks etc}
+ */
+	@Override
+	public Category getRootParent(long category_id) {
+		List<Category> categories = getParentTree(category_id);
+		Category root_category = categories.get(categories.size()-2);
+		return root_category;
 	} // end getChildren method
 	
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
-		//System.out.println(postDAO.getRecentPosts());
-		categoryDAO.getParentTree(18);
-		//categoryDAO.getChildren(5);
+		//System.out.println(categoryDAO.getParentTree(11));
+		//System.out.println(categoryDAO.getRootParent(11));
+		System.out.println(categoryDAO.getChildren(5));
 	}
 
 }

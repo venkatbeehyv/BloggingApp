@@ -14,13 +14,16 @@ public class TagDAOImpl extends BaseDAO implements TagDAO {
 	
 	@Override
 	public List<Tag> getHomeTags() {
-		List<Tag>  tags= new ArrayList<Tag>();
 		Connection connection = getConnection();
+		
 		// create Statement for querying database
 		Statement statement = null;
 		ResultSet resultSet = null;
+		
+		List<Tag>  tags= new ArrayList<Tag>();
 
-		try {
+		try 
+		{
 			statement = connection.createStatement();
 
 			// query database
@@ -33,12 +36,15 @@ public class TagDAOImpl extends BaseDAO implements TagDAO {
 				tag.setIdTag(resultSet.getLong(1));
 				tag.setTag(resultSet.getString(2));
 				tags.add(tag);
-				System.out.println(tag);
 			} // end while 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} // end try block
+		
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
-		}finally // ensure resultSet, statement and connection are closed
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
 		{
 			try
 			{
@@ -56,6 +62,6 @@ public class TagDAOImpl extends BaseDAO implements TagDAO {
 	
 	public static void main(String[] args){
 		TagDAO tagDAO = new TagDAOImpl(); 
-		tagDAO.getHomeTags();
+		System.out.println(tagDAO.getHomeTags());
 	}
 }
