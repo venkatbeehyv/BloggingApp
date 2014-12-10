@@ -12,7 +12,7 @@
 
 <div id="menu">
     <ul class="lavaLamp">
-        <li><a href="#"><span>Home</span></a>
+        <li><a href="http://localhost:8080/BlogginApp/Home.jsp"><span>Home</span></a>
             
         </li>
         
