@@ -10,7 +10,7 @@ function updateRecentPosts(){
 			
 			var $recntPostsContainer = $(".recent");
 			for(var i in postsArray){
-				$recntPostsContainer.append('<div><a href="posts/post?post_id="'+postsArray[i].post_id+' style="font-size:15px" >'+postsArray[i].title+'</a></div><br>')
+				$recntPostsContainer.append('<div><a href="Post.jsp?postId='+postsArray[i].post_id+'" style="font-size:15px" >'+postsArray[i].title+'</a></div><br>')
 				$recntPostsContainer.append('<div>'+postsArray[i].createdAt+'</div><br><br>')
 			}
 			
@@ -34,7 +34,7 @@ function updateContents(){
 			
 			var $homePostsContainer = $(".contents");
 			for(var i in postArray){
-				$homePostsContainer.append('<div><a href="posts/post?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div><br>')
+				$homePostsContainer.append('<div><a href="Category.jsp?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div><br>')
 //				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" onclick="return loadPost('+postArray[i].post_id+');"><h5>'+postArray[i].title+'</h5></div><br>')
 				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
 				console.log("check"+postArray[i].post_id);
