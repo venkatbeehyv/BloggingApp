@@ -35,7 +35,9 @@ function updateContents(){
 			var $homePostsContainer = $(".contents");
 			for(var i in postArray){
 				$homePostsContainer.append('<div><a href="posts/post?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div><br>')
-				$homePostsContainer.append('<div><a href="Post.jsp?post_id='+postArray[i].post_id+'"><h5>'+postArray[i].title+'</h5></div><br>')
+//				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" onclick="return loadPost('+postArray[i].post_id+');"><h5>'+postArray[i].title+'</h5></div><br>')
+				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
+				console.log("check"+postArray[i].post_id);
 				$homePostsContainer.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
 				$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
 			}
@@ -66,6 +68,3 @@ function updateContents(){
 //	});
 //}
 
-function postClick(){
-	
-}
