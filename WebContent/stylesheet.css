@@ -6,7 +6,7 @@ body{
 	border-radius: 10px;
 	border: 1px solid black;
     height:83px;
-    background-color: #1947A3;
+    background-color: #335CD6;
 }
 div div{
 	display: inline-block;
@@ -51,16 +51,16 @@ h4{
 .contents{
 	min-height: 800px;
     width: 70%;
-    background-color:#FFE4C4;
+    background-color:#99CCFF;
     margin-top: -27px;
     padding:10px 10px 10px 10px;
     float: left;
-     border-radius: 5px;
+    border-radius: 10px;
 }
 .recent{
 	height: 250px;
     width: 100%;
-    background-color:#FFE4C4;
+    background-color:#99CCFF;
     margin-right:50px;
     margin-bottom: 20px;
     padding: 10px 0px 0px 10px;
@@ -70,7 +70,7 @@ h4{
 .tags{
 	height: 283px;
     width: 100%;
-    background-color:#FFE4C4;
+    background-color:#99CCFF;
     margin-right:50px;
     padding: 10px 0px 0px 10px;
     border-radius:10px;
@@ -83,9 +83,20 @@ h4{
 	border-radius: 25px;
 	margin-top: 5px;
 }
-h2 {
+.contents h2 {
     margin-top: 4px;
+    margin-bottom: 4px;
+    color: #191919;
+    
+    }	
+.contents a{
+	text-decoration: none;
 }
+h5 {
+    margin-top: 4px;
+    margin-bottom: 3px;
+}
+
 html{
 	background-color:#f1f1f1;
 	}
@@ -105,7 +116,20 @@ html{
 }
 a{Home page
 	width: 100px;
-	font color: white;
+	color: blue;
+}
+a h2:hover{
+	color: #121292;
+	font-size: 120%;
+}
+a:visited {
+    color: blue;
+}
+
+/* mouse over link */
+a:hover {
+    color: #121292;
+    font-size: 120%;
 }
 #menu div.two {
     width: 158px;
@@ -125,4 +149,20 @@ a{Home page
     margin-top: -27px;
     padding:10px 10px 10px 10px;
     float: left;
+}
+.ui-dialog {
+	border-radius: 10px;
+}
+.ui-dialog .ui-dialog-title{
+	float: center;
+	width: 150%;
+}
+.ui-dialog .ui-dialog-titlebar{
+	width: 85%;
+	horizontal-align: center;
+	margin-left: auto;
+    margin-right: auto
+}
+.ui-widget-header{
+	text-align: center;
 }
