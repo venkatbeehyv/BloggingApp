@@ -9,6 +9,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -534,8 +535,11 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getPostsbytag(2));
 		//System.out.println(postDAO.getHomePosts());
 		//System.out.println(postDAO.getMyPosts((long) 10));
-		System.out.println(postDAO.getPostsbyCategory((long) 3));
+		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
+		Date date = new Date() {
+		};
+		System.out.println(date.getYear()+":"+date.getMonth()+":"+date.getDay() );
 	}
 
 

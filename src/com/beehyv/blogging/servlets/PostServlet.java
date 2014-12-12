@@ -3,7 +3,6 @@ package com.beehyv.blogging.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,14 +10,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+ 
 import com.beehyv.blogging.modal.Post;
+import com.beehyv.blogging.modal.Tag;
 import com.beehyv.blogging.service.PostService;
 import com.beehyv.blogging.service.TagService;
 import com.google.gson.Gson;
 
 /**
- * @author Venkat
+ * @author VenkatNo restriction on the depth of the links
  *
  */
 
@@ -55,7 +55,7 @@ public class PostServlet extends HttpServlet {
 		}
 		// returns tags displayed in homepage
 		else if("homeTags".equalsIgnoreCase(actionName)){
-			List<com.beehyv.blogging.modal.Tag> tags = tagService.getHomeTags();
+			List<Tag> tags = tagService.getHomeTags();
 			req.setAttribute("tags", tags);
 			Gson gson = new Gson();
 			String tagsJSONString = gson.toJson(tags);
