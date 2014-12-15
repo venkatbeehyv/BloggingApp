@@ -9,11 +9,11 @@ function loadPost(post_id){
 			$post.append('<div><h2>'+post.title+'</h2></div><br>')
 			$post.append('<div>'+post.createdAt+'</div> &nbsp <div>'+post.userName+'</div>')
 			$post.append('<div><p>'+post.content+'</p><div><br>')
-			$post.append('<div><h4>Comments</h4></div>')
+			$post.append('<div><h3 class="comments">Comments</h3></div>')
 			var postComments = post.comments;
 			for(var i in postComments){
-				$post.append('<div><p>'+postComments[i].comment+'</p></div><br>')
-				$post.append('<div><a href="#">'+postComments[i].name+'</div>&nbsp<div>'+postComments[i].created_at+'</div><br>')
+				$post.append('<div class="post-comment"><p>'+postComments[i].comment+'</p></div><br>')
+				$post.append('<div class="comment-name"><a href="#">'+postComments[i].name+'</div>&nbsp<div class="comment-time">'+postComments[i].created_at+'</div><br>')
 			}
 		}
 	});
@@ -34,12 +34,14 @@ function init(){
 jQuery(document).ready(function()
 		{
 			init();
+			
 			updateRecentPosts();
 			
 			var first = getUrlVars()["postId"];
 			var post_id= parseInt(first);
 			
 			loadPost(post_id);
+		//	updateTags();
 		});
 
 function getUrlVars() {
@@ -49,3 +51,28 @@ function getUrlVars() {
     });
     return vars;
 }
+
+/*function updateTags(){
+	
+
+	jQuery.ajax({
+		url: "tags?actionName=homeTags",
+		method: "GET",
+		contentType: "",
+		success:function(tags){
+			
+			var tagsArray = JSON.parse(tags)
+			
+			var $tagContainer = $(".tags");
+			for(var i in tagsArray){
+				//alert(tagsArray[i].idTag);
+				$tagContainer.append('<div><a href="tags/tag?actionName=postsbyTag&tagId='+tagsArray[i].idTag+'">'+tagsArray[i].tag+'</a></div>')
+				alert(i)
+			}
+			
+		},
+		error:function(e){
+			
+		}
+	});
+}*/

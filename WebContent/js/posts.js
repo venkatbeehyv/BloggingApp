@@ -10,7 +10,7 @@ function updateRecentPosts(){
 			
 			var $recntPostsContainer = $(".recent");
 			for(var i in postsArray){
-				$recntPostsContainer.append('<div><a href="Post.jsp?postId='+postsArray[i].post_id+'" style="font-size:15px" >'+postsArray[i].title+'</a></div><br>')
+				$recntPostsContainer.append('<div class="recent-post"><a href="Post.jsp?postId='+postsArray[i].post_id+'" style="font-size:15px" >'+postsArray[i].title+'</a></div><br>')
 				$recntPostsContainer.append('<div>'+postsArray[i].createdAt+'</div><br><br>')
 			}
 			
@@ -38,7 +38,7 @@ function updateContents(){
 //				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" onclick="return loadPost('+postArray[i].post_id+');"><h5>'+postArray[i].title+'</h5></div><br>')
 				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
 				console.log("check"+postArray[i].post_id);
-				$homePostsContainer.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
+				$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
 				$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
 			}
 			
@@ -48,23 +48,3 @@ function updateContents(){
 	}
 	});
 }
-//function categoryClick(){
-//	
-//	jQuery.ajax({
-//		url: "posts?actionName=postsByCategory && categoryId=2",
-//		method: "GET",
-//		contentType: "",
-//		success:function(posts){
-//			var postArray = JSON.parse(posts)	
-//			
-//			var $recntPostsContainer = $(".Change-Page");
-//			$recntPostsContainer.append('<div><h2>'+root_category+'</h2></div><br>');	
-//			for(var i in postArray){
-//				$recntPostsContainer.append('<div><a href="posts/post?post_id="'+postArray[i].post_id+'><h5>'+postArray[i].title+'</h5></div><br>')
-//				$recntPostsContainer.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
-//				$recntPostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
-//			}
-//		}
-//	});
-//}
-

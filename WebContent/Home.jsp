@@ -8,6 +8,8 @@
 		<title>Home page</title>
 		<jsp:include page="Lib.jsp"></jsp:include>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
+		<script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
+		
 	</head>
 	<body>
 		<jsp:include page="Header.jsp"></jsp:include>

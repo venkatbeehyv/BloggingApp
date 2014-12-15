@@ -8,6 +8,7 @@
 		<title>Post page</title>
 		<jsp:include page="Lib.jsp"></jsp:include>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/post.js'></script>
+		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 	</head>
 	<body>
 		<jsp:include page="Header.jsp"></jsp:include>

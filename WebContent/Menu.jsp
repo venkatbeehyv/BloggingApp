@@ -19,7 +19,12 @@
         <li><a href="#" class="parent"><span style="width:86px">Technologies</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>Java</span></a></li>
+                    <li><a href="#"><span>Java</span></a>
+                    	<div><ul>
+                             <li><a href="#"><span>Sub Item 1.1.1</span></a></li>
+                             <li><a href="#"><span>Sub Item 1.1.2</span></a></li>
+                        </ul></div>
+                    </li>
                     <li><a href="#"><span>C</span></a></li>
                     <li><a href="#"><span>C++</span></a></li>
                 </ul>
