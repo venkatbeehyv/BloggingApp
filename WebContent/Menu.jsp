@@ -19,24 +19,28 @@
         <li><a href="#" class="parent"><span style="width:86px">Technologies</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>Java</span></a>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Java</span></a>
                     	<div><ul>
-                             <li><a href="#"><span>Sub Item 1.1.1</span></a></li>
+                             <li><a href="#"><span style="background-position: -576px bottom; color: rgb(195, 191, 183);">Sub Item 1.1.1</span></a></li>
                              <li><a href="#"><span>Sub Item 1.1.2</span></a></li>
                         </ul></div>
                     </li>
-                    <li><a href="#"><span>C</span></a></li>
-                    <li><a href="#"><span>C++</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Python</span></a>
+                        <div><ul>
+                             <li><a href="#"><span style="background-position: -576px bottom; color: rgb(195, 191, 183);">Sub Item 2.1.1</span></a></li>
+                        </ul></div>
+                    </li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">C++</span></a></li>
                 </ul>
                 
             </div>
         </li>
-         <li><a href="#" class="parent"><span style="width:78px">Frameworks</span></a>
+         <li><a href="#" class="parent"><span style="width:78px;">Frameworks</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>Spring</span></a></li>
-                    <li><a href="#"><span>Django</span></a></li>
-                    <li><a href="#"><span>Struts</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Spring</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Django</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Struts</span></a></li>
                 </ul>
                 
             </div>
@@ -44,9 +48,9 @@
         <li><a href="#" class="parent"><span style="width:67px">Databases</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>MySql</span></a></li>
-                    <li><a href="#"><span>CouchDB</span></a></li>
-                    <li><a href="#"><span>Big Data</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">MySql</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">CouchDB</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Big Data</span></a></li>
                 </ul>
                 
             </div>
@@ -54,9 +58,9 @@
         <li><a href="#" class="parent"><span style="width:89px">Web Services</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>JSON-RPC</span></a></li>
-                    <li><a href="#"><span>JSON-WSP</span></a></li>
-                    <li><a href="#"><span>Web Template</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">JSON-RPC</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">JSON-WSP</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Web Template</span></a></li>
                 </ul>
                 
             </div>
@@ -64,8 +68,8 @@
         <li><a href="#" class="parent"><span style="width:24px;padding-right: 44px;">UI</span></a>
             <div class="columns two">
                 <ul class="one">
-                    <li><a href="#"><span>Javascript</span></a></li>
-                    <li><a href="#"><span>CSS</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Javascript</span></a></li>
+                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">CSS</span></a></li>
                 </ul>
                 
             </div>
