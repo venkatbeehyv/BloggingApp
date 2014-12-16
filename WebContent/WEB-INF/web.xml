@@ -3,7 +3,7 @@
   <display-name>BlogginApp</display-name>
   <welcome-file-list>
     <welcome-file>Home.jsp</welcome-file>
-    <welcome-file>login.html</welcome-file>
+    
   </welcome-file-list>
   <servlet>
     <servlet-name>Home</servlet-name>
@@ -36,11 +36,11 @@
    
   <filter-mapping>
     <filter-name>RequestLoggingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/po</url-pattern>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/po</url-pattern>
   </filter-mapping>
 </web-app>
