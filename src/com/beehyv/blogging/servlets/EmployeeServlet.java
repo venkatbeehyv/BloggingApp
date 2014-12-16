@@ -24,8 +24,8 @@ import com.google.gson.Gson;
 public class EmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	EmployeeService employeeService = new EmployeeService();
- 
+	
+	EmployeeService employeeService = EmployeeService.getEmployeeServiceInstance();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

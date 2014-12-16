@@ -31,6 +31,6 @@
   </filter>
    <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/Home.jsp</url-pattern>
+    <url-pattern>/MyHomePage.jsp</url-pattern>
   </filter-mapping>
 </web-app>
