@@ -25,22 +25,12 @@
     <servlet-name>Post</servlet-name>
     <url-pattern>/posts/*</url-pattern>
   </servlet-mapping>
-  <filter>
-    <filter-name>RequestLoggingFilter</filter-name>
-    <filter-class>com.beehyv.blogging.servlet.filters.RequestLoggingFilter</filter-class>
-  </filter>
-  <filter>
+    <filter>
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>com.beehyv.blogging.servlet.filters.AuthenticationFilter</filter-class>
   </filter>
-   
-  <filter-mapping>
-    <filter-name>RequestLoggingFilter</filter-name>
-    <url-pattern>/po</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
-  <filter-mapping>
+   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/po</url-pattern>
+    <url-pattern>/Home.jsp</url-pattern>
   </filter-mapping>
 </web-app>

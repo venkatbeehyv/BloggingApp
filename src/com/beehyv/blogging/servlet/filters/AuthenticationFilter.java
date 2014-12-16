@@ -1,18 +1,24 @@
 package com.beehyv.blogging.servlet.filters;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.beehyv.blogging.modal.Employee;
+import com.beehyv.blogging.service.EmployeeService;
 
 /**
  * Servlet Filter implementation class AuthenticationFilter
@@ -38,16 +44,20 @@ public class AuthenticationFilter implements Filter {
          
         String uri = req.getRequestURI();
         this.context.log("Requested Resource::"+uri);
-         
+        
+        
         HttpSession session = req.getSession(false);
-         
-        if(session == null && !(uri.endsWith("html") || uri.endsWith("LoginServlet"))){
-            this.context.log("Unauthorized access request");
-            res.sendRedirect("Login.html");
+        Employee employee = (Employee)session.getAttribute("currentUser");
+        
+        if(employee != null){
+        	this.context.log("User Id::"+employee.getEmail());
+            
+        	chain.doFilter(request, response);
         }else{
-            // pass the request along the filter chain
-            chain.doFilter(request, response);
+        	this.context.log("Unauthorized access request");
+        	res.sendRedirect("Login.html?error=login");
         }
+        
 	}
 
 	/**

@@ -13,6 +13,19 @@ import com.beehyv.blogging.modal.Employee;
  */
 public class EmployeeService {
 	private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+	
+	private static EmployeeService employeeService;
+	
+	private EmployeeService(){
+		
+	}
+	
+	public static EmployeeService getEmployeeServiceInstance(){
+		if(employeeService == null){
+			employeeService = new EmployeeService();
+		}
+		return employeeService;
+	}
 
 	public Employee getEmployee(Long employee_id) {
 		return employeeDAO.getEmployee(employee_id);

@@ -14,10 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.beehyv.blogging.modal.Employee;
+import com.beehyv.blogging.service.EmployeeService;
+
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private final String userID = "admin";
@@ -32,18 +35,24 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// get request parameters for userID and password
-        String user = request.getParameter("user");
-        String pwd = request.getParameter("pwd");
+		EmployeeService employeeService = EmployeeService.getEmployeeServiceInstance();
+        String user = request.getParameter("emailId");
+        String pwd = request.getParameter("password");
          
-        if(userID.equals(user) && password.equals(pwd)){
+        Long employeeId = employeeService.loginAuthorization(user, pwd);
+        if(employeeId != null){
+        	
             HttpSession session = request.getSession();
-            session.setAttribute("user", "Pankaj");
+            Employee employee = employeeService.getEmployee(employeeId);
+            session.setAttribute("currentUser", employee);
             //setting session to expiry in 30 mins
             session.setMaxInactiveInterval(30*60);
             Cookie userName = new Cookie("user", user);
             userName.setMaxAge(30*60);
             response.addCookie(userName);
-            response.sendRedirect("MyHomePage.jsp");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+            requestDispatcher.forward(request, response);
+            //response.sendRedirect("Home.jsp");
         }else{
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.html");
             PrintWriter out= response.getWriter();
