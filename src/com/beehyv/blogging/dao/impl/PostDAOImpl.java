@@ -9,7 +9,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -526,7 +525,66 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		} // end finally
 	} // end editPost method
 		
-	
+	/** This method returns list of Posts
+	 * related to searched words
+	 * 
+	 */
+	@Override
+	public List<Post> searchPosts(String word) {
+		// create Statement for querying database
+		Connection connection = getConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		List<Post> posts = new ArrayList<Post>();
+		String[] words = word.split(" ");
+		String sqlWord = word;
+		for(String oneWord: words){
+			sqlWord = sqlWord.concat("%' or '%" + oneWord);
+		}
+		System.out.println(sqlWord);
+		try 
+		{
+			statement = connection.createStatement();
+
+			// query database
+			resultSet = statement.executeQuery("SELECT  Post.title, Post.created_at, Employee.name, Post.content, "
+					+ "Post.post_id from Blog.Post inner join Blog.Employee on Employee.employee_id = Post.created_by "
+						+" where content LIKE '%"+sqlWord+"%' limit 4" );
+
+			// process query results
+			while ( resultSet.next() )
+			{
+				Post post = new Post();
+				post.setTitle(resultSet.getString(1));
+				post.setCreatedAt(resultSet.getString(2));
+				post.setUserName(resultSet.getString(3));
+				post.setContent(resultSet.getString(4));
+				post.setPost_id(resultSet.getLong(5));
+				posts.add(post);
+			} // end while 
+		} // end try block
+		
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		return posts;
+	} // end searchPosts method
 	
 	public static void main(String[] args){
 		PostDAO postDAO = new PostDAOImpl();
@@ -537,11 +595,6 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getMyPosts((long) 10));
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
-		Date date = new Date() {
-		};
-		System.out.println(date.getYear()+":"+date.getMonth()+":"+date.getDay() );
+		System.out.println(postDAO.searchPosts("programming language"));
 	}
-
-
-	
 } // end of PostDAOImpl.java 
