@@ -3,6 +3,7 @@
   <display-name>BlogginApp</display-name>
   <welcome-file-list>
     <welcome-file>Home.jsp</welcome-file>
+    <welcome-file>login.html</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Home</servlet-name>
@@ -24,4 +25,22 @@
     <servlet-name>Post</servlet-name>
     <url-pattern>/posts/*</url-pattern>
   </servlet-mapping>
+  <filter>
+    <filter-name>RequestLoggingFilter</filter-name>
+    <filter-class>com.beehyv.blogging.servlet.filters.RequestLoggingFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.beehyv.blogging.servlet.filters.AuthenticationFilter</filter-class>
+  </filter>
+   
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
