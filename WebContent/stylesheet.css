@@ -160,9 +160,8 @@ a:hover {
 }
 .ui-dialog .ui-dialog-titlebar{
 	width: 85%;
-	horizontal-align: center;
-	margin-left: auto;
-    margin-right: auto
+	margin-left: 4px;
+    margin-right: 2px;
 }
 .ui-widget-header{
 	text-align: center;

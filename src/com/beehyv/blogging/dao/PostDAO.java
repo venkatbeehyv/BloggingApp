@@ -19,5 +19,6 @@ public interface PostDAO {
 	public List<Post> getPostsbyCategory(Long category_id);
 	public void addPost(Post post);
 	public void editPost(Post post);
+	public List<Post> searchPosts(String word);
 
 }
