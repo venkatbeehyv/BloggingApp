@@ -61,6 +61,10 @@ public class PostService {
 		return postDAO.getPostsbyCategory(category_id);
 	}
 	
+	public List<Post> searchPosts(String word){
+		return postDAO.searchPosts(word);
+	}
+	
 	public void editPost(Post post){
 		postDAO.editPost(post);
 	}
