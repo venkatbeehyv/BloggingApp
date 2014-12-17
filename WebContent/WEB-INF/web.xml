@@ -14,12 +14,12 @@
     <servlet-class>com.beehyv.blogging.servlets.PostServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Home</servlet-name>
-    <url-pattern>/recent</url-pattern>
+    <servlet-name>Post</servlet-name>
+    <url-pattern>/tags/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
-    <url-pattern>/tag</url-pattern>
+    <url-pattern>/recent</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Post</servlet-name>

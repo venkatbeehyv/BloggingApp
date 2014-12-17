@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" import="java.util.List,com.beehyv.blogging.modal.Post"  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" import="java.util.List,com.beehyv.blogging.modal.Post,com.beehyv.blogging.modal.Tag"  
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,6 +9,7 @@
 		<jsp:include page="Lib.jsp"></jsp:include>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
+		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 		
 	</head>
 	<body>

@@ -21,7 +21,6 @@ function updateRecentPosts(){
 	});
 	
 }
-
 function updateContents(){
 	
 	jQuery.ajax({
@@ -37,7 +36,7 @@ function updateContents(){
 				$homePostsContainer.append('<div><a href="Category.jsp?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div><br>')
 //				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" onclick="return loadPost('+postArray[i].post_id+');"><h5>'+postArray[i].title+'</h5></div><br>')
 				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
-				console.log("check"+postArray[i].post_id);
+				//console.log("check"+postArray[i].post_id);
 				$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
 				$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
 			}

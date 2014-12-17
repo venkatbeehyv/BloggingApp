@@ -1,4 +1,4 @@
 function initializeMenu(){
 	
-	 $(function() { $(".lavaLamp").lavaLamp({ speed: 500 }) });
+	/*$(function() { $(".lavaLamp").lavaLamp({ speed: '700' })});*/
 }
