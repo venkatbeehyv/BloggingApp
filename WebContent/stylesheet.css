@@ -170,3 +170,13 @@ a:hover {
 #login{
 	padding:100px 100px 100px 100px;
 }
+#login form{
+	padding:100px 100px 100px 100px;
+}
+#Login{
+	margin:14px 311px;
+	width: 1024px;
+}
+#Login div{
+	display:inline;
+}
