@@ -14,13 +14,12 @@ function updateTags(){
 			
 			for(var i in tagsArray){
 				//alert(tagsArray[i].idTag);
-				$tagContainer.append('<div class = "tags"><a href="tags/tag?actionName=postsbyTag&tagId='+tagsArray[i].idTag+'">'+tagsArray[i].tag+'</a></div>')
+				$tagContainer.append('<div class = "homeTags"><a href="tags/tag?actionName=postsbyTag&tagId='+tagsArray[i].idTag+'">'+tagsArray[i].tag+'</a></div><br>')
 				
 			}
 			
 		},
 		error: function (error) {
-			$(".tags").append('<div>'+ alert('error; ' + eval(error))+'</div>');
         }
 	});
 }

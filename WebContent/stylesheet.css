@@ -75,6 +75,13 @@ h4{
     padding: 10px 0px 0px 10px;
     border-radius:10px;
 }
+.homeTags{
+	display: block;
+	float: left;
+}
+.homeTags a{
+	text-decoration: none;
+}
 .search-container{
 	text-align: right;
 }
