@@ -10,7 +10,7 @@
  *           <li><a href="#">Ride an elephant</a></li>
  *       </ul> -->
 
-<div id="menu">
+<div id="menu" style="width: 1320px; margin-left:50px;">
     <ul class="lavaLamp">
         <li><a href="http://localhost:8080/BlogginApp/Home.jsp"><span>Home</span></a>
             

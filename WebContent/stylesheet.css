@@ -7,6 +7,9 @@ body{
 	border: 1px solid black;
     height:83px;
     background-color: #335CD6;
+    width: 1320px;
+    margin-left:50px;
+    margin-right:50px;
 }
 div div{
 	display: inline-block;
@@ -28,8 +31,9 @@ div div{
 	height: 500px;
 	background-color:#E8E8FA;
 	margin-top: 50px;
-	margin-left:100px;
+	margin-left:500px;
 	border-radius: 10px;
+	border: 2px solid black;
 }
 .formColumns{
 	width:100%;
@@ -41,6 +45,21 @@ div div{
 	width:90%;
 	font-size: 15px;
 	margin-left:25px;
+}
+.submit{
+	margin-left:100px;
+	
+}
+#login{
+	padding:100px 100px 100px 100px;
+	border-radius: 10px;
+	background-color:#E8E8FA;
+	margin-left: 125px;
+	margin-top: 25px;
+	border: 2px solid black;
+}
+#login form{
+	padding:100px 100px 100px 100px;
 }
 .menuBar{
 	border-radius: 10px;
@@ -79,9 +98,9 @@ h4{
 	height: 250px;
     width: 100%;
     background-color:#E8E8FA;
-    margin-right:50px;
+    margin-right: 50px;
     margin-bottom: 20px;
-    padding: 10px 0px 0px 10px;
+    padding-left: 15px;
     border-radius: 10px;
     
 }
@@ -90,7 +109,7 @@ h4{
     width: 100%;
     background-color:#E8E8FA;
     margin-right:50px;
-    padding: 10px 0px 0px 10px;
+    padding-left: 15px;
     border-radius:10px;
 }
 .homeTags{
@@ -102,11 +121,14 @@ h4{
 }
 .search-container{
 	text-align: right;
+	margin-left:50px;
 }
 .search{
+	width:1320px;
 	margin-right:25px;
 	border-radius: 25px;
 	margin-top: 5px;
+	margin-bottom: 5px;
 }
 .contents h2 {
     margin-top: 4px;
@@ -127,7 +149,7 @@ html{
 	}
 .right-section{
 	float:right;
-	width:25%;
+	width:20%;
 }	
 .content-summary{
 	width: 100%;
@@ -167,6 +189,8 @@ a:hover {
 }
 .matter{
 	margin-top:20px;
+	width: 1320px;
+	margin-left:50px;
 }
 .Change-Page{
 	min-height: 800px;
@@ -192,16 +216,3 @@ a:hover {
 	text-align: center;
 }
 #menu div.two ul.one div { margin-left:0px; }
-#login{
-	padding:100px 100px 100px 100px;
-}
-#login form{
-	padding:100px 100px 100px 100px;
-}
-#Login{
-	margin:14px 311px;
-	width: 1024px;
-}
-#Login div{
-	display:inline;
-}
