@@ -18,22 +18,9 @@ function loadPost(post_id){
 		}
 	});
 }
-function init(){
-		$( "#login" ).dialog({ autoOpen: false });
-	
-		$( "#id" ).click(function() {
-			$( "#login" ).dialog( "open" );
-		});
-	
-		$( "#register" ).dialog({ autoOpen: false });
-	
-		$( "#reg" ).click(function() {
-		$( "#register" ).dialog( "open" );
-	});
-}
+
 jQuery(document).ready(function()
 		{
-			init();
 			
 			updateRecentPosts();
 			updateTags();

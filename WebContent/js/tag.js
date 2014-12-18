@@ -14,7 +14,7 @@ function updateTags(){
 			
 			for(var i in tagsArray){
 				//alert(tagsArray[i].idTag);
-				$tagContainer.append('<div class = "homeTags"><a href="tags/tag?actionName=postsbyTag&tagId='+tagsArray[i].idTag+'">'+tagsArray[i].tag+'</a></div><br>')
+				$tagContainer.append('<div class = "homeTags"><a href="Tag.jsp?actionName=postsbyTag&&tagId='+tagsArray[i].idTag+'&&tag='+tagsArray[i].tag+'">'+tagsArray[i].tag+'</a></div><br>')
 				
 			}
 			
