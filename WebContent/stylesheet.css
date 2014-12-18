@@ -20,15 +20,33 @@ div div{
 }
 #id{
 	float:right;
-	
 	margin-right: 30px;
     margin-top: 30px;
+}
+#register{
+	width : 300px;
+	height: 500px;
+	background-color:#E8E8FA;
+	margin-top: 50px;
+	margin-left:100px;
+	border-radius: 10px;
+}
+.formColumns{
+	width:100%;
+	margin-left:25px;
+	margin-top: 20px;
+	font-size: 20px;
+}
+.formEntries{
+	width:90%;
+	font-size: 15px;
+	margin-left:25px;
 }
 .menuBar{
 	border-radius: 10px;
 	}
 .categories{
-	background-color: #a4a4a4;
+	background-color: #C7C7D3;
     float: left;
     height: 40px;
     width: 142px;
@@ -37,7 +55,7 @@ div div{
     border-radius: 10px;
 }
 #categories{
-	background-color: #a4a4a4;
+	background-color: #C7C7D3;
     float: left;
     height: 40px;
     width: 142px;
@@ -51,7 +69,7 @@ h4{
 .contents{
 	min-height: 800px;
     width: 70%;
-    background-color:#99CCFF;
+    background-color:#E8E8FA;
     margin-top: -27px;
     padding:10px 10px 10px 10px;
     float: left;
@@ -60,7 +78,7 @@ h4{
 .recent{
 	height: 250px;
     width: 100%;
-    background-color:#99CCFF;
+    background-color:#E8E8FA;
     margin-right:50px;
     margin-bottom: 20px;
     padding: 10px 0px 0px 10px;
@@ -70,7 +88,7 @@ h4{
 .tags{
 	height: 283px;
     width: 100%;
-    background-color:#99CCFF;
+    background-color:#E8E8FA;
     margin-right:50px;
     padding: 10px 0px 0px 10px;
     border-radius:10px;

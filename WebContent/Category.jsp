@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="Lib.jsp"></jsp:include>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/postByCategory.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
+
 <title>Insert title here</title>
 </head>
 <body>

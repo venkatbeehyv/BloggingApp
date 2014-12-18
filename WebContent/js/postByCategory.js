@@ -15,12 +15,13 @@ jQuery(document).ready(function()
 		{
 			init();
 			updateRecentPosts();
+			updateTags();
 			
 			var first = getUrlVars()["root_id"];
 			var root_id= parseInt(first);
 			
 			postByRootId(root_id);
-			updateTags();
+			
 		});
 function postByRootId(root_id){
 	jQuery.ajax({

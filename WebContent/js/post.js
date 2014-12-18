@@ -36,12 +36,13 @@ jQuery(document).ready(function()
 			init();
 			
 			updateRecentPosts();
+			updateTags();
 			
 			var first = getUrlVars()["postId"];
 			var post_id= parseInt(first);
 			
 			loadPost(post_id);
-		//	updateTags();
+			
 		});
 
 function getUrlVars() {
@@ -51,28 +52,3 @@ function getUrlVars() {
     });
     return vars;
 }
-
-/*function updateTags(){
-	
-
-	jQuery.ajax({
-		url: "tags?actionName=homeTags",
-		method: "GET",
-		contentType: "",
-		success:function(tags){
-			
-			var tagsArray = JSON.parse(tags)
-			
-			var $tagContainer = $(".tags");
-			for(var i in tagsArray){
-				//alert(tagsArray[i].idTag);
-				$tagContainer.append('<div><a href="tags/tag?actionName=postsbyTag&tagId='+tagsArray[i].idTag+'">'+tagsArray[i].tag+'</a></div>')
-				alert(i)
-			}
-			
-		},
-		error:function(e){
-			
-		}
-	});
-}*/
