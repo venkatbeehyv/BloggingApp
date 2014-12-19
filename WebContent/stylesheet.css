@@ -12,6 +12,9 @@ body{
     margin-left:50px;
     margin-right:50px;
 }
+.pic{
+	float: left;
+}
 div div{
 	display: inline-block;
 	font color:#767676
@@ -34,7 +37,7 @@ div div{
 	margin-top: 50px;
 	margin-left:500px;
 	border-radius: 10px;
-	border: 2px solid black;
+	border: 2px solid rgba(34, 29, 29, 0.08);
 }
 .formColumns{
 	width:100%;
@@ -48,19 +51,25 @@ div div{
 	margin-left:25px;
 }
 .submit{
-	margin-left:100px;
-	
+	margin-left:110px;
+	margin-top: 20px;	
 }
 #login{
-	padding:100px 100px 100px 100px;
+	width:400px;
+	height: 300px;
 	border-radius: 10px;
 	background-color:#E8E8FA;
-	margin-left: 125px;
-	margin-top: 25px;
-	border: 2px solid black;
+	border: 2px solid rgba(34, 29, 29, 0.08);
+	margin-top: 100px;
+	margin-left: 500px
 }
 #login form{
-	padding:100px 100px 100px 100px;
+	padding-top: 60px;
+	padding-left: 40px;
+}
+.msg{
+	margin-top: 40px;
+	margin-left: 100px;
 }
 .menuBar{
 	border-radius: 10px;
@@ -85,7 +94,6 @@ div div{
 h4{
 	padding: 11px 24px 55px 39px;
 }
-
 .contents{
 	min-height: 800px;
     width: 70%;
