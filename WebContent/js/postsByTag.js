@@ -1,6 +1,6 @@
 function postsByTags(tag_id,tag){
 	jQuery.ajax({
-		url:"Tag.jsp?actionName=postsbyTag&&tagId="+tag_id+"&&tag="+tag,
+		url:"posts?actionName=postsbyTag&&tagId="+tag_id+"&&tag="+tag,
 		method:"GET",
 		contentType:"",
 		success:function(posts){
