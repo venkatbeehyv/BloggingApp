@@ -10,7 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
+import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
 import com.beehyv.blogging.modal.Tag;
 import com.beehyv.blogging.service.PostService;
@@ -62,6 +63,17 @@ public class PostServlet extends HttpServlet {
 			PrintWriter writer = resp.getWriter();
 			System.out.println(tagsJSONString);
 			writer.println(tagsJSONString);
+		}
+		//search
+		else if("searchPosts".equalsIgnoreCase(actionName)){
+			String word = req.getParameter("word");
+			List<Post> posts = postService.searchPosts(word);
+			req.setAttribute("posts", posts);
+			Gson gson = new Gson();
+			String postsJSONString = gson.toJson(posts);
+			PrintWriter writer = resp.getWriter();
+			System.out.println(postsJSONString);
+			writer.println(postsJSONString);
 		}
 		// returns posts linked to that particular tag
 		else if("postsbyTag".equalsIgnoreCase(actionName)){
@@ -134,6 +146,21 @@ public class PostServlet extends HttpServlet {
 			postService.addPost(post);
 		}
 		
+		//add comment to the database
+		else if("addComment".equalsIgnoreCase(actionName)){
+			Gson gson = new Gson();
+			StringBuffer jb = new StringBuffer();
+			String line = null;
+			try {
+			  BufferedReader reader = req.getReader();
+			  while ((line = reader.readLine()) != null)
+			    jb.append(line);
+			  } catch (Exception e) { /*report an error*/ }
+			
+		    Comment comment = gson.fromJson(jb.toString(),Comment.class);
+			postService.addComment(comment);
+		}
+		// edit post
 		else if("editPost".equalsIgnoreCase(actionName)){
 			Gson gson = new Gson();
 			StringBuffer jb = new StringBuffer();

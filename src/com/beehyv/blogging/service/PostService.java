@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.beehyv.blogging.dao.PostDAO;
 import com.beehyv.blogging.dao.impl.PostDAOImpl;
+import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
 
 public class PostService {
@@ -67,6 +68,10 @@ public class PostService {
 	
 	public void editPost(Post post){
 		postDAO.editPost(post);
+	}
+
+	public void addComment(Comment comment) {
+		postDAO.addComment(comment);		
 	}
 
 }

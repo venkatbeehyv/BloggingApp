@@ -2,6 +2,7 @@ package com.beehyv.blogging.dao;
 
 import java.util.List;
 
+import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
 
 /**
@@ -20,5 +21,6 @@ public interface PostDAO {
 	public void addPost(Post post);
 	public void editPost(Post post);
 	public List<Post> searchPosts(String word);
+	public void addComment(Comment comment);
 
 }

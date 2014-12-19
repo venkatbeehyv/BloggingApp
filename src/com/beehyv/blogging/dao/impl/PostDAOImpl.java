@@ -524,7 +524,50 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			} // end catch
 		} // end finally
 	} // end editPost method
+	
+	/** 
+	 * This method inserts a new comment in the database
+	 */
+	@Override
+	public void addComment(Comment comment) {
+		Connection connection = getConnection();
 		
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			String Comment = comment.getComment();
+			String createdAt = comment.getCreated_at();
+			Long post_id = comment.getIdPost();
+			Long employee_id = comment.getIdEmployee();
+			
+			// updating database
+			statement.executeUpdate("insert into Blog.Comment (Comment, created_at, post_id, employee_id )"
+					+ " values ('"+Comment+"','"+createdAt+"',"+post_id+","+employee_id+")");
+		} // end try block
+		
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		
+	}
+	
 	/** This method returns list of Posts
 	 * related to searched words
 	 * 
@@ -597,4 +640,6 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//postDAO.addPost(p);
 		System.out.println(postDAO.searchPosts("programming language"));
 	}
+
+	
 } // end of PostDAOImpl.java 

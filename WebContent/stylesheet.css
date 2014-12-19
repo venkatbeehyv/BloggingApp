@@ -3,11 +3,12 @@ body{
 	width: 1024px;	
 }
 .main_top {
-	border-radius: 10px;
-	border: 1px solid black;
+	
     height:83px;
-    background-color: #335CD6;
     width: 1320px;
+    background-color: #335CD6;
+    border-radius: 10px;
+	border: 1px solid black;
     margin-left:50px;
     margin-right:50px;
 }
@@ -102,7 +103,6 @@ h4{
     margin-bottom: 20px;
     padding-left: 15px;
     border-radius: 10px;
-    
 }
 .tags{
 	height: 283px;
