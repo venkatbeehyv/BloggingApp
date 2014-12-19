@@ -27,7 +27,7 @@ jQuery(document).ready(function()
 			
 			var first = getUrlVars()["tagId"];
 			var tag_id= parseInt(first);
-			
+			var tag = getUrlVars()["tag"];
 			postsByTags(tag_id,tag);
 			
 		});
