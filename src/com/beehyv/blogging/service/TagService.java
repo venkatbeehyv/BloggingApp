@@ -13,4 +13,11 @@ public class TagService {
 		return tagDAO.getHomeTags();
 	}
 	
+	public void addTags(List<Tag> tags){
+		tagDAO.addTags(tags);
+	}
+	
+	public void deleteTag(Long tag_id){
+		tagDAO.deleteTag(tag_id);
+	}
 }

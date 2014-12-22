@@ -22,5 +22,7 @@ public interface PostDAO {
 	public void editPost(Post post);
 	public List<Post> searchPosts(String word);
 	public void addComment(Comment comment);
+	public void deletePost(Long post_id);
+	public void deleteComment(Long comment_id);
 
 }

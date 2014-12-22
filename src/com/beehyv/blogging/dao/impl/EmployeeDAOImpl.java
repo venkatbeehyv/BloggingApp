@@ -204,6 +204,46 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		} // end finally
 	} // end editEmployee method
 
+	/**
+	 * This method deletes all entries from the Database
+	 * related to an employee, it deletes entries from Post, Comment 
+	 * and Employee tables where employee_id matches the passed parameter
+	 */
+	@Override
+	public void deleteEmployee(Long employee_id) {
+		Connection connection = getConnection();
+		
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			// updating database
+			statement.executeUpdate("delete from Blog.Post where created_by = "+ employee_id);
+			statement.executeUpdate("delete from Blog.Comment where employee_id = "+ employee_id);
+			statement.executeUpdate("delete from Blog.Employee where employee_id = "+ employee_id);
+		} // end try block
+		
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+	} // end method deleteEmployee
+	
 	/** This method changes the password for an employee
 	 *  It takes three parameters employee_id, old password and new password 
 	 */
@@ -290,10 +330,13 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	} // end changePassword method
 	
 	public static void main(String[] args){
-		//EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//employeeDAO.getEmployee((long) 15);
 		//System.out.println(employeeDAO.loginAuthorization("rgrg27", "beehyv123")); 
 		//System.out.println(employeeDAO.changePassword((long) 10, "beehyv1234", "beehyv123"));
+		employeeDAO.deleteEmployee((long) 17);
 	}
+
+	
 
 }

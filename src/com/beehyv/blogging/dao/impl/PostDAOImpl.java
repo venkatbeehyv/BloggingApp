@@ -525,6 +525,46 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		} // end finally
 	} // end editPost method
 	
+	/**
+	 * This method deletes all entries from the Database
+	 * related to a post_id, it deletes entries from Post, Comment 
+	 * and Tag_Post tables where post_id matches the passed parameter
+	 */
+	@Override
+	public void deletePost(Long post_id) {
+		Connection connection = getConnection();
+		
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			// updating database
+			statement.executeUpdate("delete from Blog.Post where post_id = "+ post_id);
+			statement.executeUpdate("delete from Blog.Comment where post_id = "+ post_id);
+			statement.executeUpdate("delete from Blog.Tag_Post where post_id = "+ post_id);
+		} // end try block
+		
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+	} // end method deletePost
+	
 	/** 
 	 * This method inserts a new comment in the database
 	 */
@@ -546,6 +586,45 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			// updating database
 			statement.executeUpdate("insert into Blog.Comment (Comment, created_at, post_id, employee_id )"
 					+ " values ('"+Comment+"','"+createdAt+"',"+post_id+","+employee_id+")");
+		} // end try block
+		
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} // end catch block
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		
+	}
+	
+	/**
+	 * This method deletes all entries from the Database
+	 * related to a comment_id, it deletes entries from Comment table
+	 * where comment_id matches the passed parameter
+	 */
+	@Override
+	public void deleteComment(Long comment_id) {
+		Connection connection = getConnection();
+		
+		// create Statement for querying database
+		Statement statement = null;
+
+		try {
+			statement = connection.createStatement();
+ 
+			// updating database
+			statement.executeUpdate("delete from Blog.Comment where comment_id = "+ comment_id);
 		} // end try block
 		
 		catch (SQLException e) 
@@ -638,8 +717,8 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getMyPosts((long) 10));
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
-		System.out.println(postDAO.searchPosts("programming language"));
+		//postDAO.deletePost((long) 17);
+		postDAO.deleteComment((long) 14);
+		//System.out.println(postDAO.searchPosts("programming language"));
 	}
-
-	
 } // end of PostDAOImpl.java 

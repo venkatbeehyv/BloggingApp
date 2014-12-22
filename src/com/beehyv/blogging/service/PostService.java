@@ -69,9 +69,17 @@ public class PostService {
 	public void editPost(Post post){
 		postDAO.editPost(post);
 	}
+	
+	public void deletePost(Long post_id){
+		postDAO.deletePost(post_id);
+	}
 
 	public void addComment(Comment comment) {
 		postDAO.addComment(comment);		
+	}
+	
+	public void deleteComment(Long comment_id){
+		postDAO.deleteComment(comment_id);
 	}
 
 }

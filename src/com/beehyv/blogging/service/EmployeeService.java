@@ -43,6 +43,10 @@ public class EmployeeService {
 		employeeDAO.editEmployee(employee);
 	}
 	
+	public void deleteEmployee(Long employee_id){
+		employeeDAO.deleteEmployee(employee_id);
+	}
+	
 	public boolean changePassword(Long employee_id, String oldPassword, String newPassword){
 		return employeeDAO.changePassword(employee_id, oldPassword,  newPassword);
 	}
