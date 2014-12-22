@@ -20,7 +20,7 @@ import com.beehyv.blogging.service.EmployeeService;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet("/MyHomePage")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private final String userID = "admin";
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
             Cookie userName = new Cookie("user", user);
             userName.setMaxAge(30*60);
             response.addCookie(userName);
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/MyHomePage.jsp");
             requestDispatcher.forward(request, response);
             //response.sendRedirect("Home.jsp");
         }else{
