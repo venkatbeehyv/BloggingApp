@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 
 import com.beehyv.blogging.dao.EmployeeDAO;
 import com.beehyv.blogging.modal.Employee;
@@ -121,7 +122,10 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		// create Statement for querying database
 		Statement statement = null;
-
+		
+		java.util.Date date= new java.util.Date();
+		employee.setCreated_at(new Timestamp(date.getTime()).toString());
+		
 		try 
 		{
 			statement = connection.createStatement();
@@ -129,13 +133,14 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 			String email = employee.getEmail();
 			String name = employee.getName();
 			String password = employee.getPassword();
+			String designation = employee.getDesignation();
 			String mobile_no = employee.getMobile_no();
 			String createdAt = employee.getCreated_at();
 			String lastLoggedIn = employee.getlastLoggedIn();
 			
 			// insert an employee into database
-			statement.executeUpdate("insert into Blog.Employee (email, name, password, mobile, created_at, last_logged_in, role_id ) "
-					+ "values ('"+email+"', '"+name+"', '"+password+"', "+mobile_no+", '"+createdAt+"',"+lastLoggedIn+",2)");
+			statement.executeUpdate("insert into Blog.Employee (email, name, password, designation, mobile, created_at, last_logged_in, role_id ) "
+					+ "values ('"+email+"', '"+name+"', '"+password+"','"+ designation +"',"+mobile_no+", '"+createdAt+"',"+lastLoggedIn+",2)");
 		} // end try block
 		
 		catch (SQLException e) 

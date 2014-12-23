@@ -3,18 +3,18 @@ package com.beehyv.blogging.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.beehyv.blogging.modal.Employee;
-import com.beehyv.blogging.modal.Post;
 import com.beehyv.blogging.service.EmployeeService;
-import com.beehyv.blogging.service.PostService;
 import com.google.gson.Gson;
 
 /**
@@ -49,8 +49,6 @@ public class EmployeeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Inside EmployeeServlet::");
 		String actionName = request.getParameter("actionName");
-		String name = request.getParameter("Name");
-		String password = request.getParameter("Pass");
 	
 //		System.out.println("actionNAme: " + actionName);
 		
@@ -68,6 +66,19 @@ public class EmployeeServlet extends HttpServlet {
 			System.out.println(jb.toString());
 		    Employee employee = gson.fromJson(jb.toString(),Employee.class);
 		    employeeService.addEmployee(employee);
+		    
+		    // redirecting to MyHomePage
+		    HttpSession session = request.getSession();
+            session.setAttribute("currentUser", employee);
+            //setting session to expiry in 30 mins
+            session.setMaxInactiveInterval(30*60);
+            String user = employee.getEmail();
+            Cookie userName = new Cookie("user", user);
+            userName.setMaxAge(30*60);
+            response.addCookie(userName);
+            System.out.println("check!!!!");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/MyHomePage.jsp");
+            requestDispatcher.forward(request, response);
 		}
 		
 		else if("editEmployee".equalsIgnoreCase(actionName)){

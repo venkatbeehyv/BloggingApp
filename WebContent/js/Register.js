@@ -19,7 +19,7 @@ $("#register-id").click(function() {
 				    dataType: 'json',
 				    async: false,
 				    success: function(msg) {
-				        alert(msg);
+				    	window.location= "/MyHomePage.jsp";
 				    }
 				});
 			}

@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		EmployeeService employeeService = EmployeeService.getEmployeeServiceInstance();
         String user = request.getParameter("emailId");
         String pwd = request.getParameter("password");
+        System.out.println("check msg");
          
         Long employeeId = employeeService.loginAuthorization(user, pwd);
         if(employeeId != null){
