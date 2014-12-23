@@ -49,7 +49,10 @@ public class EmployeeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Inside EmployeeServlet::");
 		String actionName = request.getParameter("actionName");
-		System.out.println("actionNAme: " + actionName);
+		String name = request.getParameter("Name");
+		String password = request.getParameter("Pass");
+	
+//		System.out.println("actionNAme: " + actionName);
 		
 		//adds an Employee to the database
 		if("Register".equalsIgnoreCase(actionName)){
@@ -62,6 +65,7 @@ public class EmployeeServlet extends HttpServlet {
 			    jb.append(line);
 			  } catch (Exception e) { /*report an error*/ }
 			
+			System.out.println(jb.toString());
 		    Employee employee = gson.fromJson(jb.toString(),Employee.class);
 		    employeeService.addEmployee(employee);
 		}
