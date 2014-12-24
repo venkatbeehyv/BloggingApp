@@ -11,7 +11,7 @@
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 	</head>
 	<body>
-		<jsp:include page="Header.jsp"></jsp:include>
+		<jsp:include page="MyHeader.jsp"></jsp:include>
 		<jsp:include page="Menu.jsp"></jsp:include>
 		
 		<div class="search-container">

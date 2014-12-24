@@ -99,7 +99,7 @@ public class PostServlet extends HttpServlet {
 		}
 		// returns all the posts posted by loggedin user
 		else if("myPosts".equalsIgnoreCase(actionName)){
-			String employeeId = req.getParameter("employeeId");
+			String employeeId = req.getParameter("employee_id");
 			List<Post> posts = postService.getMyPosts(Long.valueOf(employeeId));
 			req.setAttribute("posts", posts);
 			Gson gson = new Gson();

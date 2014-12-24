@@ -13,7 +13,7 @@
 		
 	</head>
 	<body>
-		<jsp:include page="Header.jsp"></jsp:include>
+		<jsp:include page="MyHeader.jsp"></jsp:include>
 		<jsp:include page="Menu.jsp"></jsp:include>
 		
 		<div class="search-container">

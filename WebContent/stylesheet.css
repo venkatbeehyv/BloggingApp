@@ -155,9 +155,48 @@ h5 {
 html{
 	background-color:#f1f1f1;
 	}
+.main{
+	margin-left:45px;
+	width:1320px;
+}
+.left-section{
+	float:left;
+	width:70%;
+	height: 650px;
+	padding: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+ 	background-color: #e8e8fa; 	
+ 	border-radius:10px;
+}
+.post-head{
+	margin-left:350px;
+}
+.form div{
+	 display:inline;
+}
+.jqte-test{
+	width:900px;
+	height: 300px;
+}
+.title{
+	width: 40%;
+}
+.addPost-tags{
+	width: 40%;
+}
+#post-content{
+	height:500%;
+	width:70%;
+}
+.post-submit{
+	margin-right:100px;
+	margin-left:300px;
+}
 .right-section{
 	float:right;
 	width:20%;
+	margin-top: 20px;
 }	
 .content-summary{
 	width: 100%;
@@ -224,3 +263,17 @@ a:hover {
 	text-align: center;
 }
 #menu div.two ul.one div { margin-left:0px; }
+
+.error{
+	background-color: red
+}
+.addPost{
+	float:right;
+	margin-right: 30px;
+    margin-top: 30px;
+}
+.myPosts{
+	float:right;
+	margin-right: 30px;
+    margin-top: 30px;
+}

@@ -84,6 +84,7 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 					+ "where employee_id = " + employee_id );
 			while(resultSet.next()){
 				// process query results
+				employee.setEmployee_id(employee_id);
 				employee.setName(resultSet.getString(1));
 				employee.setDesignation(resultSet.getString(2));
 				employee.setEmail(resultSet.getString(3));

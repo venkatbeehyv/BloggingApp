@@ -68,15 +68,15 @@ public class EmployeeServlet extends HttpServlet {
 		    employeeService.addEmployee(employee);
 		    
 		    // redirecting to MyHomePage
-		    HttpSession session = request.getSession();
-            session.setAttribute("currentUser", employee);
-            //setting session to expiry in 30 mins
-            session.setMaxInactiveInterval(30*60);
-            String user = employee.getEmail();
-            Cookie userName = new Cookie("user", user);
-            userName.setMaxAge(30*60);
-            response.addCookie(userName);
-            System.out.println("check!!!!");
+	    HttpSession session = request.getSession();
+          session.setAttribute("currentUser", employee);
+//            //setting session to expiry in 30 mins
+//            session.setMaxInactiveInterval(30*60);
+//            String user = employee.getEmail();
+//            Cookie userName = new Cookie("user", user);
+//            userName.setMaxAge(30*60);
+//            response.addCookie(userName);
+//            System.out.println("check!!!!");
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/MyHomePage.jsp");
             requestDispatcher.forward(request, response);
 		}
