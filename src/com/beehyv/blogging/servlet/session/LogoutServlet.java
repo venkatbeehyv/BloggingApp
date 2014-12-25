@@ -2,6 +2,7 @@ package com.beehyv.blogging.servlet.session;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LogoutServlet")
+@WebServlet("/Logout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +36,8 @@ public class LogoutServlet extends HttpServlet {
         if(session != null){
             session.invalidate();
         }
-        response.sendRedirect("Login.html");
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/MyHomePage.jsp");
+        requestDispatcher.forward(request, response);
 	}
 
 }

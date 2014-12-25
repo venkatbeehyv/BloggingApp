@@ -204,10 +204,16 @@ html{
 
 .truncate{
   width: 100%;
-  height:100px;
-  /* white-space: nowrap; */
-  overflow-x: hidden;
+  height:110px;
+  overflow: hidden;
   text-overflow: ellipsis;
+}
+.read-more{
+	float:right;
+	margin-right: 20px;
+}
+.read-more a{
+	text-decoration: underline;
 }
 a{Home page
 	width: 100px;

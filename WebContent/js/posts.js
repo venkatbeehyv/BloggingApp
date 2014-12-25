@@ -21,6 +21,7 @@ function updateRecentPosts(){
 	});
 	
 }
+var content;
 function updateContents(){
 	
 	jQuery.ajax({
@@ -37,8 +38,10 @@ function updateContents(){
 				$homePostsContainer.append('<div><a href="Category.jsp?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div><br>')
 				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
 				$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
-				$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content+'</p></div><br><br>')
+				$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content.substring(0, 1000)+'</p></div>')
+				$homePostsContainer.append('<div class="read-more"><a href="#">Read more</a></div><br><br>')
 			}
+
 			
 		},
 	error:function(e){
@@ -46,3 +49,7 @@ function updateContents(){
 	}
 	});
 }
+/*$('.read-more').click(function(){
+	   $('.truncate').html();
+});
+*/
