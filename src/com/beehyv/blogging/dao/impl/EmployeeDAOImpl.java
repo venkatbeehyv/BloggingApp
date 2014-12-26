@@ -336,11 +336,11 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	} // end changePassword method
 	
 	public static void main(String[] args){
-		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+		//EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//employeeDAO.getEmployee((long) 15);
 		//System.out.println(employeeDAO.loginAuthorization("rgrg27", "beehyv123")); 
 		//System.out.println(employeeDAO.changePassword((long) 10, "beehyv1234", "beehyv123"));
-		employeeDAO.deleteEmployee((long) 17);
+		//employeeDAO.deleteEmployee((long) 17);
 	}
 
 	
