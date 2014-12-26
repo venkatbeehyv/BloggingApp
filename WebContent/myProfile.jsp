@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "com.beehyv.blogging.modal.Employee"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -6,21 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>My Profile</title>
 <jsp:include page="Lib.jsp"></jsp:include>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/myProfile.js'></script>
 </head>
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>
 	<jsp:include page="Menu.jsp"></jsp:include>
-	<div>
-		<div><a href="editProfile.jsp">Edit</a></div>
-		<div><a href="editPassword.jsp">Edit Password</a></div>
-	</div>
+
 	<div class="left-section">
-		<div>Name: </div>
-		<div>Designation: </div>
-		<div>Email: </div>
-		<div>Mob: </div>
+	<div class="userDetails"> </div>
 	</div>
 	<div class="right-section">
 		<div class = "recent"> <h2>Recent Posts<br></h2></div>
