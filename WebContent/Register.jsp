@@ -52,8 +52,8 @@
 	<div id="register">
 		<form class="form" method="post">
 		<div class="formColumns">Name:</div><div class="formEntries"><input id= name type="text" name="Name"><br><br></div>
-		<div class="formColumns">Password:</div><div class="formEntries"><input id= password type="text" name="Pass"><br><br></div>
-		<div class="formColumns">Confirm password:</div><div class="formEntries"><input id= conf-psw type="text" name="confirm Password"><br><br></div>
+		<div class="formColumns">Password:</div><div class="formEntries"><input id= password type="password" name="Pass"><br><br></div>
+		<div class="formColumns">Confirm password:</div><div class="formEntries"><input id= conf-psw type="password" name="confirm Password"><br><br></div>
 		<div class="formColumns">Email:</div><div class="formEntries"><input id= email type="text" name="email"><br><br></div>
 		<div class="formColumns">Mobile:</div><div class="formEntries"><input id= mob type="tel" name="phone"><br><br></div>
 		<div class="submit"><input id="register-id" type="submit" value="Submit"></div>

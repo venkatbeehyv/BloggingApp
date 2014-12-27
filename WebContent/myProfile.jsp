@@ -7,7 +7,7 @@
 <title>My Profile</title>
 <jsp:include page="Lib.jsp"></jsp:include>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/myProfile.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/post.js'></script>
 </head>
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>
