@@ -23,7 +23,7 @@ jQuery(document).ready(function()
 			postByRootId(root_id);
 			
 		});
-function postByRootId(root_id){
+/*function postByRootId(root_id){
 	jQuery.ajax({
 		url: "posts?actionName=postsByCategory&&categoryId="+root_id,
 		method: "GET",
@@ -40,7 +40,7 @@ function postByRootId(root_id){
 			}
 		}
 });
-}
+}*/
 
 function getUrlVars() {
     var vars = {};

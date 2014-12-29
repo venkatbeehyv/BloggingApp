@@ -179,8 +179,32 @@ html{
 	width:900px;
 	height: 300px;
 }
+#jqte-comment{
+	margin-left: 30px;
+	margin-top:20px;
+	width:700px;
+	height:100px;
+}
 .title{
 	width: 40%;
+}
+.add-post{
+	float:right;
+	margin-top:15px;
+	margin-right:40px;
+}
+.comments{
+	height:20px;
+	float:left;
+}
+.add-comment{
+	float:right;
+	height:30px;
+	margin-top:15px;
+	margin-right:40px;
+}
+.add-post a:hover{
+	font-size:100%;
 }
 .addPost-tags{
 	width: 40%;
@@ -188,6 +212,17 @@ html{
 #post-content{
 	height:500%;
 	width:70%;
+}
+.edit-post{
+	float: right;
+	margin-top:15px;
+	margin-right:20px;
+}
+.edit-post a{
+	text-decoration:underline;
+}
+.edit-post a:hover{
+	font-size:100%;
 }
 .post-submit{
 	margin-right:100px;
@@ -214,6 +249,9 @@ html{
 }
 .read-more a{
 	text-decoration: underline;
+}
+.read-more a:hover{
+	font-size:100%;
 }
 a{Home page
 	width: 100px;

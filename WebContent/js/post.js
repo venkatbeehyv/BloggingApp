@@ -1,4 +1,4 @@
-function loadPost(post_id){
+/*function loadPost(post_id){
 	jQuery.ajax({
 		url:"posts?actionName=post&&postId="+post_id,
 		method:"GET",
@@ -17,7 +17,7 @@ function loadPost(post_id){
 			}
 		}
 	});
-}
+}*/
 
 jQuery(document).ready(function()
 		{

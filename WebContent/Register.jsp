@@ -46,7 +46,7 @@
 	<div class="main_top">
 		<div class="pic"><img alt="Beehyv" src="http://www.beehyv.com/images/logo.jpg"/>
 		</div>
-		<div id="id"><a href="Login.html" style="color:Azure;">Login</a></div> <div id="reg"> <a href="Register.html" style="color:Azure;">Register</a>
+		<div id="id"><a href="Login.html" style="color:Azure;">Login</a></div> <div id="reg"> <a href="Register.jsp" style="color:Azure;">Register</a>
 		</div>
 	</div>
 	<div id="register">
@@ -56,7 +56,7 @@
 		<div class="formColumns">Confirm password:</div><div class="formEntries"><input id= conf-psw type="password" name="confirm Password"><br><br></div>
 		<div class="formColumns">Email:</div><div class="formEntries"><input id= email type="text" name="email"><br><br></div>
 		<div class="formColumns">Mobile:</div><div class="formEntries"><input id= mob type="tel" name="phone"><br><br></div>
-		<div class="submit"><input id="register-id" type="submit" value="Submit"></div>
+		<div class="submit"><input id="register-id" type="button" value="submit"></div>
 		</form>
 	</div>
 </body>

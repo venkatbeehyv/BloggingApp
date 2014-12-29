@@ -19,8 +19,7 @@
 			</form>
 		</div>
 		<div class="matter">
-			<div class="contents">
-			</div>
+		<jsp:include page="contents.jsp"></jsp:include>
 			<div class="right-section">
 				<div class = "recent"> <h2>Recent Posts<br></h2></div>
 				<div class = "tags"> <h2>Tags</h2> </div>
