@@ -10,7 +10,7 @@
  *           <li><a href="#">Ride an elephant</a></li>
  *       </ul> -->
 
-<div id="menu" style="width: 1320px; margin-left:50px;">
+<div id="menu" style="width: 1150px; margin-left:50px; display:inline-block;">
     <ul class="lavaLamp">
         <li><a href="Home.jsp"><span>Home</span></a>
             

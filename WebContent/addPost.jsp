@@ -6,12 +6,19 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Add a Post</title>
 		<jsp:include page="Lib.jsp"></jsp:include>
-		<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/jquery-te-1.4.0.min.js'></script>
 		<script type="text/javascript">
 		$(".jqte-test").jqte();
+		
+		jQuery(document).ready(function()
+			{
+				updateRecentPosts();
+				initializeMenu();
+				updateTags();
+			});
 		</script>
+		
 	</head>
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>

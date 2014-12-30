@@ -6,7 +6,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Add a Post</title>
 		<jsp:include page="Lib.jsp"></jsp:include>
-		<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
+		<script type="text/javascript">
+		jQuery(document).ready(function()
+				{
+					updateRecentPosts();
+					initializeMenu();
+					updateTags();
+				});
+		</script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/jquery-te-1.4.0.min.js'></script>
 		<script type="text/javascript">
@@ -18,7 +25,7 @@
 	<jsp:include page="Menu.jsp"></jsp:include>
 	<div class="main">
 		<div class="left-section">
-			<div class="post-head"><h2>NEW POST</h2></div><br><br>
+			<div class="post-head"><h2>EDIT POST</h2></div><br><br>
 			<form class= "form" method="post"> 
 				<div>Please select a category:  
 					<select>

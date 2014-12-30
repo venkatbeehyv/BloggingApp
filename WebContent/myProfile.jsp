@@ -7,18 +7,19 @@
 <title>My Profile</title>
 <jsp:include page="Lib.jsp"></jsp:include>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/post.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/myProfile.js'></script>
 </head>
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>
 	<jsp:include page="Menu.jsp"></jsp:include>
-
+	<div class= "main">
 	<div class="left-section">
 	<div class="userDetails"> </div>
 	</div>
 	<div class="right-section">
 		<div class = "recent"> <h2>Recent Posts<br></h2></div>
 		<div class = "tags"> <h2>Tags</h2> </div>
+	</div>
 	</div>
 </body>
 </html>

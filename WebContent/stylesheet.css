@@ -5,7 +5,7 @@ body{
 .main_top {
 	
     height:83px;
-    width: 1320px;
+    width: 1150px;
     background-color: #335CD6;
     border-radius: 10px;
 	border: 1px solid black;
@@ -132,7 +132,7 @@ h4{
 	margin-left:50px;
 }
 .search{
-	width:1320px;
+	width:1150px;
 	margin-right:25px;
 	border-radius: 25px;
 	margin-top: 5px;
@@ -157,7 +157,7 @@ html{
 	}
 .main{
 	margin-left:45px;
-	width:1320px;
+	width:1150px;
 }
 .left-section{
 	float:left;
@@ -176,7 +176,7 @@ html{
 	 display:inline;
 }
 .jqte-test{
-	width:900px;
+	width:800px;
 	height: 300px;
 }
 #jqte-comment{
@@ -280,7 +280,7 @@ a:hover {
 }
 .matter{
 	margin-top:20px;
-	width: 1320px;
+	width: 1150px;
 	margin-left:50px;
 }
 .Change-Page{
@@ -315,6 +315,9 @@ a:hover {
 	float:right;
 	margin-right: 30px;
     margin-top: 30px;
+}
+.edit-account{
+	margin-right: 30px;;
 }
 .myPosts{
 	float:right;

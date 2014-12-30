@@ -6,8 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Change Password</title>
 <jsp:include page="Lib.jsp"></jsp:include>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
+<script type="text/javascript">
+		jQuery(document).ready(function()
+				{
+					updateRecentPosts();
+					initializeMenu();
+					updateTags();
+				});
+</script>
 <script type='text/javascript'>
 	$("#changePassword-id").click(function() {
 			var newpwd = $("#new_password").val();
@@ -36,7 +43,8 @@
 <body>
 <jsp:include page="MyHeader.jsp"></jsp:include>
 <jsp:include page="Menu.jsp"></jsp:include>
-	<div><div id="changePassword">
+	<div class="main">
+	<div id="changePassword" class="left-section">
 		<form class="form" method="post">
 			<div class="formColumns">New Password:</div><div class="formEntries"><input id= new_password type="text" name="new_password"><br><br></div>
 			<div class="formColumns">Confirm Password:</div><div class="formEntries"><input id= confirm_password type="tel" name="confirm_password"><br><br></div>
@@ -47,5 +55,6 @@
 			<div class = "recent"> <h2>Recent Posts<br></h2></div>
 			<div class = "tags"> <h2>Tags</h2> </div>
 		</div></div>
+		
 </body>
 </html>
