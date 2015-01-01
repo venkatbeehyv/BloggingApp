@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import com.beehyv.blogging.dao.EmployeeDAO;
 import com.beehyv.blogging.modal.Employee;
@@ -124,8 +125,9 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		// create Statement for querying database
 		Statement statement = null;
 		
-		java.util.Date date= new java.util.Date();
+		Date date= new Date();
 		employee.setCreated_at(new Timestamp(date.getTime()).toString());
+		
 		
 		try 
 		{

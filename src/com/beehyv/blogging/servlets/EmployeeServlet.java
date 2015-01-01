@@ -7,11 +7,9 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.beehyv.blogging.modal.Employee;
 import com.beehyv.blogging.service.EmployeeService;
@@ -50,34 +48,29 @@ public class EmployeeServlet extends HttpServlet {
 		System.out.println("Inside EmployeeServlet::");
 		String actionName = request.getParameter("actionName");
 	
-//		System.out.println("actionNAme: " + actionName);
+		System.out.println("actionName: " + actionName);
 		
 		//adds an Employee to the database
 		if("Register".equalsIgnoreCase(actionName)){
-			Gson gson = new Gson();
+			/*Gson gson = new Gson();
 			StringBuffer jb = new StringBuffer();
 			String line = null;
 			try {
 			  BufferedReader reader = request.getReader();
 			  while ((line = reader.readLine()) != null)
 			    jb.append(line);
-			  } catch (Exception e) { /*report an error*/ }
+			  } catch (Exception e) { report an error }
 			
 			System.out.println(jb.toString());
-		    Employee employee = gson.fromJson(jb.toString(),Employee.class);
+		    Employee employee = gson.fromJson(jb.toString(),Employee.class);*/
+			Employee employee = new Employee();
+			employee.setName(request.getParameter("name"));
+			employee.setPassword(request.getParameter("password"));
+			employee.setEmail(request.getParameter("email"));
+			employee.setMobile_no(request.getParameter("mobile_no"));
 		    employeeService.addEmployee(employee);
 		    
-		    // redirecting to MyHomePage
-	    HttpSession session = request.getSession();
-          session.setAttribute("currentUser", employee);
-//            //setting session to expiry in 30 mins
-//            session.setMaxInactiveInterval(30*60);
-//            String user = employee.getEmail();
-//            Cookie userName = new Cookie("user", user);
-//            userName.setMaxAge(30*60);
-//            response.addCookie(userName);
-//            System.out.println("check!!!!");
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/MyHomePage.jsp");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Login.html");
             requestDispatcher.forward(request, response);
 		}
 		
