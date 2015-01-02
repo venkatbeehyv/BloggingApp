@@ -88,7 +88,9 @@ public class EmployeeServlet extends HttpServlet {
 			if(new_password.equals(confirm_password))
 			{
 					if(employeeService.changePassword(employee_id, old_password, new_password)){
-						System.out.println("Your password has been changed successfully");
+						PrintWriter out= response.getWriter();
+			            out.println("<font color=black>Your password has been changed successfully</font>");
+			            response.sendRedirect("myProfile.jsp?employee_id="+employee_id);
 					}
 					else{
 						PrintWriter out= response.getWriter();
