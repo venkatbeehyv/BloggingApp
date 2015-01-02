@@ -175,6 +175,10 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 		
 		// create Statement for querying database
 		Statement statement = null;
+		
+		Date date= new Date();
+		employee.setUpdated_at(new Timestamp(date.getTime()).toString());
+		
 
 		try 
 		{
@@ -185,12 +189,15 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 			String designation = employee.getDesignation();
 			String mobile = employee.getMobile_no();
 			String updated_at = employee.getUpdated_at();
-			String last_logged_in = employee.getlastLoggedIn();
+			String last_logged_in = updated_at;
+			System.out.println(employee);
 			
-			// updating Database
-			statement.executeUpdate("update Blog.Employee set name ='"+name+"', designation = '"+designation+"', "
+			
+			String sqlQuerry = " update Blog.Employee set name ='"+name+"', designation = '"+designation+"', "
 					+"mobile = '"+mobile+"', updated_at = '"+updated_at+"', last_logged_in = '"+last_logged_in+"' "
-					+" where employee_id = "+employee_id);
+					+"where employee_id = "+employee_id;
+			// updating Database		
+			statement.executeUpdate(sqlQuerry);
 		} // end try block
 		
 		catch (SQLException e) 
@@ -338,13 +345,17 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	} // end changePassword method
 	
 	public static void main(String[] args){
-		//EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//employeeDAO.getEmployee((long) 15);
 		//System.out.println(employeeDAO.loginAuthorization("rgrg27", "beehyv123")); 
 		//System.out.println(employeeDAO.changePassword((long) 10, "beehyv1234", "beehyv123"));
 		//employeeDAO.deleteEmployee((long) 17);
+		Employee employee = new Employee();
+		employee.setName("Kapil M");
+		employee.setDesignation("Doveloper Trainee");
+		employee.setMobile_no("9911529398");
+		employeeDAO.editEmployee(employee);
 	}
-
 	
 
 }

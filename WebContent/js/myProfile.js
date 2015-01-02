@@ -13,10 +13,15 @@ function myProfile(employee_id){
 					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
 					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
 					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
-					+'<div class="edit-account"><a href="editProfile.jsp">Edit Account</a></div>&nbsp&nbsp'
-					+'<div class="change-password"><a href="changePassword.jsp">Change Password</a></div><br><br>');
+					+'<div class="edit-account"><a href="editProfile.jsp?employee_id='+employee_id+'">Edit Account</a></div>&nbsp&nbsp'
+					+'<div class="change-password"><a href="changePassword.jsp?employee_id='+employee_id+'">Change Password</a></div><br><br>');
 			$user.append('<div>Name:'+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + user.name+'</div><br><br>');
-			$user.append('<div>Designation: &nbsp&nbsp   '+user.designation+'</div><br><br>');
+			if(user.designation=null){
+				$user.append('<div>Designation: &nbsp&nbsp   '+-+'</div><br><br>');
+			}
+			else{
+				$user.append('<div>Designation: &nbsp&nbsp   '+user.designation+'</div><br><br>');
+			}
 			$user.append('<div>Email:   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+user.email+'</div><br><br>');
 			$user.append('<div>Mobile:  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+user.mobile_no+'</div><br><br>')
 		}

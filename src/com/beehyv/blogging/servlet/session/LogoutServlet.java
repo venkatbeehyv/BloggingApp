@@ -25,7 +25,7 @@ public class LogoutServlet extends HttpServlet {
         if(session != null){
             session.invalidate();
         }
-        response.sendRedirect("/BlogginApp/Home.jsp");
+        response.sendRedirect("Home.jsp");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

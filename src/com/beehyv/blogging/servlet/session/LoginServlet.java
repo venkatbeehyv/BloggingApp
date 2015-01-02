@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
     private final String password = "password";   
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	response.sendRedirect("/BlogginApp/Home.jsp");
+    	response.sendRedirect("Home.jsp");
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
             Employee employee = employeeService.getEmployee(employeeId);
             session.setAttribute("currentUser", employee);
             session.setAttribute("userName", employee.name);
+            session.setAttribute("employee_id", employeeId);
             //setting session to expiry in 30 mins
             session.setMaxInactiveInterval(30*60);
             Cookie userName = new Cookie("user", user);

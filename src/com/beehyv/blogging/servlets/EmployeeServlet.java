@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.beehyv.blogging.modal.Employee;
 import com.beehyv.blogging.service.EmployeeService;
@@ -52,40 +53,31 @@ public class EmployeeServlet extends HttpServlet {
 		
 		//adds an Employee to the database
 		if("Register".equalsIgnoreCase(actionName)){
-			/*Gson gson = new Gson();
-			StringBuffer jb = new StringBuffer();
-			String line = null;
-			try {
-			  BufferedReader reader = request.getReader();
-			  while ((line = reader.readLine()) != null)
-			    jb.append(line);
-			  } catch (Exception e) { report an error }
-			
-			System.out.println(jb.toString());
-		    Employee employee = gson.fromJson(jb.toString(),Employee.class);*/
 			Employee employee = new Employee();
 			employee.setName(request.getParameter("name"));
 			employee.setPassword(request.getParameter("password"));
 			employee.setEmail(request.getParameter("email"));
 			employee.setMobile_no(request.getParameter("mobile_no"));
 		    employeeService.addEmployee(employee);
-		    
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Login.html");
-            requestDispatcher.forward(request, response);
+		    // redirecting response to Login Page
+            response.sendRedirect("Login.html");
 		}
 		
 		else if("editEmployee".equalsIgnoreCase(actionName)){
-			Gson gson = new Gson();
-			StringBuffer jb = new StringBuffer();
-			String line = null;
-			try {
-			  BufferedReader reader = request.getReader();
-			  while ((line = reader.readLine()) != null)
-			    jb.append(line);
-			  } catch (Exception e) { /*report an error*/ }
-			
-		    Employee employee = gson.fromJson(jb.toString(),Employee.class);
+			Employee employee = new Employee();
+			employee.setName(request.getParameter("name"));
+			employee.setDesignation(request.getParameter("designation"));
+			employee.setMobile_no(request.getParameter("mobile_no"));
+			employee.setEmployee_id(Long.valueOf(request.getParameter("employee_id")));
 		    employeeService.editEmployee(employee);
+		    
+		    HttpSession session = request.getSession();
+		    if(session.getAttribute("employee_id")!=null){
+		    	response.sendRedirect("myProfile.jsp?employee_id="+session.getAttribute("employee_id"));
+		    }
+		    else{
+		    	response.sendRedirect("Login.html");
+		    }
 		}
 	}
 
