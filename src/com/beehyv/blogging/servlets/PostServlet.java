@@ -29,10 +29,10 @@ public class PostServlet extends HttpServlet {
 	TagService tagService = new TagService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		System.out.println("Inside PostServlet::");
+		System.out.println("Inside PostServlet:");
 		
 		String actionName = req.getParameter("actionName");
-		System.out.println("actionNAme: " + actionName);
+		System.out.println("actionName: " + actionName);
 	//	String actionName = "recentPosts";
 		//returns 3 recent posts
 		if("recentPosts".equalsIgnoreCase(actionName)){

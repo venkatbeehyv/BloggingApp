@@ -173,7 +173,7 @@ html{
 	margin-left:350px;
 }
 .form div{
-	 display:inline;
+	 display:inline-block;
 }
 .jqte-test{
 	width:800px;

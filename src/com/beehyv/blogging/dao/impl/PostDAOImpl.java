@@ -718,7 +718,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
 		//postDAO.deletePost((long) 17);
-		postDAO.deleteComment((long) 14);
-		//System.out.println(postDAO.searchPosts("programming language"));
+		//postDAO.deleteComment((long) 14);
+		System.out.println(postDAO.searchPosts("programming language"));
 	}
 } // end of PostDAOImpl.java 

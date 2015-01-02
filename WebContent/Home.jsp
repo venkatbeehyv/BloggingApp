@@ -17,7 +17,7 @@
 		<jsp:include page="Menu.jsp"></jsp:include>
 		
 		<div class="search-container">
-			<form class="search"><input type="search" placeholder="Search">
+			<form class="search" method="get" action="posts?actionName=searchPosts"><input type="search" placeholder="Search" name="word">
 			</form>
 		</div>
 		<div class="matter">
