@@ -3,6 +3,7 @@ package com.beehyv.blogging.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -122,28 +123,34 @@ public class PostServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside PostServlet::");
-		RequestDispatcher dispatcher =  req.getRequestDispatcher("/Home.jsp");
-		String actionName = req.getParameter("actionName");
+		RequestDispatcher dispatcher =  request.getRequestDispatcher("/Home.jsp");
+		String actionName = request.getParameter("actionName");
 		System.out.println("actionNAme: " + actionName);
 		
-		req.setAttribute("name", "Hi This is venkat");
-		dispatcher.forward(req, resp);
+		request.setAttribute("name", "Hi This is venkat");
+		dispatcher.forward(request, resp);
 		
 		//adds a post to the database
 		if("addPost".equalsIgnoreCase(actionName)){
-			Gson gson = new Gson();
-			StringBuffer jb = new StringBuffer();
-			String line = null;
-			try {
-			  BufferedReader reader = req.getReader();
-			  while ((line = reader.readLine()) != null)
-			    jb.append(line);
-			  } catch (Exception e) { /*report an error*/ }
-			
-		    Post post = gson.fromJson(jb.toString(),Post.class);
-			postService.addPost(post);
+//			Gson gson = new Gson();
+//			StringBuffer jb = new StringBuffer();
+//			String line = null;
+//			try {
+//			  BufferedReader reader = req.getReader();
+//			  while ((line = reader.readLine()) != null)
+//			    jb.append(line);
+//			  } catch (Exception e) { /*report an error*/ }
+//			
+//		    Post post = gson.fromJson(jb.toString(),Post.class);
+//			postService.addPost(post);
+			Post post = new Post();
+			Tag tag=new Tag();
+			post.setTitle(request.getParameter("title"));
+			post.setContent(request.getParameter("contents"));
+			String tags = request.getParameter("tags");
+			String[] tagList = tags.split(",");
 		}
 		
 		//add comment to the database
@@ -152,7 +159,7 @@ public class PostServlet extends HttpServlet {
 			StringBuffer jb = new StringBuffer();
 			String line = null;
 			try {
-			  BufferedReader reader = req.getReader();
+			  BufferedReader reader = request.getReader();
 			  while ((line = reader.readLine()) != null)
 			    jb.append(line);
 			  } catch (Exception e) { /*report an error*/ }
@@ -166,7 +173,7 @@ public class PostServlet extends HttpServlet {
 			StringBuffer jb = new StringBuffer();
 			String line = null;
 			try {
-			  BufferedReader reader = req.getReader();
+			  BufferedReader reader = request.getReader();
 			  while ((line = reader.readLine()) != null)
 			    jb.append(line);
 			  } catch (Exception e) { /*report an error*/ }
