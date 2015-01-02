@@ -282,6 +282,9 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 			while(resultSet.next())
 			{
 				enteredPassword = resultSet.getString(1);
+				System.out.println("databasePassword: "+enteredPassword);
+				System.out.println("userpassword: "+ oldPassword);
+				System.out.println("newPassword: "+ newPassword);
 			} // while ends
 		} // end try block
 		
@@ -321,6 +324,9 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 						+ "' where employee_id = " + employee_id);
 				result = true;
 			} // if ends
+			else{
+				result = false;
+			}
 		} // end try block
 		
 		catch (SQLException e) 
@@ -345,16 +351,11 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	} // end changePassword method
 	
 	public static void main(String[] args){
-		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+		//EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//employeeDAO.getEmployee((long) 15);
 		//System.out.println(employeeDAO.loginAuthorization("rgrg27", "beehyv123")); 
-		//System.out.println(employeeDAO.changePassword((long) 10, "beehyv1234", "beehyv123"));
+		//System.out.println(employeeDAO.changePassword((long) 10, "beehyv1235", "beehyv123"));
 		//employeeDAO.deleteEmployee((long) 17);
-		Employee employee = new Employee();
-		employee.setName("Kapil M");
-		employee.setDesignation("Doveloper Trainee");
-		employee.setMobile_no("9911529398");
-		employeeDAO.editEmployee(employee);
 	}
 	
 

@@ -29,7 +29,7 @@ employee_id = currentUser.getEmployee_id();
 	<jsp:include page="Menu.jsp"></jsp:include>
 	<div class="main">
 		<div id="editProfile" class="left-section">
-			<form class="form" method="post" action="EmployeeServlet?employee_id=<%=employee_id%>&&actionName=editEmployee">
+			<form class="form" method="post" action="EmployeeServlet?actionName=editEmployee&&employee_id=<%=employee_id%>">
 			<div class="formColumns">Name:</div><div class="formEntries"><input id= designation type="text" name="name"><br><br></div>
 			<div class="formColumns">Designation:</div><div class="formEntries"><input id= designation type="text" name="designation"><br><br></div>
 			<div class="formColumns">Mobile:</div><div class="formEntries"><input id= mob type="tel" name="mobile_no"><br><br></div>

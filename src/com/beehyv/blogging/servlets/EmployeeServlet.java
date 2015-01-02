@@ -1,6 +1,5 @@
 package com.beehyv.blogging.servlets;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -78,6 +77,31 @@ public class EmployeeServlet extends HttpServlet {
 		    else{
 		    	response.sendRedirect("Login.html");
 		    }
+		}
+		
+		
+		else if("changePassword".equalsIgnoreCase(actionName)){
+			String old_password = request.getParameter("old_password");
+			String new_password = request.getParameter("new_password");
+			String confirm_password = request.getParameter("confirm_password");
+			long employee_id = Long.valueOf(request.getParameter("employee_id"));
+			if(new_password.equals(confirm_password))
+			{
+					if(employeeService.changePassword(employee_id, old_password, new_password)){
+						System.out.println("Your password has been changed successfully");
+					}
+					else{
+						PrintWriter out= response.getWriter();
+			            out.println("<font color=red>You enteres Wrong Password</font>");
+			            response.sendRedirect("changePassword.jsp?employee_id="+ employee_id);
+					}
+			}
+			else
+			{
+	            PrintWriter out= response.getWriter();
+	            out.println("<font color=red>Please Enter same password in Confirm Password as New Password</font>");
+	            response.sendRedirect("changePassword.jsp?employee_id="+ employee_id);
+			}
 		}
 	}
 
