@@ -29,9 +29,9 @@ name = currentUser.getName();
 	<div class="main">
 	<div id="changePassword" class="left-section">
 		<form class="form" method="post" action=EmployeeServlet?actionName=changePassword&&employee_id=<%=employee_id%>>
-		<div class="formColumns">Old Password:</div><div class="formEntries"><input id= old_password type="text" name="old_password"><br><br></div>
-			<div class="formColumns">New Password:</div><div class="formEntries"><input id= new_password type="text" name="new_password"><br><br></div>
-			<div class="formColumns">Confirm Password:</div><div class="formEntries"><input id= confirm_password type="text" name="confirm_password"><br><br></div>
+		<div class="formColumns">Old Password:</div><div class="formEntries"><input id= old_password type="password" name="old_password"><br><br></div>
+			<div class="formColumns">New Password:</div><div class="formEntries"><input id= new_password type="password" name="new_password"><br><br></div>
+			<div class="formColumns">Confirm Password:</div><div class="formEntries"><input id= confirm_password type="password" name="confirm_password"><br><br></div>
 			<div class="submit"><input id="changePassword-id" type="submit" value="Submit"></div>
 		</form>
 	</div>

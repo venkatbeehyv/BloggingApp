@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<jsp:include page="MyHeader.jsp"></jsp:include>
-		<jsp:include page="Menu.jsp"></jsp:include>
+		<jsp:include page="Menu1.jsp"></jsp:include>
 		
 		<div class="search-container">
 			<form class="search" method="get" action="posts?actionName=searchPosts"><input type="search" placeholder="Search" name="word">

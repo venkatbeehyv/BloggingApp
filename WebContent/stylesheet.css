@@ -308,7 +308,7 @@ a:hover {
 #menu div.two ul.one div { margin-left:0px; }
 
 .error{
-	background-color: red
+	background-color: red;
 }
 .myProfile{
 	float:right;
@@ -322,4 +322,22 @@ a:hover {
 	float:right;
 	margin-right: 30px;
     margin-top: 30px;
+}
+#menu-bar{
+	float:left;	
+	margin-right: 50px;
+	margin-left:40px;
+	margin-bottom:10px;
+}
+#menu-bar a{
+	text-decoration:none;
+	color:#F7F7F7;
+}
+.menu-bar{
+	background-color: #978CDC;
+	display:inline-block;
+	margin-left:50px;
+	margin-top:10px;
+	border-radius:10px;
+	width:1150px;
 }
