@@ -325,9 +325,8 @@ a:hover {
 }
 #menu-bar{
 	float:left;	
-	margin-right: 50px;
+	margin-right: 40px;
 	margin-left:40px;
-	margin-bottom:10px;
 }
 #menu-bar a{
 	text-decoration:none;
@@ -341,3 +340,13 @@ a:hover {
 	border-radius:10px;
 	width:1150px;
 }
+.menu-bar ul li{
+	list-style-type: none;
+	float:left;
+}
+ ul li ul{
+     display: none;
+    }
+ ul li:hover ul{
+    display: block; /* display the dropdown */
+    }

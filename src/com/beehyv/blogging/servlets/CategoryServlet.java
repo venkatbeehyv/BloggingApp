@@ -40,7 +40,7 @@ public class CategoryServlet extends HttpServlet {
 			writer.println(treeJSONString);
 		}
 		// returns menu bar children
-		else if("menu".equalsIgnoreCase(actionName)){
+		else if("getChildren".equalsIgnoreCase(actionName)){
 			String categoryId = request.getParameter("categoryId");
 			List<Category> categories = categoryService.getChildren(Long.valueOf(categoryId));
 			request.setAttribute("categories", categories);
