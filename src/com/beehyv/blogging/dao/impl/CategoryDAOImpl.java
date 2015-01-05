@@ -61,6 +61,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 				exception.printStackTrace();
 			} // end catch
 		} // end finally
+		System.out.println(categories.size());
 		return categories;
 	} // end getChildren method
 	
