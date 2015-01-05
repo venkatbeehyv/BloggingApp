@@ -47,8 +47,10 @@ public class CategoryServlet extends HttpServlet {
 			Gson gson = new Gson();
 			String menuJSONString = gson.toJson(categories);
 			PrintWriter writer = response.getWriter();
+			response.setContentType("application/json");
 			System.out.println(menuJSONString);
 			writer.println(menuJSONString);
+			
 		}
 	}
 

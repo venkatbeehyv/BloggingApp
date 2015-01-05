@@ -324,15 +324,6 @@ a:hover {
     margin-top: 30px;
 }
 #menu-bar{
-	float:left;	
-	margin-right: 40px;
-	margin-left:40px;
-}
-#menu-bar a{
-	text-decoration:none;
-	color:#F7F7F7;
-}
-.menu-bar{
 	background-color: #978CDC;
 	display:inline-block;
 	margin-left:50px;
@@ -340,13 +331,25 @@ a:hover {
 	border-radius:10px;
 	width:1150px;
 }
-.menu-bar ul li{
+.menu-bar a{
+	text-decoration:none;
+	color:#F7F7F7;
+}
+.menu-bar{
+	margin: 10px 0px;
+}
+.menu-col{
+	float:left;
+	margin-right: 40px;
+	margin-left:40px;
+}
+#menu-bar ul li{
 	list-style-type: none;
 	float:left;
 }
- ul li ul{
+.menu-col ul li{
      display: none;
     }
- ul li:hover ul{
+ .menu-col ul:hover{
     display: block; /* display the dropdown */
     }
