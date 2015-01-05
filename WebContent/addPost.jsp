@@ -1,5 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" import="com.beehyv.blogging.modal.*"%>
+<%	Employee currentUser=(Employee)session.getAttribute("currentUser");
+long employee_id=0;
+
+if(currentUser!=null) {
+employee_id = currentUser.getEmployee_id();
+
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -26,7 +33,7 @@
 	<div class="main">
 		<div class="left-section">
 			<div class="post-head"><h2>NEW POST</h2></div><br><br>
-			<form class= "form" method="post" action="PostServelet?actionName=addPost"> 
+			<form class= "form" method="post" action="posts?actionName=addPost&&employee_id=<%=employee_id%>"> 
 				<div>Please select a category:  
 					<select>
 					  	<option value="2">Technologies</option>

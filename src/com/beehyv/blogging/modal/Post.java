@@ -22,7 +22,6 @@ public class Post {
 	private String root_category;
 	private List<Comment> comments;
 	private String category_name;
-	private List<Tag> tags;
 	
 	
 	public String getCategory_name() {
@@ -44,12 +43,7 @@ public class Post {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-	public List<Tag> getTags() {
-		return tags;
-	}
-	public void setTags(List<Tag> tags) {
-		this.tags= tags;
-	}
+	
 	public String getRoot_category() {
 		return root_category;
 	}

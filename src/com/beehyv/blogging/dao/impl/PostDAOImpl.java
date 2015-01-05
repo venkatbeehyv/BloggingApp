@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -240,7 +242,6 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			} // end while 
 					
 			Iterator<Long> itr = rootids.iterator();
-			
 	        while(itr.hasNext())
 	        {
 	        	Long root_id = itr.next();
@@ -249,7 +250,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	        			+"inner join Blog.category on category.category_id = Post.root_id "
 	        			+"inner join Blog.Employee on Employee.employee_id = Post.created_by "
 	        			+"where Post.root_id = "+ root_id +" and Post.created_at = "
-	        			+ "(select created_at from Blog.Post where root_id = "+ root_id +" order by created_at Desc limit 1)" );
+	        			+ "(select created_at from Blog.Post where root_id = "+ root_id +" order by created_at Desc limit 1) limit 1" );
 	        
 	        	while(resultSet_1.next())
 	        	{
@@ -449,6 +450,8 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		
 		// create Statement for querying database
 		Statement statement = null;
+		Date date= new Date();
+		post.setCreatedAt(new Timestamp(date.getTime()).toString());
 
 		try {
 			statement = connection.createStatement();
@@ -461,8 +464,9 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			Long root_id = post.getRoot_id();
 			
 			// updating database
-			statement.executeUpdate("insert into Blog.Post (title, content, created_at, employee_id, category_id, root_id )"
+			statement.executeUpdate("insert into Blog.Post (title, content, created_at, created_by, category_id, root_id )"
 					+ " values ('"+title+"','"+ content +"','"+createdAt+"',"+userId+","+categoryID+","+root_id+")");
+			System.out.println(post);
 		} // end try block
 		
 		catch (SQLException e) 
@@ -713,12 +717,12 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getRecentPosts());
 		//System.out.println(postDAO.getPost(8));
 		//System.out.println(postDAO.getPostsbytag(2));
-		//System.out.println(postDAO.getHomePosts());
+		System.out.println(postDAO.getHomePosts());
 		//System.out.println(postDAO.getMyPosts((long) 10));
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
 		//postDAO.deletePost((long) 17);
 		//postDAO.deleteComment((long) 14);
-		System.out.println(postDAO.searchPosts("programming language"));
+		//System.out.println(postDAO.searchPosts("programming language"));
 	}
 } // end of PostDAOImpl.java 

@@ -1,16 +1,4 @@
-function init(){
-		$( "#login" ).dialog({ autoOpen: false });
-	
-		$( "#id" ).click(function() {
-			$( "#login" ).dialog( "open" );
-		});
-	
-		$( "#register" ).dialog({ autoOpen: false });
-	
-		$( "#reg" ).click(function() {
-		$( "#register" ).dialog( "open" );
-	});
-}
+
 jQuery(document).ready(function()
 		{
 			init();
@@ -23,7 +11,7 @@ jQuery(document).ready(function()
 			postByRootId(root_id);
 			
 		});
-/*function postByRootId(root_id){
+function postByRootId(root_id){
 	jQuery.ajax({
 		url: "posts?actionName=postsByCategory&&categoryId="+root_id,
 		method: "GET",
@@ -40,7 +28,7 @@ jQuery(document).ready(function()
 			}
 		}
 });
-}*/
+}
 
 function getUrlVars() {
     var vars = {};

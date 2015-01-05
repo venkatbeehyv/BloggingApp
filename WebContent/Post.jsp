@@ -40,8 +40,8 @@ name = currentUser.getName();
 					$post.append('<div>'+post.createdAt+'</div> &nbsp <div>'+post.userName+'</div>')
 					$post.append('<div><p>'+post.content+'</p><div><br>')
 					$post.append('<div class="comments"><h3 >Comments</h3></div>');
-					$post.append('<form class= "form" method="post"> '
-							+'<textarea name="textarea" id= jqte-comment class="jqte-test"></textarea><br><br>'
+					$post.append('<form class= "form" method="post" action="posts?actionName=addComment&&employee_id='+employee_id+'&&postId='+post_id+'"> '
+							+'<textarea name="comment" id= jqte-comment class="jqte-test"></textarea><br><br>'
 							+'<div ><button type="reset" value="Reset" class="post-submit">Reset</button>'
 							+'<input type="submit" value="Submit"></div></form><br>');
 							
