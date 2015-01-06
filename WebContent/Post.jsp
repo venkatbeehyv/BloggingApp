@@ -32,7 +32,7 @@ name = currentUser.getName();
 					if(post.userName==name)
 					{
 						$post.append('<div><h2>'+post.title+'</h2></div>');
-						$post.append('<div class="edit-post"><a href="editPost.jsp?post_id='+post.post_id+'">Edit</a></div><br>')
+						$post.append('<div class="edit-post"><a href="editPost.jsp?post_id='+post_id+'">Edit</a></div><br>')
 					}
 					else{
 						$post.append('<div><h2>'+post.title+'</h2></div><br>');
@@ -61,7 +61,7 @@ name = currentUser.getName();
 		<jsp:include page="Menu.jsp"></jsp:include>
 		
 		<div class="search-container">
-			<form class="search"><input type="search" placeholder="Search">
+			<form class="search" action="posts?actionName=searchPosts"><input type="search" placeholder="Search" name="word" >
 			</form>
 		</div>
 		<div class="matter">

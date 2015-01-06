@@ -94,7 +94,7 @@ public class EmployeeServlet extends HttpServlet {
 					}
 					else{
 						PrintWriter out= response.getWriter();
-			            out.println("<font color=red>You enteres Wrong Password</font>");
+			            out.println("<font color=red>You entered Wrong Password</font>");
 			            response.sendRedirect("changePassword.jsp?employee_id="+ employee_id);
 					}
 			}

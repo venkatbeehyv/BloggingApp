@@ -578,6 +578,9 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		
 		// create Statement for querying database
 		Statement statement = null;
+		
+		Date date= new Date();
+		comment.setCreated_at(new Timestamp(date.getTime()).toString());
 
 		try {
 			statement = connection.createStatement();

@@ -165,10 +165,11 @@ public class PostServlet extends HttpServlet {
 			comment.setComment(request.getParameter("comment"));
 			String employee_id = request.getParameter("employee_id");
 			comment.setIdEmployee(Long.valueOf(employee_id));
-			String post_id = request.getParameter("post_id");
+			String post_id = request.getParameter("postId");
 			comment.setIdPost(Long.valueOf(post_id));
+			System.out.println(comment.getIdPost()+ ": "+ comment.getIdEmployee());
 			postService.addComment(comment);
-			response.sendRedirect("Post.jsp?employee_id="+employee_id);
+			response.sendRedirect("Post.jsp?employee_id="+employee_id+"&&postId="+post_id);
 		}
 		// edit post
 		else if("editPost".equalsIgnoreCase(actionName)){

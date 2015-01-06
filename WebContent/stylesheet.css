@@ -353,3 +353,7 @@ a:hover {
  .menu-col ul:hover{
     display: block; /* display the dropdown */
     }
+ .no-post{
+ padding:152px;
+ margin-top:143px
+ }
