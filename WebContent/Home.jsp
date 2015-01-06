@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" import="java.util.List,com.beehyv.blogging.modal.Post,com.beehyv.blogging.modal.Tag"  
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java"  import="java.util.List,com.beehyv.blogging.modal.*"%>
 <!DOCTYPE html>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>

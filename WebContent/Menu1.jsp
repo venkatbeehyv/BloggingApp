@@ -1,4 +1,4 @@
-<%@ page language="java" import="com.beehyv.blogging.modal.*"%>
+<%@ page language="java" import="java.util.List, com.beehyv.blogging.modal.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,22 +24,20 @@
 						contentType: "application/json",
 						
 						success:function(categories){
-							if(categories == null){
+							if(categories.length!=0){
+								//var categoriesArray = JSON.parse(categories);	
 								
-							}
-							else {
-								var categoriesArray = JSON.parse(categories);	
-								
-								var $Container = $(".menu-col ."+categoryId);
-								
-								for(var i in categoriesArray){
+								var ContainerArray = document.getElementsByClassName(d[0].className);
+								var Container = ContainerArray[0];
+								var categoriesArray = categories;
+			 					for(var i in categoriesArray){
 									if(categoriesArray[i].idCategory!=0){
-									$Container.append('<li class="menu-col" id="'+categoriesArray[i].categoryName+'">'
+									Container.append('<li class="menu-col" id="'+categoriesArray[i].categoryName+'">'
 														+'<a href="Category.jsp?root_id='+categoriesArray[i].idCategory+'">'+categoriesArray[i].categoryName+'</a>'
 														+'<ul class="'+categoriesArray[i].idCategory+'"></ul></li>');
 									}
 								}
-							}
+			 				}
 						},
 						error: function(request,error) 
 						{

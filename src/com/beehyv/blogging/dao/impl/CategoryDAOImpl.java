@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.beehyv.blogging.dao.CategoryDAO;
 import com.beehyv.blogging.modal.Category;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class CategoryDAOImpl extends BaseDAO implements CategoryDAO 
 {
@@ -37,9 +38,11 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			while ( resultSet.next() )
 			{
 				Category category = new Category();
-				category.setIdCategory(resultSet.getLong(1));
-				category.setCategoryName(resultSet.getString(2));
-				categories.add(category);
+				if(resultSet.getLong(1)!=0){
+					category.setIdCategory(resultSet.getLong(1));
+					category.setCategoryName(resultSet.getString(2));
+					categories.add(category);
+				}
 			} // end while 
 		} // end try block
 		
@@ -52,7 +55,8 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		{
 			try
 			{
-				resultSet.close();
+				if(resultSet!=null){
+				resultSet.close();}
 				statement.close();
 				connection.close();
 			} // end try
@@ -148,7 +152,8 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		//System.out.println(categoryDAO.getParentTree(11));
 		//System.out.println(categoryDAO.getRootParent(11));
-		System.out.println(categoryDAO.getChildren(5));
+		System.out.println(categoryDAO.getChildren(6));
+		//System.out.println(new ArrayList<Category>());
 	}
 
 }
