@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.beehyv.blogging.dao.CategoryDAO;
 import com.beehyv.blogging.modal.Category;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class CategoryDAOImpl extends BaseDAO implements CategoryDAO 
 {

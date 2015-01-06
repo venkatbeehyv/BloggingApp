@@ -13,28 +13,22 @@
 			
 			for (var i = 0; i < a.length; i++) {
 				var d = $(a[i]).find("ul");
-				if(d==null){
-					i++;
-				}
-				if(d!=null){
+				if(d.length!=0){
 					var categoryId = parseInt(d[0].className, 10);
 					jQuery.ajax({
 						url: "CategoryServlet?actionName=getChildren&&categoryId="+categoryId,
 						method: "GET",
-						contentType: "application/json",
+						contentType: "",
 						
 						success:function(categories){
 							if(categories.length!=0){
-								//var categoriesArray = JSON.parse(categories);	
+								var categoriesArray = JSON.parse(categories);	
 								
-								var ContainerArray = document.getElementsByClassName(d[0].className);
-								var Container = ContainerArray[0];
-								var categoriesArray = categories;
+								var $Container = $("."+ categoryId.toString());
+								//var categoriesArray = categories;
 			 					for(var i in categoriesArray){
 									if(categoriesArray[i].idCategory!=0){
-									Container.append('<li class="menu-col" id="'+categoriesArray[i].categoryName+'">'
-														+'<a href="Category.jsp?root_id='+categoriesArray[i].idCategory+'">'+categoriesArray[i].categoryName+'</a>'
-														+'<ul class="'+categoriesArray[i].idCategory+'"></ul></li>');
+									$Container.append('<li class="menu-col" id="'+categoriesArray[i].categoryName+'">< a href="Category.jsp?root_id='+categoriesArray[i].idCategory+'">'+categoriesArray[i].categoryName+'</a><ul class="'+categoriesArray[i].idCategory+'"></ul></li>');
 									}
 								}
 			 				}
