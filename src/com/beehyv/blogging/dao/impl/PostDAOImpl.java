@@ -671,7 +671,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		for(String oneWord: words){
 			sqlWord = sqlWord.concat("%' or '%" + oneWord);
 		}
-		System.out.println(sqlWord);
+		System.out.println(word);
 		try 
 		{
 			statement = connection.createStatement();

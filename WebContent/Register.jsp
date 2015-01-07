@@ -10,7 +10,7 @@
 </head>
 <body id="Register">
 	<div class="main_top">
-		<div class="pic"><img alt="Beehyv" src="http://www.beehyv.com/images/logo.jpg"/>
+		<div class="pic"><a href="Home.jsp"><img alt="Beehyv" src="http://www.beehyv.com/images/logo.jpg"/></a>
 		</div>
 		<div id="id"><a href="Login.html" style="color:Azure;">Login</a></div> <div id="reg"> <a href="Register.jsp" style="color:Azure;">Register</a>
 		</div>

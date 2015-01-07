@@ -6,19 +6,23 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Home page</title>
 		<jsp:include page="Lib.jsp"></jsp:include>
-		<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
-		
+		<script type='text/javascript'>
+		jQuery(document).ready(function()
+		{
+			updateRecentPosts();
+			initializeMenu();
+			updateContents();
+			updateTags();
+			searchPosts();
+		});
+		</script>
 	</head>
 	<body>
 		<jsp:include page="MyHeader.jsp"></jsp:include>
-		<jsp:include page="Menu1.jsp"></jsp:include>
-		
-		<div class="search-container">
-			<form class="search" method="get" action="posts?actionName=searchPosts"><input type="search" placeholder="Search" name="word">
-			</form>
-		</div>
+		<jsp:include page="Menu.jsp"></jsp:include>
+		<jsp:include page="searchContainer.jsp"></jsp:include>
 		<div class="matter">
 			<jsp:include page="contents.jsp"></jsp:include>
 			<div class="right-section">
