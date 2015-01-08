@@ -1,3 +1,10 @@
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 function searchPosts(){
 	 /*$('#search-box').on("keypress",function(event) {
         if (event.keyCode == 13) {

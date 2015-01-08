@@ -14,7 +14,6 @@
 					updateTags();
 				});
 		</script>
-		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/jquery-te-1.4.0.min.js'></script>
 		<script type="text/javascript">
 		$(".jqte-test").jqte();

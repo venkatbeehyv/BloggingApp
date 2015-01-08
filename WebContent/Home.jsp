@@ -5,9 +5,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Home page</title>
+		
 		<jsp:include page="Lib.jsp"></jsp:include>
-		<script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
-		<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
+		
 		<script type='text/javascript'>
 		jQuery(document).ready(function()
 		{
@@ -18,7 +18,9 @@
 			searchPosts();
 		});
 		</script>
+		
 	</head>
+	
 	<body>
 		<jsp:include page="MyHeader.jsp"></jsp:include>
 		<jsp:include page="Menu.jsp"></jsp:include>

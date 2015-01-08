@@ -23,20 +23,3 @@ function myProfile(employee_id){
 		}
 	});
 }
-	
-jQuery(document).ready(function(){
-		updateTags();
-		updateRecentPosts();
-		
-		var first = getUrlVars()["employee_id"];
-		var employee_id= parseInt(first);
-		
-		myProfile(employee_id);
-});
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}

@@ -5,19 +5,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="Lib.jsp"></jsp:include>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/postsByTag.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
-
-<title>Insert title here</title>
+<script type="text/javascript">
+	jQuery(document).ready(function()
+	{
+		
+		updateRecentPosts();
+		updateTags();	
+		var first = getUrlVars()["tagId"];
+		var tag_id= parseInt(first);
+		var tag = getUrlVars()["tag"];
+		postsByTags(tag_id,tag);
+		
+	});
+</script>
+<title>Tagged Posts</title>
 </head>
 <body>
 <jsp:include page="MyHeader.jsp"></jsp:include>
 <jsp:include page="Menu.jsp"></jsp:include>
+<jsp:include page="searchContainer.jsp"></jsp:include>
 
-<div class="search-container">
-			<form class="search"><input type="search" placeholder="Search">
-			</form>
-		</div>
 		<div class="matter">
 			<jsp:include page="contents.jsp"></jsp:include>
 			<div class="right-section">

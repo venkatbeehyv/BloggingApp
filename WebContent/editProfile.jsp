@@ -4,17 +4,17 @@
 <html>
 <%@ page language="java" import="com.beehyv.blogging.modal.*"%>
 <%	Employee currentUser=(Employee)session.getAttribute("currentUser");
-long employee_id=0;
-String name = null;
-if(currentUser!=null) {
-employee_id = currentUser.getEmployee_id();
-}
+	long employee_id=0;
+	String name = null;
+	if(currentUser!=null) 
+	{
+		employee_id = currentUser.getEmployee_id();
+	}
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <jsp:include page="Lib.jsp"></jsp:include>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 <script type="text/javascript">
 		jQuery(document).ready(function()
 				{

@@ -1,6 +1,4 @@
 function updateRecentPosts(){
-	
-
 	jQuery.ajax({
 		url: "posts?actionName=recentPosts",
 		method: "GET",

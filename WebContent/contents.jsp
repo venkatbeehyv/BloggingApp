@@ -11,8 +11,6 @@ name = currentUser.getName();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
 <script type="text/javascript">
 
 function updateContents(){
@@ -45,6 +43,41 @@ function updateContents(){
 		}
 	});
 }
+function loadPost(post_id){
+	jQuery.ajax({
+		url:"posts?actionName=post&&postId="+post_id,
+		method:"GET",
+		contentType:"",
+		success:function(posts){
+			var name = '<%=name%>';
+			var post = JSON.parse(posts);
+			var $post = $(".contents");
+			$post.append('<div class=add-post><a href="addPost.jsp">Add Post</a></div><br><br>');
+			
+			if(post.userName==name)
+			{
+				$post.append('<div><h2>'+post.title+'</h2></div>');
+				$post.append('<div class="edit-post"><a href="editPost.jsp?post_id='+post_id+'">Edit</a></div><br>')
+			}
+			else{
+				$post.append('<div><h2>'+post.title+'</h2></div><br>');
+			}
+			$post.append('<div>'+post.createdAt+'</div> &nbsp <div>'+post.userName+'</div>')
+			$post.append('<div><p>'+post.content+'</p><div><br>')
+			$post.append('<div class="comments"><h3 >Comments</h3></div>');
+			$post.append('<form class= "form" method="post" action="posts?actionName=addComment&&employee_id='+employee_id+'&&postId='+post_id+'"> '
+					+'<textarea name="comment" id= jqte-comment class="jqte-test"></textarea><br><br>'
+					+'<div ><button type="reset" value="Reset" class="post-submit">Reset</button>'
+					+'<input type="submit" value="Submit"></div></form><br>');
+					
+			var postComments = post.comments;
+			for(var i in postComments){
+				$post.append('<div class="post-comment"><p>'+postComments[i].comment+'</p></div><br>')
+				$post.append('<div class="comment-name"><a href="#">'+postComments[i].name+'</div>&nbsp<div class="comment-time">'+postComments[i].created_at+'</div><br>')
+			}
+		}
+	});
+}
 function postByRootId(root_id){
 	jQuery.ajax({
 		url: "posts?actionName=postsByCategory&&categoryId="+root_id,
@@ -70,27 +103,19 @@ function postByRootId(root_id){
 		}
 });
 }
-function myPosts(employee_id){
+function postsByTags(tag_id,tag){
 	jQuery.ajax({
-		url:"posts?actionName=myPosts&&employee_id="+employee_id,
+		url:"posts?actionName=postsbyTag&&tagId="+tag_id+"&&tag="+tag,
 		method:"GET",
 		contentType:"",
 		success:function(posts){
 			var postArray = JSON.parse(posts);
 			var $post = $(".contents");
-			if(postArray.length==0){
-				$post.append('<div class="no-post"><p><h2>You have not added any posts yet.To add new post, '
-						+'click <a href="addPost.jsp">here</a></h2></p></div><br><br>');
-			}
-			else{
-				$post.append('<div class=add-post><a href="addPost.jsp">Add Post</a></div><br><br>');
-				for(var i in postArray){
-				$post.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'"><h2>'+postArray[i].title+'</h2></a></div>');
-				$post.append('<div class="edit-post"><a href="editPost.jsp?post_id='+postArray[i].post_id+'">Edit</a></div><br>');
-				$post.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>');
-				$post.append('<div><p>'+postArray[i].content+'</p><div>');
-				$post.append('<div class="read-more"><a href="#">Read more</a></div><br><br>');
-			}
+			$post.append('<div><h2>'+tag+'</h2></div><br>');
+			for(var i in postArray){
+			$post.append('<div><h3>'+postArray[i].title+'</h3></div><br>')
+			$post.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
+			$post.append('<div><p>'+postArray[i].content+'</p><div><br>')
          }
 			
 		},

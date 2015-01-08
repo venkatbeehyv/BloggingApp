@@ -7,9 +7,11 @@
 <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.easing.js" language="javascript"></script>
    
    
-
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/MyHeader.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/menu.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/main.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/posts.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/tag.js'></script>
 
    
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
