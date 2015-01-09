@@ -9,8 +9,9 @@
 </head>
 <body>
 <div class="search-container">
-		<form class="search">
+		<form class="search" action="Search.jsp">
 			<input id = "search-box" name="word">
+			
 		</form>
 </div>
 </body>

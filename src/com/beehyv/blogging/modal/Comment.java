@@ -2,12 +2,6 @@ package com.beehyv.blogging.modal;
 
 public class Comment {
 	private long comment_id;
-	public long getComment_id() {
-		return comment_id;
-	}
-	public void setComment_id(long comment_id) {
-		this.comment_id = comment_id;
-	}
 	private String comment;
 	private String created_at;
 	private String updated_at;
@@ -17,6 +11,12 @@ public class Comment {
 	/**
 	 * @return the comment
 	 */
+	public long getComment_id() {
+		return comment_id;
+	}
+	public void setComment_id(long comment_id) {
+		this.comment_id = comment_id;
+	}
 	public String getComment() {
 		return comment;
 	}

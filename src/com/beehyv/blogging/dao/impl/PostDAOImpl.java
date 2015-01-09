@@ -668,10 +668,18 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		List<Post> posts = new ArrayList<Post>();
 		String[] words = word.split(" ");
 		String sqlWord = word;
+		System.out.println(sqlWord);
 		for(String oneWord: words){
-			sqlWord = sqlWord.concat("%' or '%" + oneWord);
+			if(oneWord.toUpperCase().charAt(0) == oneWord.charAt(0)){
+				sqlWord = sqlWord.concat("%' or '%" + oneWord);
+				sqlWord = sqlWord.concat("%' or '%" + oneWord.toLowerCase().substring(0, 1) + oneWord.substring(1));
+			}
+			else{
+				sqlWord = sqlWord.concat("%' or '%" + oneWord);
+				sqlWord = sqlWord.concat("%' or '%" + oneWord.toUpperCase().substring(0,1) + oneWord.substring(1));
+			}
 		}
-		System.out.println(word);
+		System.out.println(sqlWord);
 		try 
 		{
 			statement = connection.createStatement();
@@ -679,7 +687,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			// query database
 			resultSet = statement.executeQuery("SELECT  Post.title, Post.created_at, Employee.name, Post.content, "
 					+ "Post.post_id from Blog.Post inner join Blog.Employee on Employee.employee_id = Post.created_by "
-						+" where content LIKE '%"+sqlWord+"%' limit 4" );
+					+" where (title COLLATE latin1_GENERAL_CI LIKE '%"+sqlWord+"%')  or (content LIKE '%"+sqlWord+"%') limit 4;" );
 
 			// process query results
 			while ( resultSet.next() )
@@ -720,12 +728,12 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getRecentPosts());
 		//System.out.println(postDAO.getPost(8));
 		//System.out.println(postDAO.getPostsbytag(2));
-		System.out.println(postDAO.getHomePosts());
+		//System.out.println(postDAO.getHomePosts());
 		//System.out.println(postDAO.getMyPosts((long) 10));
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
 		//postDAO.deletePost((long) 17);
 		//postDAO.deleteComment((long) 14);
-		//System.out.println(postDAO.searchPosts("programming language"));
+		System.out.println(postDAO.searchPosts("java"));
 	}
 } // end of PostDAOImpl.java 

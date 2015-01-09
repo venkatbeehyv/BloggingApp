@@ -15,7 +15,7 @@
 			initializeMenu();
 			updateContents();
 			updateTags();
-			searchPosts();
+			//searchPosts();
 		});
 		</script>
 		
