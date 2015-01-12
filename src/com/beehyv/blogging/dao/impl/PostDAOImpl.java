@@ -666,19 +666,51 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		ResultSet resultSet = null;
 		
 		List<Post> posts = new ArrayList<Post>();
+		String newWord ="";
+		for(int k=0; k<word.length();k++)
+		{
+			char charAtK = word.charAt(k);
+			System.out.println(charAtK);
+			if(charAtK =='.' || charAtK ==  '+' || charAtK == '?' || charAtK == '[' || charAtK == ']'){
+				newWord = newWord.concat("["+Character.toString(charAtK)+"]");
+				
+			}
+			else if(charAtK == "'".charAt(0)){
+				newWord = word.substring(0, k);
+				if(Math.abs(k-word.length()) == 1){
+					break;
+				}
+			}
+			else{
+				newWord = newWord.concat(Character.toString(charAtK));
+				}
+		}
+		word = newWord;
+		if(!word.equals(word.toLowerCase())){
+			word = word.concat("|"+ word.toLowerCase());
+		}
+		else{
+			word = word.concat("|"+ word.toUpperCase());
+		}
 		String[] words = word.split(" ");
 		String sqlWord = word;
 		System.out.println(sqlWord);
 		for(String oneWord: words){
 			if(oneWord.toUpperCase().charAt(0) == oneWord.charAt(0)){
-				sqlWord = sqlWord.concat("%' or '%" + oneWord);
-				sqlWord = sqlWord.concat("%' or '%" + oneWord.toLowerCase().substring(0, 1) + oneWord.substring(1));
+				if(sqlWord.indexOf(oneWord)==-1)
+				{
+					sqlWord = sqlWord.concat("|" + oneWord);
+				}
 			}
 			else{
-				sqlWord = sqlWord.concat("%' or '%" + oneWord);
-				sqlWord = sqlWord.concat("%' or '%" + oneWord.toUpperCase().substring(0,1) + oneWord.substring(1));
+				if(sqlWord.indexOf(oneWord)==-1)
+				{
+					sqlWord = sqlWord.concat("|" + oneWord);
+				}
+				sqlWord = sqlWord.concat("|" + oneWord.toUpperCase().substring(0,1) + oneWord.substring(1));
 			}
 		}
+		
 		System.out.println(sqlWord);
 		try 
 		{
@@ -687,7 +719,8 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 			// query database
 			resultSet = statement.executeQuery("SELECT  Post.title, Post.created_at, Employee.name, Post.content, "
 					+ "Post.post_id from Blog.Post inner join Blog.Employee on Employee.employee_id = Post.created_by "
-					+" where (title COLLATE latin1_GENERAL_CI LIKE '%"+sqlWord+"%')  or (content LIKE '%"+sqlWord+"%') limit 4;" );
+					+" where (title regexp '"+ sqlWord +"'   or content  regexp '"+ sqlWord +"') "
+					+ " or Employee.name regexp '"+ sqlWord +"' limit 4;" );
 
 			// process query results
 			while ( resultSet.next() )
@@ -723,17 +756,23 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		return posts;
 	} // end searchPosts method
 	
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args){
-		PostDAO postDAO = new PostDAOImpl();
+		//PostDAO postDAO = new PostDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
 		//System.out.println(postDAO.getPost(8));
 		//System.out.println(postDAO.getPostsbytag(2));
-		//System.out.println(postDAO.getHomePosts());
+		//System.out.println(postDAO.getHomePosts());sqlWord = sqlWord.concat("|" + oneWord);
 		//System.out.println(postDAO.getMyPosts((long) 10));
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
 		//postDAO.deletePost((long) 17);
 		//postDAO.deleteComment((long) 14);
-		System.out.println(postDAO.searchPosts("java"));
+		//System.out.println(postDAO.searchPosts("c++"));
 	}
 } // end of PostDAOImpl.java 
