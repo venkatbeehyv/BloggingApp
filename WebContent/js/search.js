@@ -25,7 +25,7 @@ function searchPosts(word){
 					$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
 					$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
 					$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content.substring(0, 1000)+'</p></div>');
-					$homePostsContainer.append('<div class="read-more"><a href="#">Read more</a></div><br><br>')
+					$homePostsContainer.append('<div><a href="#" class="read-more '+postArray[i].post_id+'">Read more</a></div><br><br>')
 				} // end for loop
 			} // end of else statement
 		},  // end of success function

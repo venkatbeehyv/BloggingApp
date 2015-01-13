@@ -47,13 +47,13 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("userName", employee.name);
             session.setAttribute("employee_id", employeeId);
             //setting session to expiry in 30 mins
-            session.setMaxInactiveInterval(30*60);
+            session.setMaxInactiveInterval(5*60);
             Cookie userName = new Cookie("user", user);
             userName.setMaxAge(30*60);
             response.addCookie(userName);
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
-            requestDispatcher.forward(request, response);
-            //response.sendRedirect("Home.jsp");
+            /*RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+            requestDispatcher.forward(request, response);*/
+            response.sendRedirect("Home.jsp");
         }else{
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.html");
             PrintWriter out= response.getWriter();

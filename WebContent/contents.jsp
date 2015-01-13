@@ -3,7 +3,7 @@
 
 String name = null;
 if(currentUser!=null) {
-name = currentUser.getName();
+name = currentUser.name;
 }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,8 +12,22 @@ name = currentUser.getName();
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript">
-
-function updateContents(){
+/* $(document).ready(function(){
+	$(".read-more a").click( function() {
+		alert("hi");
+	});
+}); */
+function theFunction(post_id){
+	var name = "<%=name%>";
+	if(name != "null"){
+		var $rmContainer = $("#"+post_id);
+		alert("hi")
+	}
+	else{
+		location.href="Login.html";
+	}
+}; 
+function updateContents(name){
 	
 	jQuery.ajax({
 		url: "posts?actionName=homePosts",
@@ -23,10 +37,10 @@ function updateContents(){
 		success:function(posts){
 			var postArray = JSON.parse(posts);	
 			var $homePostsContainer = $(".contents");
-			var name = '<%=name%>';
+			var name = "<%=name%>";
 			for(var i in postArray){
 				if(postArray[i].userName==name){
-					$homePostsContainer.append('<div><a href="Category.jsp?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div>')
+					$homePostsContainer.append('<div><a href="Category.jsp?root_id='+postArray[i].root_id+'"><h2>'+postArray[i].root_category+'</h2></div>');
 					$homePostsContainer.append('<div class="edit-post"><a href="editPost.jsp?post_id='+postArray[i].post_id+'">Edit</a></div><br>')
 				}
 				else{
@@ -34,11 +48,12 @@ function updateContents(){
 				}
 				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
 				$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
-				$homePostsContainer.append('<div class="content-summary"><p class="truncate">'+postArray[i].content.substring(0, 1000)+'</p></div>');
-				$homePostsContainer.append('<div class="read-more"><a href="#">Read more</a></div><br><br>')
+				$homePostsContainer.append('<div class="content-summary"><p class="truncate" id="'+postArray[i].post_id+'">'+postArray[i].content.substring(0, 1000)+'</p></div>');
+				$homePostsContainer.append('<div class="read-more"><a class="'+postArray[i].post_id+'" href= "javascript:void(0)" onclick="theFunction('+postArray[i].post_id+');">Read more</a></div><br><br>');
 			}
 		},
 		error:function(t, ts, tse){
+			alert("hh");
 			console.log("error")
 		}
 	});
@@ -72,7 +87,7 @@ function loadPost(post_id){
 					
 			var postComments = post.comments;
 			for(var i in postComments){
-				$post.append('<div class="post-comment"><p>'+postComments[i].comment+'</p></div><br>')
+				$post.append('<div class="post-comment"><p>'+postComments[i].comment+'</p></div><br>');
 				$post.append('<div class="comment-name"><a href="#">'+postComments[i].name+'</div>&nbsp<div class="comment-time">'+postComments[i].created_at+'</div><br>')
 			}
 		}
@@ -87,7 +102,7 @@ function postByRootId(root_id){
 			var Array = JSON.parse(posts);
 			var name = '<%=name%>';
 			var $postByCat = $(".contents");
-			$postByCat.append('<div><h2>'+Array[0].root_category+'</h2></div><br>');	
+			$postByCat.append('<div><h2>'+Array[0].root_category+'</h2></div><br><br>');	
 			for(var i in Array){
 				
 				if(Array[i].userName==name){
@@ -98,7 +113,7 @@ function postByRootId(root_id){
 				}
 				$postByCat.append('<div>'+Array[i].createdAt+'</div> &nbsp <div>'+Array[i].userName+'</div>')
 				$postByCat.append('<div class="content-summary"><p class="truncate">'+Array[i].content+'</p></div>')
-				$postByCat.append('<div class="read-more"><a href="#">Read more</a></div><br><br>')
+				$postByCat.append('<div class="read-more"><a class='+Array[i].post_id+' href= "javascript:void(0)" onclick="theFunction();">Read more</a></div><br><br>')
 			}
 		}
 });
@@ -111,11 +126,12 @@ function postsByTags(tag_id,tag){
 		success:function(posts){
 			var postArray = JSON.parse(posts);
 			var $post = $(".contents");
-			$post.append('<div><h2>'+tag+'</h2></div><br>');
+			$post.append('<div><h2>'+tag+'</h2></div><br><br>');
 			for(var i in postArray){
 			$post.append('<div><h3>'+postArray[i].title+'</h3></div><br>')
 			$post.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
 			$post.append('<div><p>'+postArray[i].content+'</p><div><br>')
+			$post.append('<div class="read-more"><a class='+postArray[i].post_id+' href= "javascript:void(0)" onclick="theFunction();">Read more</a></div><br><br>')
          }
 			
 		},

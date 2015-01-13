@@ -244,14 +244,9 @@ html{
   text-overflow: ellipsis;
 }
 .read-more{
+	text-decoration: underline;
 	float:right;
 	margin-right: 20px;
-}
-.read-more a{
-	text-decoration: underline;
-}
-.read-more a:hover{
-	font-size:100%;
 }
 a{Home page
 	width: 100px;

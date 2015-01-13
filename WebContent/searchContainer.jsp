@@ -10,7 +10,7 @@
 <body>
 <div class="search-container">
 		<form class="search" action="Search.jsp">
-			<input id = "search-box" name="word">
+			<input id = "search-box" name="word" placeholder="search here">
 			
 		</form>
 </div>

@@ -13,8 +13,9 @@
 		{
 			updateRecentPosts();
 			initializeMenu();
-			updateContents();
+			updateContents(name);
 			updateTags();
+			var name;
 			//searchPosts();
 		});
 		</script>
