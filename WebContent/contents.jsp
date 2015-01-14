@@ -20,8 +20,11 @@ name = currentUser.name;
 function theFunction(post_id){
 	var name = "<%=name%>";
 	if(name != "null"){
-		var $rmContainer = $("#"+post_id);
 		alert("hi")
+		var $summary = $("#"+post_id+" p");
+		$summary.toggleClass("truncate");
+		var rmdiv = document.getElementsByClassName(post_id);
+		$(rmdiv[0]).html("Read Less");
 	}
 	else{
 		location.href="Login.html";
@@ -48,7 +51,7 @@ function updateContents(name){
 				}
 				$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
 				$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
-				$homePostsContainer.append('<div class="content-summary"><p class="truncate" id="'+postArray[i].post_id+'">'+postArray[i].content.substring(0, 1000)+'</p></div>');
+				$homePostsContainer.append('<div class="content-summary" id="'+postArray[i].post_id+'"><p class="truncate">'+postArray[i].content+'</p></div>');
 				$homePostsContainer.append('<div class="read-more"><a class="'+postArray[i].post_id+'" href= "javascript:void(0)" onclick="theFunction('+postArray[i].post_id+');">Read more</a></div><br><br>');
 			}
 		},
