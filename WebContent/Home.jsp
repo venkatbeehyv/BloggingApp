@@ -13,7 +13,7 @@
 		{
 			updateRecentPosts();
 			initializeMenu();
-			updateContents(name);
+			updateContents();
 			updateTags();
 			var name;
 			//searchPosts();

@@ -91,6 +91,7 @@ public class PostServlet extends HttpServlet {
 		// returns recent posts in that particular Category
 		else if("postsByCategory".equalsIgnoreCase(actionName)){
 			String categoryId = req.getParameter("categoryId");
+			System.out.println(categoryId);
 			List<Post> posts = postService.getPostsbyCategory(Long.valueOf(categoryId));
 			req.setAttribute("posts", posts);
 			Gson gson = new Gson();

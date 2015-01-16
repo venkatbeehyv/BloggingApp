@@ -173,7 +173,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 
 			// query database
 			resultSet = statement.executeQuery("SELECT  Post.title, Post.created_at, Post.content, "
-			 		+ "Post.category_id, Employee.name, Post.created_by from Blog.Post "
+			 		+ "Post.category_id, Employee.name, Post.created_by, Post.post_id from Blog.Post "
 					+ "inner join Blog.Employee on Employee.employee_id = Post.created_by "
 					+ "Where Post_id IN (SELECT Post_id from Blog.Tag_Post Where Tag_id = "+tag_id+") "
 							+ "Order by created_at DESC limit  5" );
@@ -188,6 +188,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 				post.setCategoryID(resultSet.getLong(4));
 				post.setUserName(resultSet.getString(5));
 				post.setUserId(resultSet.getLong(6));
+				post.setPost_id(resultSet.getLong(7));
 				posts.add(post);
 			} // end while
 		} // end try block

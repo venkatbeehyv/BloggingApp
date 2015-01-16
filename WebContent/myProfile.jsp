@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import = "com.beehyv.blogging.modal.Employee"
     pageEncoding="UTF-8"%>
+<%	Employee currentUser=(Employee)session.getAttribute("currentUser");
+
+String name = null;
+if(currentUser!=null) {
+name = currentUser.name;
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,13 +17,17 @@
 <script type="text/javascript">
 	jQuery(document).ready(function()
 	{
-		
-		updateRecentPosts();
-		updateTags();
-		
-		var first = getUrlVars()["employee_id"];
-		var employee_id= parseInt(first);
-		myProfile(employee_id);
+		if(name=="null"){
+			location.href = "Login.html"
+		}
+		else{
+			updateRecentPosts();
+			updateTags();
+			
+			var first = getUrlVars()["employee_id"];
+			var employee_id= parseInt(first);
+			myProfile(employee_id);
+		}
 	});
 </script>
 </head>

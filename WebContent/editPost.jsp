@@ -8,11 +8,16 @@
 		<jsp:include page="Lib.jsp"></jsp:include>
 		<script type="text/javascript">
 		jQuery(document).ready(function()
-				{
+			{
+				if(name=="null"){
+					location.href = "Login.html"
+				}
+				else{
 					updateRecentPosts();
 					initializeMenu();
 					updateTags();
-				});
+				}
+			});
 		</script>
 		<script type='text/javascript' src='${pageContext.request.contextPath}/js/jquery-te-1.4.0.min.js'></script>
 		<script type="text/javascript">

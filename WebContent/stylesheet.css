@@ -138,6 +138,9 @@ h4{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+.contents-head{
+	display:inline;
+}
 .contents h2 {
     margin-top: 4px;
     margin-bottom: 4px;
@@ -198,7 +201,7 @@ html{
 	float:left;
 }
 .add-comment{
-	float:right;
+	float:right;head{}
 	height:30px;
 	margin-top:15px;
 	margin-right:40px;
@@ -238,7 +241,7 @@ html{
 }
 
 .truncate{
-	max-height: 99px;
+	max-height: 95px;
   	overflow: hidden;
   	text-overflow: ellipsis;
 }

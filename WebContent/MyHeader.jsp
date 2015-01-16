@@ -16,7 +16,7 @@ name = currentUser.getName();
 
 	$(document).ready(function()
 	{
-		myHeader(employee_id, name)
+		myHeader(employee_id, name);
 	});
 </script>
 </head>

@@ -20,17 +20,21 @@ name = currentUser.name;
 function theFunction(post_id){
 	var name = "<%=name%>";
 	if(name != "null"){
-		alert("hi")
 		var $summary = $("#"+post_id+" p");
 		$summary.toggleClass("truncate");
 		var rmdiv = document.getElementsByClassName(post_id);
-		$(rmdiv[0]).html("Read Less");
+		if($summary.hasClass("truncate")){
+			$(rmdiv[0]).html("Read More");
+		}
+		else{
+			$(rmdiv[0]).html("Read Less");
+		}
 	}
 	else{
 		location.href="Login.html";
 	}
 }; 
-function updateContents(name){
+function updateContents(){
 	
 	jQuery.ajax({
 		url: "posts?actionName=homePosts",
@@ -59,6 +63,117 @@ function updateContents(name){
 			alert("hh");
 			console.log("error")
 		}
+	});
+}
+
+function postByRootId(root_id){
+	jQuery.ajax({
+		url: "posts?actionName=postsByCategory&&categoryId="+root_id,
+		method: "GET",
+		contentType: "",
+		success:function(posts){
+			var Array = JSON.parse(posts);
+			var name = '<%=name%>';
+			var $postByCat = $(".contents");
+			$postByCat.append('<div><h2>'+Array[0].root_category+'</h2></div><br><br>');	
+			for(var i in Array){
+				
+				if(Array[i].userName==name){
+					$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div>').append('<div class="edit-post"><a href="editPost.jsp?post_id='+Array[i].post_id+'">Edit</a></div><br>')
+				}
+				else{
+					$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div><br>')
+				}
+				$postByCat.append('<div>'+Array[i].createdAt+'</div> &nbsp <div>'+Array[i].userName+'</div>')
+				$postByCat.append('<div class="content-summary" id="'+Array[i].post_id+'"><p class="truncate">'+Array[i].content+'</p></div>')
+				$postByCat.append('<div class="read-more"><a class='+Array[i].post_id+' href= "javascript:void(0)" onclick="theFunction('+Array[i].post_id+');">Read more</a></div><br><br>')
+			}
+		}
+});
+}
+function postsByTags(tag_id,tag){
+	jQuery.ajax({
+		url:"posts?actionName=postsbyTag&&tagId="+tag_id+"&&tag="+tag,
+		method:"GET",
+		contentType:"",
+		success:function(posts){
+			var postArray = JSON.parse(posts);
+			var $post = $(".contents");
+			$post.append('<div><h2>'+tag+'</h2></div><br><br>');
+			for(var i in postArray){
+			$post.append('<div><h3>'+postArray[i].title+'</h3></div><br>')
+			$post.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
+			$post.append('<div class="content-summary" id="'+postArray[i].post_id+'"><p class="truncate">'+postArray[i].content+'</p><div><br>')
+			$post.append('<div class="read-more"><a class='+postArray[i].post_id+' href= "javascript:void(0)" onclick="theFunction('+postArray[i].post_id+');">Read more</a></div><br><br>')
+         }
+			
+		},
+		error: function (error) {
+        }
+	});
+}
+function searchPosts(word){
+	jQuery.ajax({
+		url: "posts?actionName=searchPosts&&word="+word,
+		method: "GET",
+		contentType: "application/json",
+		success:function(posts){
+			var postArray = JSON.parse(posts);
+			var $homePostsContainer = $(".contents");
+			var name = '<%=name%>';
+			var displayWordArray = word.split("+");
+			var displayWord ="";
+			for(var k in displayWordArray){
+				displayWord += displayWordArray[k] +" ";
+			}
+			displayWord = displayWord.substring(0, displayWord.length-1);
+			if(postArray.length==0){
+				$homePostsContainer.append('<div><p>No results found for keyword <b>"'+displayWord+'"</b></p></div><br>')
+			} // end of if statement
+			else{
+				$homePostsContainer.append('<div><p>Search results for keyword <b>"'+displayWord+'"</b></p></div><br>')
+				for(var i in postArray){
+					if(postArray[i].userName==name){
+						$homePostsContainer.append('<div class="edit-post"><a href="editPost.jsp?post_id='+postArray[i].post_id+'">Edit</a></div><br>')
+					}  // end of if
+					$homePostsContainer.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'" ><h5>'+postArray[i].title+'</h5></div><br>')
+					$homePostsContainer.append('<div class="post-time">'+postArray[i].createdAt+'</div> &nbsp <div class="post-name">'+postArray[i].userName+'</div>')
+					$homePostsContainer.append('<div class="content-summary" id="'+postArray[i].post_id+'"><p class="truncate">'+postArray[i].content+'</p></div>');
+					$homePostsContainer.append('<div class="read-more"><a class="'+postArray[i].post_id+'" href= "javascript:void(0)" onclick="theFunction('+postArray[i].post_id+');">Read more</a></div><br><br>')
+				} // end for loop
+			} // end of else statement
+		},  // end of success function
+		error:function(t, ts, tse){
+			console.log("error")
+		} // end of error function
+	}); // end of ajax call
+} // end of method searchPosts
+function myPosts(employee_id){
+	jQuery.ajax({
+		url:"posts?actionName=myPosts&&employee_id="+employee_id,
+		method:"GET",
+		contentType:"",
+		success:function(posts){
+			var postArray = JSON.parse(posts);
+			var $post = $(".contents");
+			if(postArray.length==0){
+				$post.append('<div class="no-post"><p><h2>You have not added any posts yet.To add new post, '
+						+'click <a href="addPost.jsp">here</a></h2></p></div><br><br>');
+			}
+			else{
+				$post.append('<div class = "contents-head"><div class="left-head"><h2>My Posts</h2></div><div class="right-head add-post"><a href="addPost.jsp">Add new post</a></div></div><br><br>');
+				for(var i in postArray){
+				$post.append('<div><a href="Post.jsp?postId='+postArray[i].post_id+'"><h3>'+postArray[i].title+'</h3></a></div>');
+				$post.append('<div class="edit-post"><a href="editPost.jsp?post_id='+postArray[i].post_id+'">Edit</a></div><br>');
+				$post.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>');
+				$post.append('<div class="content-summary" id="'+postArray[i].post_id+'"><p class="truncate">'+postArray[i].content+'</p></div>');
+				$post.append('<div class="read-more"><a class="'+postArray[i].post_id+'" href= "javascript:void(0)" onclick="theFunction('+postArray[i].post_id+');">Read more</a></div><br><br>');
+			}
+         }
+			
+		},
+		error: function (error) {
+        }
 	});
 }
 function loadPost(post_id){
@@ -94,52 +209,6 @@ function loadPost(post_id){
 				$post.append('<div class="comment-name"><a href="#">'+postComments[i].name+'</div>&nbsp<div class="comment-time">'+postComments[i].created_at+'</div><br>')
 			}
 		}
-	});
-}
-function postByRootId(root_id){
-	jQuery.ajax({
-		url: "posts?actionName=postsByCategory&&categoryId="+root_id,
-		method: "GET",
-		contentType: "",
-		success:function(posts){
-			var Array = JSON.parse(posts);
-			var name = '<%=name%>';
-			var $postByCat = $(".contents");
-			$postByCat.append('<div><h2>'+Array[0].root_category+'</h2></div><br><br>');	
-			for(var i in Array){
-				
-				if(Array[i].userName==name){
-					$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div>').append('<div class="edit-post"><a href="editPost.jsp?post_id='+Array[i].post_id+'">Edit</a></div><br>')
-				}
-				else{
-					$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div><br>')
-				}
-				$postByCat.append('<div>'+Array[i].createdAt+'</div> &nbsp <div>'+Array[i].userName+'</div>')
-				$postByCat.append('<div class="content-summary"><p class="truncate">'+Array[i].content+'</p></div>')
-				$postByCat.append('<div class="read-more"><a class='+Array[i].post_id+' href= "javascript:void(0)" onclick="theFunction();">Read more</a></div><br><br>')
-			}
-		}
-});
-}
-function postsByTags(tag_id,tag){
-	jQuery.ajax({
-		url:"posts?actionName=postsbyTag&&tagId="+tag_id+"&&tag="+tag,
-		method:"GET",
-		contentType:"",
-		success:function(posts){
-			var postArray = JSON.parse(posts);
-			var $post = $(".contents");
-			$post.append('<div><h2>'+tag+'</h2></div><br><br>');
-			for(var i in postArray){
-			$post.append('<div><h3>'+postArray[i].title+'</h3></div><br>')
-			$post.append('<div>'+postArray[i].createdAt+'</div> &nbsp <div>'+postArray[i].userName+'</div>')
-			$post.append('<div><p>'+postArray[i].content+'</p><div><br>')
-			$post.append('<div class="read-more"><a class='+postArray[i].post_id+' href= "javascript:void(0)" onclick="theFunction();">Read more</a></div><br><br>')
-         }
-			
-		},
-		error: function (error) {
-        }
 	});
 }
 </script>

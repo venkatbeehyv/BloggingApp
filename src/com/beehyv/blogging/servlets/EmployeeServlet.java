@@ -63,15 +63,15 @@ public class EmployeeServlet extends HttpServlet {
 		}
 		
 		else if("editEmployee".equalsIgnoreCase(actionName)){
-			Employee employee = new Employee();
-			employee.setName(request.getParameter("name"));
-			employee.setDesignation(request.getParameter("designation"));
-			employee.setMobile_no(request.getParameter("mobile_no"));
-			employee.setEmployee_id(Long.valueOf(request.getParameter("employee_id")));
-		    employeeService.editEmployee(employee);
-		    
 		    HttpSession session = request.getSession();
 		    if(session.getAttribute("employee_id")!=null){
+		    	Employee employee = new Employee();
+				employee.setName(request.getParameter("name"));
+				employee.setDesignation(request.getParameter("designation"));
+				employee.setMobile_no(request.getParameter("mobile_no"));
+				employee.setEmployee_id(Long.valueOf(request.getParameter("employee_id")));
+			    employeeService.editEmployee(employee);
+		    	
 		    	response.sendRedirect("myProfile.jsp?employee_id="+session.getAttribute("employee_id"));
 		    }
 		    else{

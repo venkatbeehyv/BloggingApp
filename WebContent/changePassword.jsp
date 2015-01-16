@@ -17,9 +17,14 @@
 <script type="text/javascript">
 	jQuery(document).ready(function()
 	{
-		updateRecentPosts();
-		initializeMenu();
-		updateTags();
+		if(name=="null"){
+			location.href = "Login.html"
+		}
+		else{
+			updateRecentPosts();
+			initializeMenu();
+			updateTags();
+		}
 	});
 </script>
 </head>
@@ -30,6 +35,7 @@
 <jsp:include page="searchContainer.jsp"></jsp:include>
 	<div class="main">
 		<div id="changePassword" class="left-section">
+		<div><h2>Change Password</h2></div>
 			<form class="form" method="post" action=EmployeeServlet?actionName=changePassword&&employee_id=<%=employee_id%>>
 			<div class="formColumns">Old Password:</div><div class="formEntries"><input id= old_password type="password" name="old_password"><br><br></div>
 				<div class="formColumns">New Password:</div><div class="formEntries"><input id= new_password type="password" name="new_password"><br><br></div>

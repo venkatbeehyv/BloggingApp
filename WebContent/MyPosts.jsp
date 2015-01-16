@@ -6,16 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>My Posts</title>
 <jsp:include page="Lib.jsp"></jsp:include>
-<script type='text/javascript' src='${pageContext.request.contextPath}/js/myPosts.js'></script>
 <script type="text/javascript">
 	jQuery(document).ready(function()
 	{
-		var first = getUrlVars()["employee_id"];
-		var employee_id= parseInt(first);
-		
-		updateRecentPosts();
-		updateTags();
-		myPosts(employee_id);
+		if(name=="null"){
+			location.href = "Login.html"
+		}
+		else{
+			var first = getUrlVars()["employee_id"];
+			var employee_id= parseInt(first);
+			
+			updateRecentPosts();
+			updateTags();
+			myPosts(employee_id);
+		}
 	});
 </script>
 </head>

@@ -17,11 +17,16 @@
 <jsp:include page="Lib.jsp"></jsp:include>
 <script type="text/javascript">
 		jQuery(document).ready(function()
-				{
-					updateRecentPosts();
-					initializeMenu();
-					updateTags();
-				});
+		{
+			if(name=="null"){
+				location.href = "Login.html"
+			}
+			else{	
+				updateRecentPosts();
+				initializeMenu();
+				updateTags();
+			}
+		});
 </script>
 </head>
 <body>
@@ -29,6 +34,7 @@
 	<jsp:include page="Menu.jsp"></jsp:include>
 	<div class="main">
 		<div id="editProfile" class="left-section">
+		<div><h2>Edit Account</h2></div>
 			<form class="form" method="post" action="EmployeeServlet?actionName=editEmployee&&employee_id=<%=employee_id%>">
 			<div class="formColumns">Name:</div><div class="formEntries"><input id= designation type="text" name="name"><br><br></div>
 			<div class="formColumns">Designation:</div><div class="formEntries"><input id= designation type="text" name="designation"><br><br></div>

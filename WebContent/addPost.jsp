@@ -19,9 +19,14 @@ employee_id = currentUser.getEmployee_id();
 		
 		jQuery(document).ready(function()
 			{
+			if(name=="null"){
+				location.href = "Login.html"
+			}
+			else{
 				updateRecentPosts();
 				initializeMenu();
 				updateTags();
+			}
 			});
 		</script>
 		
