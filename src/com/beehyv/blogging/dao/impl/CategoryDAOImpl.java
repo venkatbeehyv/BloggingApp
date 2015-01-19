@@ -2,13 +2,17 @@ package com.beehyv.blogging.dao.impl;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import com.beehyv.blogging.dao.CategoryDAO;
 import com.beehyv.blogging.modal.Category;
+import com.beehyv.blogging.modal.Post;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 public class CategoryDAOImpl extends BaseDAO implements CategoryDAO 
 {
@@ -147,12 +151,86 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		return root_category;
 	} // end getChildren method
 	
+	@Override
+	public List<Category[]> getCategoryTree() {
+		Connection connection = getConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		List<Category[]> categoryTree = new ArrayList<Category[]>();
+		try {
+			statement = connection.createStatement();
+
+			// query database
+			resultSet = statement.executeQuery("SELECT t1.category_id AS id1, t1.category_name as name1, "
+					+"t2.category_id AS id2, t2.category_name as name2, "
+					+"t3.category_id AS id3, t3.category_name as name3, "
+					+"t4.category_id AS id4, t4.category_name as name4, "
+					+"t5.category_id AS id5, t5.category_name as name5, "
+					+"t6.category_id AS id6, t6.category_name as name6, "
+					+"t7.category_id AS id7, t7.category_name as name7 "
+					+"FROM Blog.category AS t1 "
+					+"LEFT JOIN Blog.category  AS t2 ON t2.parent_id = t1.category_id "
+					+"LEFT JOIN Blog.category  t3 ON t3.parent_id = t2.category_id "
+					+"LEFT JOIN Blog.category  t4 ON t4.parent_id = t3.category_id "
+					+"LEFT JOIN Blog.category  t5 ON t5.parent_id = t4.category_id "
+					+"LEFT JOIN Blog.category  t6 ON t6.parent_id = t5.category_id "
+					+"LEFT JOIN Blog.category  t7 ON t7.parent_id = t6.category_id "
+					+"WHERE t1.category_id = 1");
+			
+
+			// process query results
+			while ( resultSet.next() )
+			{
+				Category[] categoryArray = new Category[7];
+				for(int i=0; i<7; i++){
+					Category category = new Category();
+					categoryArray[i] = category;
+					if(resultSet.getLong(2*i+1) != 0){
+						category.setIdCategory(resultSet.getLong(2*i+1));
+						category.setCategoryName(resultSet.getString(2*i+2));
+					}
+					else{
+						categoryArray[i].setIdCategory(-1);
+						categoryArray[i].setCategoryName("null");
+					}
+				} // for loop ends
+				for(Category cat : categoryArray){
+					System.out.println(cat);
+				}
+				System.out.println();
+				categoryTree.add(categoryArray);
+			} // end while 
+		} // end try block
+		
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		return categoryTree;
+	}
+	
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
 		//System.out.println(categoryDAO.getParentTree(11));
 		//System.out.println(categoryDAO.getRootParent(11));
-		System.out.println(categoryDAO.getChildren(6));
+		//System.out.println(categoryDAO.getChildren(6));
 		//System.out.println(new ArrayList<Category>());
+		categoryDAO.getCategoryTree();
 	}
 
 }

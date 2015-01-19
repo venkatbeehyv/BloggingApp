@@ -32,6 +32,9 @@ public class CategoryService {
 		return categoryDAO.getRootParent(category_id);
 	}
 
+	public List<Category[]> getCategoryTree(){
+		return categoryDAO.getCategoryTree();
+	}
 
 	
 }

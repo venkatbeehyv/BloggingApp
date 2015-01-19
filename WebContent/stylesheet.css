@@ -241,7 +241,7 @@ html{
 }
 
 .truncate{
-	max-height: 95px;
+	max-height: 93px;
   	overflow: hidden;
   	text-overflow: ellipsis;
 }

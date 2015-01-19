@@ -7,20 +7,21 @@
 <jsp:include page="Lib.jsp"></jsp:include>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-			var a = document.getElementsByClassName("menu-col");
-			/* var b= this.className;
-			var c = $(this).find("ul") */
+			  var a = document.getElementsByClassName("menu-col");
+			 var b= this.className;
+			var c = $(this).find("ul") 
 			
 			for (var i = 0; i < a.length; i++) {
 				var d = $(a[i]).find("ul");
 				if(d.length!=0){
-					var categoryId = parseInt(d[0].className, 10);
+					var categoryId = parseInt(d[0].className, 10); 
 					jQuery.ajax({
-						url: "CategoryServlet?actionName=getChildren&&categoryId="+categoryId,
+						url: "CategoryServlet?actionName=categoryTree",
 						method: "GET",
 						contentType: "",
 						
 						success:function(categories){
+							alert("hi")
 							if(categories.length!=0){
 								var categoriesArray = JSON.parse(categories);	
 								

@@ -51,6 +51,18 @@ public class CategoryServlet extends HttpServlet {
 			writer.println(menuJSONString);
 			
 		}
+		
+		// returns menu bar children
+		else if("categoryTree".equalsIgnoreCase(actionName)){
+			List<Category[]> categoryTree = categoryService.getCategoryTree();
+			request.setAttribute("categories", categoryTree);
+			Gson gson = new Gson();
+			String menuJSONString = gson.toJson(categoryTree);
+			PrintWriter writer = response.getWriter();
+			System.out.println(menuJSONString);
+			writer.println(menuJSONString);
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
