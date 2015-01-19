@@ -6,43 +6,29 @@
 <title>Insert title here</title>
 <jsp:include page="Lib.jsp"></jsp:include>
 <script type="text/javascript">
-	jQuery(document).ready(function(){
-			  var a = document.getElementsByClassName("menu-col");
-			 var b= this.className;
-			var c = $(this).find("ul") 
-			
-			for (var i = 0; i < a.length; i++) {
-				var d = $(a[i]).find("ul");
-				if(d.length!=0){
-					var categoryId = parseInt(d[0].className, 10); 
-					jQuery.ajax({
-						url: "CategoryServlet?actionName=categoryTree",
-						method: "GET",
-						contentType: "",
-						
-						success:function(categories){
-							alert("hi")
-							if(categories.length!=0){
-								var categoriesArray = JSON.parse(categories);	
-								
-								var $Container = $("."+ categoryId.toString());
-								//var categoriesArray = categories;
-			 					for(var i in categoriesArray){
-									if(categoriesArray[i].idCategory!=0){
-									$Container.append('<li class="menu-col" id="'+categoriesArray[i].categoryName+'">< a href="Category.jsp?root_id='+categoriesArray[i].idCategory+'">'+categoriesArray[i].categoryName+'</a><ul class="'+categoriesArray[i].idCategory+'"></ul></li>');
-									}
-								}
-			 				}
-						},
-						error: function(request,error) 
-						{
-						 console.log(arguments);
-						 alert ( " Can't do because: " + error );
-						}
-					}); // end of ajax call
+jQuery(document).ready(function(){		
+	jQuery.ajax({
+		url: "CategoryServlet?actionName=categoryTree",
+		method: "GET",
+		contentType: "",
+		
+		success:function(categories){
+			categoryTree = JSON.parse(categories);
+			//console.log(categories)
+			for(var i in categoryTree){
+				for(var j in categoryTree[i]){
+					console.log(categoryTree[i][j])
 				}
 			}
-	});
+		},
+		error: function(request,error) 
+		{
+		 console.log(arguments);
+		 alert ( " Can't do because: " + error );
+		}
+	}); // end of ajax call
+});
+
 </script>
 <jsp:include page="Lib.jsp"></jsp:include>
 </head>
@@ -54,7 +40,12 @@
 			<a href="Home.jsp">Home</a>
 		</h3>
 	</li>
-<li class="menu-col" id="Technologies"><h3><a href="Category.jsp?root_id=2">Technologies</a></h3><ul class="2" ></ul></li>
+<li class="menu-col" id="Technologies">
+	<h3><a href="Category.jsp?root_id=2">Technologies</a></h3>
+	<ul class="2" >
+		
+	</ul>
+</li>
 <li class="menu-col" id="Frameworks"><h3><a href="Category.jsp?root_id=3">Frameworks</a></h3><ul class="3" ></ul></li>
 <li class="menu-col" id="Databases"><h3><a href="Category.jsp?root_id=4">Databases</a></h3><ul class="4" ></ul></li>
 <li class="menu-col" id="Web Services"><h3><a href="Category.jsp?root_id=5">Web Services</a></h3><ul class="5" ></ul></li>

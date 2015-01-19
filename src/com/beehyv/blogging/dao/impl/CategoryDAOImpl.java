@@ -152,12 +152,12 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 	} // end getChildren method
 	
 	@Override
-	public List<Category[]> getCategoryTree() {
+	public List<List<Category>> getCategoryTree() {
 		Connection connection = getConnection();
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
-		List<Category[]> categoryTree = new ArrayList<Category[]>();
+		List<List<Category>> categoryTree = new ArrayList<List<Category>>();
 		try {
 			statement = connection.createStatement();
 
@@ -182,24 +182,23 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			// process query results
 			while ( resultSet.next() )
 			{
-				Category[] categoryArray = new Category[7];
+				List<Category> categoryList = new ArrayList<Category>();
 				for(int i=0; i<7; i++){
 					Category category = new Category();
-					categoryArray[i] = category;
 					if(resultSet.getLong(2*i+1) != 0){
 						category.setIdCategory(resultSet.getLong(2*i+1));
 						category.setCategoryName(resultSet.getString(2*i+2));
+						categoryList.add(category);
 					}
 					else{
-						categoryArray[i].setIdCategory(-1);
-						categoryArray[i].setCategoryName("null");
+						i = 7;
 					}
 				} // for loop ends
-				for(Category cat : categoryArray){
+				for(Category cat : categoryList){
 					System.out.println(cat);
 				}
 				System.out.println();
-				categoryTree.add(categoryArray);
+				categoryTree.add(categoryList);
 			} // end while 
 		} // end try block
 		
@@ -230,6 +229,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		//System.out.println(categoryDAO.getRootParent(11));
 		//System.out.println(categoryDAO.getChildren(6));
 		//System.out.println(new ArrayList<Category>());
+		//categoryDAO.getCategoryTree();
 		categoryDAO.getCategoryTree();
 	}
 

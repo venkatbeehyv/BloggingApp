@@ -33,7 +33,7 @@ function theFunction(post_id){
 	else{
 		location.href="Login.html";
 	}
-}; 
+}; // end theFunction
 function updateContents(){
 	
 	jQuery.ajax({
@@ -64,7 +64,7 @@ function updateContents(){
 			console.log("error")
 		}
 	});
-}
+};  // end updateContents
 
 function postByRootId(root_id){
 	jQuery.ajax({
@@ -90,7 +90,7 @@ function postByRootId(root_id){
 			}
 		}
 });
-}
+}; // end postByRootId
 function postsByTags(tag_id,tag){
 	jQuery.ajax({
 		url:"posts?actionName=postsbyTag&&tagId="+tag_id+"&&tag="+tag,
@@ -111,7 +111,7 @@ function postsByTags(tag_id,tag){
 		error: function (error) {
         }
 	});
-}
+} // end postsByTags
 function searchPosts(word){
 	jQuery.ajax({
 		url: "posts?actionName=searchPosts&&word="+word,
@@ -148,6 +148,7 @@ function searchPosts(word){
 		} // end of error function
 	}); // end of ajax call
 } // end of method searchPosts
+
 function myPosts(employee_id){
 	jQuery.ajax({
 		url:"posts?actionName=myPosts&&employee_id="+employee_id,
@@ -175,7 +176,8 @@ function myPosts(employee_id){
 		error: function (error) {
         }
 	});
-}
+} // end myPosts
+
 function loadPost(post_id){
 	jQuery.ajax({
 		url:"posts?actionName=post&&postId="+post_id,
@@ -210,7 +212,7 @@ function loadPost(post_id){
 			}
 		}
 	});
-}
+} // end loadPost
 </script>
 </head>
 <body>

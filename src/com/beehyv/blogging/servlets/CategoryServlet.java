@@ -54,7 +54,7 @@ public class CategoryServlet extends HttpServlet {
 		
 		// returns menu bar children
 		else if("categoryTree".equalsIgnoreCase(actionName)){
-			List<Category[]> categoryTree = categoryService.getCategoryTree();
+			List<List<Category>> categoryTree = categoryService.getCategoryTree();
 			request.setAttribute("categories", categoryTree);
 			Gson gson = new Gson();
 			String menuJSONString = gson.toJson(categoryTree);
