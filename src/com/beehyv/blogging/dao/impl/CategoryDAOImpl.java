@@ -162,8 +162,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			statement = connection.createStatement();
 
 			// query database
-			resultSet = statement.executeQuery("SELECT t1.category_id AS id1, t1.category_name as name1, "
-					+"t2.category_id AS id2, t2.category_name as name2, "
+			resultSet = statement.executeQuery("SELECT t2.category_id AS id2, t2.category_name as name2, "
 					+"t3.category_id AS id3, t3.category_name as name3, "
 					+"t4.category_id AS id4, t4.category_name as name4, "
 					+"t5.category_id AS id5, t5.category_name as name5, "

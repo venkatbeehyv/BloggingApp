@@ -13,11 +13,18 @@ jQuery(document).ready(function(){
 		contentType: "",
 		
 		success:function(categories){
-			categoryTree = JSON.parse(categories);
+			var categoryTree = JSON.parse(categories);
 			//console.log(categories)
 			for(var i in categoryTree){
 				for(var j in categoryTree[i]){
-					console.log(categoryTree[i][j])
+					var next =parseInt(j,10)+1;
+					var nextString = next.toString();
+					var element = $("#"+categoryTree[i][j].idCategory+"");
+					console.log(i+","+j)
+					if(element!=null && next<categoryTree[i].length){
+						console.log(categoryTree[i][nextString].idCategory+": "+categoryTree[i][nextString].categoryName);
+						element.append('<li class="menu-col"><h3><a href="Category.jsp?root_id='+categoryTree[i][nextString].idCategory+'">'+categoryTree[i][nextString].categoryName+'</a></h3><ul id="'+categoryTree[i][nextString].idCategory+'"></ul></li>');
+					}
 				}
 			}
 		},
@@ -35,22 +42,13 @@ jQuery(document).ready(function(){
 <body>
 <div id="menu-bar">
 <ul class="menu-bar">
-	<li id="home">
-		<h3>
-			<a href="Home.jsp">Home</a>
-		</h3>
-	</li>
-<li class="menu-col" id="Technologies">
-	<h3><a href="Category.jsp?root_id=2">Technologies</a></h3>
-	<ul class="2" >
-		
-	</ul>
-</li>
-<li class="menu-col" id="Frameworks"><h3><a href="Category.jsp?root_id=3">Frameworks</a></h3><ul class="3" ></ul></li>
-<li class="menu-col" id="Databases"><h3><a href="Category.jsp?root_id=4">Databases</a></h3><ul class="4" ></ul></li>
-<li class="menu-col" id="Web Services"><h3><a href="Category.jsp?root_id=5">Web Services</a></h3><ul class="5" ></ul></li>
-<li class="menu-col" id="UI"><h3><a href="Category.jsp?root_id=6">UI</a></h3><ul class="6" ></ul></li>
-<li class="menu-col" id="Others"><h3><a href="Category.jsp?root_id=7">Others</a></h3><ul class="7"></ul></li>
+	<li id="home"><h3><a href="Home.jsp">Home</a></h3></li>
+	<li class="menu-col"><h3><a href="Category.jsp?root_id=2">Technologies</a></h3><ul id="2" ></ul></li>
+	<li class="menu-col"><h3><a href="Category.jsp?root_id=3">Frameworks</a></h3><ul id="3" ></ul></li>
+	<li class="menu-col"><h3><a href="Category.jsp?root_id=4">Databases</a></h3><ul id="4" ></ul></li>
+	<li class="menu-col"><h3><a href="Category.jsp?root_id=5">Web Services</a></h3><ul id="5" ></ul></li>
+	<li class="menu-col"><h3><a href="Category.jsp?root_id=6">UI</a></h3><ul id="6" ></ul></li>
+	<li class="menu-col"><h3><a href="Category.jsp?root_id=7">Others</a></h3><ul id="7"></ul></li>
 </ul>
 </div>
 </body>

@@ -347,7 +347,7 @@ a:hover {
 .menu-col ul li{
      display: none;
     }
- .menu-col ul:hover{
+ .menu-col:hover ul li{
     display: block; /* display the dropdown */
     }
  .no-post{
