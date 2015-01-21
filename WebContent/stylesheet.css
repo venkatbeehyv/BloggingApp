@@ -320,37 +320,79 @@ a:hover {
 	margin-right: 30px;
     margin-top: 30px;
 }
-#menu-bar{
-	background-color: #978CDC;
-	display:inline-block;
-	margin-left:50px;
-	margin-top:10px;
-	border-radius:10px;
-	width:1150px;
-}
-.menu-bar a{
-	text-decoration:none;
-	color:#F7F7F7;
-}
-.menu-bar{
-	margin: 10px 0px;
-}
-.menu-col{
-	float:left;
-	margin-right: 40px;
-	margin-left:40px;
-}
-#menu-bar ul li{
-	list-style-type: none;
-	float:left;
-}
-.menu-col ul li{
-     display: none;
-    }
- .menu-col:hover ul li{
-    display: block; /* display the dropdown */
-    }
  .no-post{
  padding:152px;
  margin-top:143px
  }
+ #menu-bar{
+ 	display:inline-block;
+ 	width:1150px;
+ 	margin-left:51px;
+ }
+ #menu-bar ul ul {
+	display: none;
+}
+
+ #menu-bar ul li:hover > ul {
+		display: block;
+}
+ #menu-bar ul {
+	background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); 
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+	padding: auto;
+	border-radius: 10px;  
+	list-style: none;
+	position: relative;
+	display: inline-block;
+}
+#menu-bar ul:after {
+		content: ""; clear: both; display: block;
+}
+#menu-bar ul li {
+	float: left;
+}
+#menu-bar ul li:hover {
+		background: #4b545f;
+		background: linear-gradient(top, #4f5964 0%, #5f6975 40%);
+		background: -moz-linear-gradient(top, #4f5964 0%, #5f6975 40%);
+		background: -webkit-linear-gradient(top, #4f5964 0%,#5f6975 40%);
+}
+#menu-bar ul li:hover a {
+			color: #fff;
+}
+#menu-bar ul li a {
+		display: block; padding: 10px;
+		color: #757575; text-decoration: none;
+}
+#menu-bar ul ul {
+	background: #5f6975; border-radius: 0px; padding: 0;
+	position: absolute; top: 100%;
+}
+#menu-bar ul ul li {
+		float: none; 
+		border-top: 1px solid #6b727c;
+		border-bottom: 1px solid #575f6a;
+		position: relative;
+}
+#menu-bar ul ul li a {
+			padding: auto;
+			color: #fff;
+}	
+#menu-bar ul ul li a:hover {
+				background: #4b545f;
+}
+#menu-bar ul ul ul {
+	position: absolute; left: 100%; top:0;
+}
+.menu-col{
+	width:164px;
+	text-align:center;
+}
+.menu-bar{
+	padding-left:0px;
+}
+
+ 

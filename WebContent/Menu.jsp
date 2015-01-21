@@ -1,80 +1,29 @@
-<!-- 	Creates a menu with an unordered list of menu-items. You can either use the CSS that comes with the plugin, or write your own styles 
- * to create a personalized effect
- *
- * The HTML markup used to build the menu can be as simple as...
- *
- *       <ul class="lavaLamp">
- *           <li><a href="#">Home</a></li>
- *           <li><a href="#">Plant a tree</a></li>
- *           <li><a href="#">Travel</a></li>
- *           <li><a href="#">Ride an elephant</a></li>
- *       </ul> -->
+<%@ page language="java" import="java.util.List, com.beehyv.blogging.modal.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<jsp:include page="Lib.jsp"></jsp:include>
+<script type="text/javascript">
+jQuery(document).ready(function(){		
+	initializeMenu();
+});
 
-<div id="menu" style="width: 1150px; margin-left:50px; display:inline-block;">
-    <ul class="lavaLamp">
-        <li><a href="Home.jsp"><span>Home</span></a>
-            
-        </li>
-        
-        <li><a href="#" class="parent"><span style="width:86px">Technologies</span></a>
-            <div class="columns two">
-                <ul class="one">
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Java</span></a>
-                    	<div><ul>
-                             <li><a href="#"><span style="background-position: -576px bottom; color: rgb(195, 191, 183);">Sub Item 1.1.1</span></a></li>
-                             <li><a href="#"><span>Sub Item 1.1.2</span></a></li>
-                        </ul></div>
-                    </li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Python</span></a>
-                        <div><ul>
-                             <li><a href="#"><span style="background-position: -576px bottom; color: rgb(195, 191, 183);">Sub Item 2.1.1</span></a></li>
-                        </ul></div>
-                    </li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">C++</span></a></li>
-                </ul>
-                
-            </div>
-        </li>
-         <li><a href="#" class="parent"><span style="width:78px;">Frameworks</span></a>
-            <div class="columns two">
-                <ul class="one">
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Spring</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Django</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Struts</span></a></li>
-                </ul>
-                
-            </div>
-        </li>
-        <li><a href="#" class="parent"><span style="width:67px">Databases</span></a>
-            <div class="columns two">
-                <ul class="one">
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">MySql</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">CouchDB</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Big Data</span></a></li>
-                </ul>
-                
-            </div>
-        </li>
-        <li><a href="#" class="parent"><span style="width:89px">Web Services</span></a>
-            <div class="columns two">
-                <ul class="one">
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">JSON-RPC</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">JSON-WSP</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Web Template</span></a></li>
-                </ul>
-                
-            </div>
-        </li>
-        <li><a href="#" class="parent"><span style="width:24px;padding-right: 44px;">UI</span></a>
-            <div class="columns two">
-                <ul class="one">
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">Javascript</span></a></li>
-                    <li><a href="#"><span style="background-position: -616px bottom; color: rgb(195, 191, 183);">CSS</span></a></li>
-                </ul>
-                
-            </div>
-        </li>
-        <li><a href="#"><span style="padding-right: 7px;">Others</span></a></li>
-        
-    </ul>
+</script>
+<jsp:include page="Lib.jsp"></jsp:include>
+</head>
+<body>
+<div id="menu-bar">
+<ul class="menu-bar">
+	<li id="home" class="menu-col"><a href="Home.jsp">Home</a></li>
+	<li class="menu-col"><a href="Category.jsp?root_id=2">Technologies</a><ul id="2" ></ul></li>
+	<li class="menu-col"><a href="Category.jsp?root_id=3">Frameworks</a><ul id="3" ></ul></li>
+	<li class="menu-col"><a href="Category.jsp?root_id=4">Databases</a><ul id="4" ></ul></li>
+	<li class="menu-col"><a href="Category.jsp?root_id=5">Web Services</a><ul id="5" ></ul></li>
+	<li class="menu-col"><a href="Category.jsp?root_id=6">UI</a><ul id="6" ></ul></li>
+	<li class="menu-col"><a href="Category.jsp?root_id=7">Others</a><ul id="7"></ul></li>
+</ul>
 </div>
+</body>
+</html>
