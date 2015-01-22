@@ -75,18 +75,23 @@ function postByRootId(root_id){
 			var Array = JSON.parse(posts);
 			var name = '<%=name%>';
 			var $postByCat = $(".contents");
-			$postByCat.append('<div><h2>'+Array[0].root_category+'</h2></div><br><br>');	
-			for(var i in Array){
-				
-				if(Array[i].userName==name){
-					$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div>').append('<div class="edit-post"><a href="editPost.jsp?post_id='+Array[i].post_id+'">Edit</a></div><br>')
+			if(Array.length!=0){
+				$postByCat.append('<div><h2>'+Array[0].category_name+'</h2></div><br><br>');	
+				for(var i in Array){
+					
+					if(Array[i].userName==name){
+						$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div>').append('<div class="edit-post"><a href="editPost.jsp?post_id='+Array[i].post_id+'">Edit</a></div><br>')
+					}
+					else{
+						$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div><br>')
+					}
+					$postByCat.append('<div>'+Array[i].createdAt+'</div> &nbsp <div>'+Array[i].userName+'</div>')
+					$postByCat.append('<div class="content-summary" id="'+Array[i].post_id+'"><p class="truncate">'+Array[i].content+'</p></div>')
+					$postByCat.append('<div class="read-more"><a class='+Array[i].post_id+' href= "javascript:void(0)" onclick="theFunction('+Array[i].post_id+');">Read more</a></div><br><br>')
 				}
-				else{
-					$postByCat.append('<div><a href="Post.jsp?postId='+Array[i].post_id+'"><h5>'+Array[i].title+'</h5></div><br>')
-				}
-				$postByCat.append('<div>'+Array[i].createdAt+'</div> &nbsp <div>'+Array[i].userName+'</div>')
-				$postByCat.append('<div class="content-summary" id="'+Array[i].post_id+'"><p class="truncate">'+Array[i].content+'</p></div>')
-				$postByCat.append('<div class="read-more"><a class='+Array[i].post_id+' href= "javascript:void(0)" onclick="theFunction('+Array[i].post_id+');">Read more</a></div><br><br>')
+			}
+			else{
+				$postByCat.append('<div style="margin-left: 185px; margin-top:35px; font-size:120%"><b>No post</b><em> has been added yet in this category!</em></div>');
 			}
 		}
 });
@@ -187,7 +192,9 @@ function loadPost(post_id){
 			var name = '<%=name%>';
 			var post = JSON.parse(posts);
 			var $post = $(".contents");
-			$post.append('<div class=add-post><a href="addPost.jsp">Add Post</a></div><br><br>');
+			if(name!="null"){
+				$post.append('<div class=add-post><a href="addPost.jsp">Add Post</a></div><br><br>');
+			}
 			
 			if(post.userName==name)
 			{
@@ -199,8 +206,8 @@ function loadPost(post_id){
 			}
 			$post.append('<div>'+post.createdAt+'</div> &nbsp <div>'+post.userName+'</div>')
 			$post.append('<div><p>'+post.content+'</p><div><br>')
-			$post.append('<div class="comments"><h3 >Comments</h3></div>');
-			$post.append('<form class= "form" method="post" action="posts?actionName=addComment&&employee_id='+employee_id+'&&postId='+post_id+'"> '
+			$post.append('<div class="comments"><h3 >Comments:</h3></div><br><br>');
+			$post.append('<br><form class= "form" method="post" action="posts?actionName=addComment&&employee_id='+employee_id+'&&postId='+post_id+'"> '
 					+'<textarea name="comment" id= jqte-comment class="jqte-test"></textarea><br><br>'
 					+'<div ><button type="reset" value="Reset" class="post-submit">Reset</button>'
 					+'<input type="submit" value="Submit"></div></form><br>');

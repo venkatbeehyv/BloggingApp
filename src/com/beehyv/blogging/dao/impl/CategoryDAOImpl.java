@@ -182,7 +182,7 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 			while ( resultSet.next() )
 			{
 				List<Category> categoryList = new ArrayList<Category>();
-				for(int i=0; i<7; i++){
+				for(int i=0; i<6; i++){
 					Category category = new Category();
 					if(resultSet.getLong(2*i+1) != 0){
 						category.setIdCategory(resultSet.getLong(2*i+1));

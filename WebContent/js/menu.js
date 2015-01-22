@@ -11,13 +11,14 @@ function initializeMenu(){
 				for(var j in categoryTree[i]){
 					var next =parseInt(j,10)+1;
 					var nextString = next.toString();
-					var element = $("#menu-bar #"+categoryTree[i][j].idCategory+"");
-					console.log(i+","+j)
+					var element = $("#menu-bar #c"+categoryTree[i][j].idCategory+"");
+					
 					if(element!=null  && next<categoryTree[i].length){ 
-						var checkElement = $("#menu-bar #"+categoryTree[i][nextString].idCategory+"");
+						var checkElement = $("#menu-bar #c"+categoryTree[i][nextString].idCategory+"");
+						
 						if(checkElement.length==0){
-							console.log(categoryTree[i][nextString].idCategory+": "+categoryTree[i][nextString].categoryName);
-							element.append('<li class="menu-col"><a href="Category.jsp?root_id='+categoryTree[i][nextString].idCategory+'">'+categoryTree[i][nextString].categoryName+'</a><ul id="'+categoryTree[i][nextString].idCategory+'"></ul></li>');
+							//console.log(i+","+j)
+							element.append('<li class="menu-col"><a href="Category.jsp?root_id='+categoryTree[i][nextString].idCategory+'">'+categoryTree[i][nextString].categoryName+'</a><ul id="c'+categoryTree[i][nextString].idCategory+'"></ul></li>');
 						}
 					}
 				}

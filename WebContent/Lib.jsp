@@ -2,10 +2,11 @@
   
    
 <!-- <link href="http://apycom.com/ssc-data/themes/default/styles/menu.css" type="text/css" rel="stylesheet" /> -->
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/js/jquery-te-1.4.0.css">
+<script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.color.js" language="javascript"></script>
 <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.easing.js" language="javascript"></script>
-   
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-te-1.4.0.min.js" charset="utf-8"></script>
    
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/MyHeader.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath}/js/menu.js'></script>

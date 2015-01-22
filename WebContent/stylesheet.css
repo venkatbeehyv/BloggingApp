@@ -150,6 +150,9 @@ h4{
 .contents a{
 	text-decoration: none;
 }
+.left-head{
+	margin:10px 0 10px 10px;
+}
 h5 {
     margin-top: 4px;
     margin-bottom: 3px;
@@ -189,7 +192,7 @@ html{
 	height:100px;
 }
 .title{
-	width: 40%;
+	width: 130%;
 }
 .add-post{
 	float:right;
@@ -210,7 +213,7 @@ html{
 	font-size:100%;
 }
 .addPost-tags{
-	width: 40%;
+	width: 110%;
 }
 #post-content{
 	height:500%;
@@ -394,5 +397,16 @@ a:hover {
 .menu-bar{
 	padding-left:0px;
 }
-
- 
+div.jqte{
+	display:block !important;
+}
+div.jqte div{
+	display:block !important;
+	max-height:250px;
+}
+div.jqte div.jqte_hiddenField{
+	display:none !important;
+}
+div.jqte div.jqte_formats,div.jqte div.jqte_fontsizes,div.jqte div.jqte_cpalette,div.jqte div.jqte_linkform{
+	display:none !important;
+}
