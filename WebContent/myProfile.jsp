@@ -34,6 +34,7 @@ name = currentUser.name;
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>
 	<jsp:include page="Menu.jsp"></jsp:include>
+	<jsp:include page="searchContainer.jsp"></jsp:include>
 	<div class= "main">
 	<div class="left-section">
 	<div class="userDetails"> </div>

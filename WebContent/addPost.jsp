@@ -23,7 +23,6 @@ if(currentUser!=null) {
 				initializeMenu();
 				updateTags();
 			}
-			
 			$('.jqte-test').jqte();
 			});
 		</script>
@@ -34,9 +33,9 @@ if(currentUser!=null) {
 	<jsp:include page="searchContainer.jsp"></jsp:include>
 	<div class="main">
 		<div class="left-section">
-			<div class="post-head"><h2>NEW POST</h2></div><br><br>
+			<div class="post-head"><h2>NEW POST</h2></div>
 			<form class="form" method="post" action="posts?actionName=addPost&&employee_id=<%=employee_id%>"> 
-				<div>Please select a category:  
+				<div><b>Please select a relevant category:</b>  &nbsp
 					<select>
 					  	<option value="2">Technologies</option>
 					  	<option value="3">Frameworks</option>
@@ -45,13 +44,13 @@ if(currentUser!=null) {
 					  	<option value="6">UI</option>
 					  	<option value="0">Others</option>
 					</select>
-				</div><br><br>
-				<div>Title: <input type="text" name="title" class="title"><br><br></div><br>
-				<div>Post Content: </div><br>
+				</div><br>
+				<div><b>Title:</b> &nbsp <input type="text" name="title" class="title"></div><br>
+				<div><b>Post Content: </b></div>
 				<div id="textar" style=" display:block;">	
 				<textarea name="textarea" class="jqte-test"></textarea>
 				</div>
-				<div>Tags:  <input  type="text" name="tags" class="addPost-tags"><br><br></div><br>
+				<div><b>Tags:</b> &nbsp <input  type="text" name="tags" class="addPost-tags"><br><br></div><br>
 				<div ><button type="reset" value="Reset" class="post-submit">Reset</button>
 					<input type="submit" value="Submit">
 				</div><br>

@@ -1,7 +1,6 @@
 <link type="text/css" href="${pageContext.request.contextPath}/js/lib/apycom.com-16-gray/menu.css" rel="stylesheet" />
   
    
-<!-- <link href="http://apycom.com/ssc-data/themes/default/styles/menu.css" type="text/css" rel="stylesheet" /> -->
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/js/jquery-te-1.4.0.css">
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://apycom.com/ssc-data/themes/default/scripts/jquery.color.js" language="javascript"></script>

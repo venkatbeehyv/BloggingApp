@@ -32,9 +32,10 @@
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>
 	<jsp:include page="Menu.jsp"></jsp:include>
+	<jsp:include page="searchContainer.jsp"></jsp:include>
 	<div class="main">
 		<div id="editProfile" class="left-section">
-		<div><h2>Edit Account</h2></div>
+		<div class ="account-head"><h2>Edit Account: </h2><a class="change-password" href="changePassword.jsp?employee_id=<%=employee_id%>">Change Password</a></div>
 			<form class="form" method="post" action="EmployeeServlet?actionName=editEmployee&&employee_id=<%=employee_id%>">
 			<div class="formColumns">Name:</div><div class="formEntries"><input id= designation type="text" name="name"><br><br></div>
 			<div class="formColumns">Designation:</div><div class="formEntries"><input id= designation type="text" name="designation"><br><br></div>

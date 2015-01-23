@@ -15,10 +15,10 @@ body{
 .pic{
 	float: left;
 }
-div div{
+/* div div{
 	display: inline-block;
 	font color:#767676
-}
+} */
 
 #reg{
 	float:right;
@@ -91,9 +91,9 @@ div div{
     margin-top: 30px;
     border: 1px solid black;
 }
-h4{
+/* h4{
 	padding: 11px 24px 55px 39px;
-}
+} */
 .contents{
 	min-height: 800px;
     width: 70%;
@@ -112,6 +112,10 @@ h4{
     padding-left: 15px;
     border-radius: 10px;
 }
+.recent h2{
+	padding: 10px 0px;
+}
+
 .tags{
 	height: 283px;
     width: 100%;
@@ -119,6 +123,9 @@ h4{
     margin-right:50px;
     padding-left: 15px;
     border-radius:10px;
+}
+.tags h2{
+	padding: 10px 0px;
 }
 .homeTags{
 	display: block;
@@ -138,9 +145,6 @@ h4{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-.contents-head{
-	display:inline;
-}
 .contents h2 {
     margin-top: 4px;
     margin-bottom: 4px;
@@ -150,13 +154,11 @@ h4{
 .contents a{
 	text-decoration: none;
 }
-.left-head{
-	margin:10px 0 10px 10px;
-}
-h5 {
+
+/* h5 {
     margin-top: 4px;
     margin-bottom: 3px;
-}
+} */
 
 html{
 	background-color:#f1f1f1;
@@ -170,7 +172,7 @@ html{
 	width:70%;
 	height: 650px;
 	padding: 40px;
-	margin-top: 20px;
+	margin-top: -20px;
 	margin-bottom: 20px;
  	background-color: #e8e8fa; 	
  	border-radius:10px;
@@ -178,9 +180,12 @@ html{
 .post-head{
 	margin-left:350px;
 }
-.form div{
-	 display:inline-block;
+.myposts-head h2{
+	display:inline-block;
 }
+/* .form div{
+	 display:inline-block;
+} */
 .jqte-test{
 	width:800px;
 	height: 300px;
@@ -192,7 +197,7 @@ html{
 	height:100px;
 }
 .title{
-	width: 130%;
+	width: 40%;
 }
 .add-post{
 	float:right;
@@ -213,7 +218,7 @@ html{
 	font-size:100%;
 }
 .addPost-tags{
-	width: 110%;
+	width: 40%;
 }
 #post-content{
 	height:500%;
@@ -221,8 +226,9 @@ html{
 }
 .edit-post{
 	float: right;
-	margin-top:15px;
 	margin-right:20px;
+	margin-top:5px;
+	text-decoration:underline !important;
 }
 .edit-post a{
 	text-decoration:underline;
@@ -315,9 +321,6 @@ a:hover {
 	margin-right: 30px;
     margin-top: 30px;
 }
-.edit-account{
-	margin-right: 30px;;
-}
 .myPosts{
 	float:right;
 	margin-right: 30px;
@@ -397,16 +400,23 @@ a:hover {
 .menu-bar{
 	padding-left:0px;
 }
-div.jqte{
-	display:block !important;
-}
 div.jqte div{
-	display:block !important;
-	max-height:250px;
+	max-height:300px;
 }
-div.jqte div.jqte_hiddenField{
-	display:none !important;
+.post-title h5{
+	margin:5px 0px;
+	display:inline-block;
 }
-div.jqte div.jqte_formats,div.jqte div.jqte_fontsizes,div.jqte div.jqte_cpalette,div.jqte div.jqte_linkform{
-	display:none !important;
+.post-title{
+	display:inline;
+}
+.account-head h2{
+	display:inline-block;
+}
+.account-head a{
+	float:right;
+	margin-top:20px;
+}
+.edit-account{
+	margin-left:10px;
 }

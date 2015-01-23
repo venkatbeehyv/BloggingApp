@@ -7,14 +7,9 @@ function myProfile(employee_id){
 		{
 			var user = JSON.parse(userDetails);
 			var $user = $(".userDetails");
-			$user.append('<div style=" margin-left: -20px"><h2>My Account</h2></div>'
-					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
-					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
-					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
-					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
-					+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
-					+'<div class="edit-account"><a href="editProfile.jsp?employee_id='+employee_id+'">Edit Account</a></div>&nbsp&nbsp'
-					+'<div class="change-password"><a href="changePassword.jsp?employee_id='+employee_id+'">Change Password</a></div><br><br>');
+			$user.append('<div class ="account-head" style=" margin-left: -20px"><h2>My Account</h2>'
+					+'<a class="edit-account" href="editProfile.jsp?employee_id='+employee_id+'">Edit Account</a>'
+					+'<a class="change-password" href="changePassword.jsp?employee_id='+employee_id+'">Change Password</a><br><br>');
 			$user.append('<div>Name:'+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp' + user.name+'</div><br><br>');
 			
 			$user.append('<div>Designation: &nbsp&nbsp   '+user.designation+'</div><br><br>');

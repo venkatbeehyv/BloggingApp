@@ -27,6 +27,7 @@
 <body>
 	<jsp:include page="MyHeader.jsp"></jsp:include>
 	<jsp:include page="Menu.jsp"></jsp:include>
+	<jsp:include page="searchContainer.jsp"></jsp:include>
 	<div class="main">
 		<div class="left-section">
 			<div class="post-head"><h2>EDIT POST</h2></div><br><br>
