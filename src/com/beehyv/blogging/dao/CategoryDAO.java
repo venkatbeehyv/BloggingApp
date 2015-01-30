@@ -16,5 +16,6 @@ public interface CategoryDAO {
 	public Category getRootParent(long category_id);
 	public List<Category> getParentTree(long category_id);
 	public List<List<Category>> getCategoryTree();
+	public List<Category> getLeafNodes();
 	
 }

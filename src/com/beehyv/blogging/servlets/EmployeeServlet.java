@@ -65,6 +65,14 @@ public class EmployeeServlet extends HttpServlet {
 		else if("editEmployee".equalsIgnoreCase(actionName)){
 		    HttpSession session = request.getSession();
 		    if(session.getAttribute("employee_id")!=null){
+		    	Employee userDetails = employeeService.getEmployee(Long.valueOf(request.getParameter("employee_id")));
+				request.setAttribute("userDetails", userDetails);
+				Gson gson = new Gson();
+				String userJSONString = gson.toJson(userDetails);
+				PrintWriter writer = response.getWriter();
+				System.out.println(userJSONString);
+				writer.println(userJSONString);
+		    	
 		    	Employee employee = new Employee();
 				employee.setName(request.getParameter("name"));
 				employee.setDesignation(request.getParameter("designation"));

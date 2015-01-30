@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.beehyv.blogging.modal.Comment;
 import com.beehyv.blogging.modal.Post;
 import com.beehyv.blogging.modal.Tag;
+import com.beehyv.blogging.service.CategoryService;
 import com.beehyv.blogging.service.PostService;
 import com.beehyv.blogging.service.TagService;
 import com.google.gson.Gson;
@@ -29,6 +30,7 @@ public class PostServlet extends HttpServlet {
 	
 	PostService postService = new PostService();
 	TagService tagService = new TagService();
+	CategoryService categoryService = new CategoryService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		System.out.println("Inside PostServlet:");
@@ -136,13 +138,15 @@ public class PostServlet extends HttpServlet {
 		if("addPost".equalsIgnoreCase(actionName)){
 			// adding a post
 			Post post = new Post();
-			
-			
+			String leaf =request.getParameter("selected-leaf");
+			Long root_id = categoryService.getRootParent(Long.valueOf(leaf)).getIdCategory();
 			String employee_id = request.getParameter("employee_id");
 			post.setUserId(Long.valueOf(employee_id));
 			post.setTitle(request.getParameter("title"));
-			post.setContent(request.getParameter("contents"));
-			post.setCategoryID(2);
+			post.setContent(request.getParameter("textarea"));
+			post.setCategoryID(Long.valueOf(leaf));
+			post.setRoot_id(root_id);
+			System.out.println(post);
 			postService.addPost(post);
 			
 			System.out.println("check1");

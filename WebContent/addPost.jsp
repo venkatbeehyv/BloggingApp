@@ -12,6 +12,7 @@ if(currentUser!=null) {
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Add a Post</title>
 		<jsp:include page="Lib.jsp"></jsp:include>
+		<script type='text/javascript' src='${pageContext.request.contextPath}/js/addPost.js'></script>
 		<script type="text/javascript">
 		jQuery(document).ready(function()	
 			{
@@ -22,6 +23,7 @@ if(currentUser!=null) {
 				updateRecentPosts();
 				initializeMenu();
 				updateTags();
+				getLeafNodes();
 			}
 			$('.jqte-test').jqte();
 			});
@@ -36,13 +38,7 @@ if(currentUser!=null) {
 			<div class="post-head"><h2>NEW POST</h2></div>
 			<form class="form" method="post" action="posts?actionName=addPost&&employee_id=<%=employee_id%>"> 
 				<div><b>Please select a relevant category:</b>  &nbsp
-					<select>
-					  	<option value="2">Technologies</option>
-					  	<option value="3">Frameworks</option>
-					  	<option value="4">Databases</option>
-					  	<option value="5">Web services</option>
-					  	<option value="6">UI</option>
-					  	<option value="0">Others</option>
+					<select name="selected-leaf" id ="leaf-nodes">
 					</select>
 				</div><br>
 				<div><b>Title:</b> &nbsp <input type="text" name="title" class="title"></div><br>

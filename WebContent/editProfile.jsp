@@ -15,6 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <jsp:include page="Lib.jsp"></jsp:include>
+<script type='text/javascript' src='${pageContext.request.contextPath}/js/editProfile.js'></script>
 <script type="text/javascript">
 		jQuery(document).ready(function()
 		{
@@ -25,6 +26,7 @@
 				updateRecentPosts();
 				initializeMenu();
 				updateTags();
+				editProfile(employee_id)
 			}
 		});
 </script>
@@ -37,8 +39,8 @@
 		<div id="editProfile" class="left-section">
 		<div class ="account-head"><h2>Edit Account: </h2><a class="change-password" href="changePassword.jsp?employee_id=<%=employee_id%>">Change Password</a></div>
 			<form class="form" method="post" action="EmployeeServlet?actionName=editEmployee&&employee_id=<%=employee_id%>">
-			<div class="formColumns">Name:</div><div class="formEntries"><input id= designation type="text" name="name"><br><br></div>
-			<div class="formColumns">Designation:</div><div class="formEntries"><input id= designation type="text" name="designation"><br><br></div>
+			<div class="formColumns">Name:</div><div class="formEntries"><input id= "name" type="text" name="name"><br><br></div>
+			<div class="formColumns">Designation:</div><div class="formEntries"><input id= "designation" type="text" name="designation"><br><br></div>
 			<div class="formColumns">Mobile:</div><div class="formEntries"><input id= mob type="tel" name="mobile_no"><br><br></div>
 			<div class="submit"><input id="editProfile-id" type="submit" value="Submit"></div>
 			</form>

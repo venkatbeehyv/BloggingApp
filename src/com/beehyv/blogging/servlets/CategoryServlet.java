@@ -63,6 +63,15 @@ public class CategoryServlet extends HttpServlet {
 			writer.println(menuJSONString);
 			
 		}
+		else if("leafNodes".equalsIgnoreCase(actionName)){
+			List<Category> categories = categoryService.getLeafNodes();
+			request.setAttribute("categories", categories);
+			Gson gson = new Gson();
+			String menuJSONString = gson.toJson(categories);
+			PrintWriter writer = response.getWriter();
+			System.out.println(menuJSONString);
+			writer.println(menuJSONString);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -36,5 +36,7 @@ public class CategoryService {
 		return categoryDAO.getCategoryTree();
 	}
 
-	
+	public List<Category> getLeafNodes(){
+		return categoryDAO.getLeafNodes();
+	}
 }

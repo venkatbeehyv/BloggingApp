@@ -193,10 +193,6 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 						i = 7;
 					}
 				} // for loop ends
-				for(Category cat : categoryList){
-					System.out.println(cat);
-				}
-				System.out.println();
 				categoryTree.add(categoryList);
 			} // end while 
 		} // end try block
@@ -222,14 +218,68 @@ public class CategoryDAOImpl extends BaseDAO implements CategoryDAO
 		return categoryTree;
 	}
 	
+	/*
+	 * this method returns a list of categories, 
+	 * which does not have any immediate children
+	 */
+	@Override
+	public List<Category> getLeafNodes() {
+		Connection connection = getConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		List<Category> categories = new ArrayList<Category>();
+		Long parent;
+		
+		try 
+		{
+			statement = connection.createStatement();
+			
+			resultSet = statement.executeQuery("SELECT t1.category_id, t1.category_name FROM Blog.category AS t1 "
+					+" LEFT JOIN Blog.category as t2 ON t1.category_id = t2.parent_id WHERE t2.category_id IS NULL;");
+				
+				
+				
+				while(resultSet.next())
+				{
+					Category category = new Category();
+					category.setIdCategory(resultSet.getLong(1));
+					category.setCategoryName(resultSet.getString(2));
+					categories.add(category);
+				} // while ends
+		} // end try block
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		} // block catch ends
+		
+		finally // ensure resultSet, statement and connection are closed
+		{
+			try
+			{
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} // end try
+			catch ( Exception exception )
+			{
+				exception.printStackTrace();
+			} // end catch
+		} // end finally
+		return categories;
+	}
+	
 	public static void main(String[] args){
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
-		//System.out.println(categoryDAO.getParentTree(11));
+		System.out.println(categoryDAO.getLeafNodes());
 		//System.out.println(categoryDAO.getRootParent(11));
 		//System.out.println(categoryDAO.getChildren(6));
 		//System.out.println(new ArrayList<Category>());
 		//categoryDAO.getCategoryTree();
-		categoryDAO.getCategoryTree();
+		//categoryDAO.getCategoryTree();
 	}
+
+	
 
 }

@@ -764,7 +764,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 	 * @param args
 	 */
 	public static void main(String[] args){
-		//PostDAO postDAO = new PostDAOImpl();
+		PostDAO postDAO = new PostDAOImpl();
 		//System.out.println(postDAO.getRecentPosts());
 		//System.out.println(postDAO.getPost(8));
 		//System.out.println(postDAO.getPostsbytag(2));
@@ -772,7 +772,7 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		//System.out.println(postDAO.getMyPosts((long) 10));
 		//System.out.println(postDAO.getPostsbyCategory((long) 3));
 		//postDAO.addPost(p);
-		//postDAO.deletePost((long) 17);
+		postDAO.deletePost((long) 22);
 		//postDAO.deleteComment((long) 14);
 		//System.out.println(postDAO.searchPosts("c++"));
 	}
